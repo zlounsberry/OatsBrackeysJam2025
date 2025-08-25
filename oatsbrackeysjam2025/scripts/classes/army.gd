@@ -1,6 +1,10 @@
 extends Node3D
 class_name Army
 
+signal movement_complete
+
+@export var army_id: int = 0
+
 
 func move_to_new_space(new_position: Vector3) -> void:
 	print(new_position)
@@ -10,3 +14,5 @@ func move_to_new_space(new_position: Vector3) -> void:
 	var vtween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel(false)
 	vtween.tween_property(self, "global_position:y", 3, 0.5)
 	vtween.tween_property(self, "global_position:y", new_position.y, 0.5)
+	await htween.finished
+	movement_complete

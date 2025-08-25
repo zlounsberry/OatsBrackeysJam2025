@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3uca8anltpu"]
+
+[ext_resource type="PackedScene" uid="uid://cxrq0y8oacs2e" path="res://scenes/confirm_menu.tscn" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://b8goq67pxid8j" path="res://scripts/hud.gd" id="1_oo0fn"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_oo0fn")
+
+[node name="ConfirmMenu" parent="." instance=ExtResource("1_ahhtf")]
+
+[connection signal="player_selected_yes" from="ConfirmMenu" to="." method="_on_confirm_menu_player_selected_yes"]
