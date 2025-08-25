@@ -425,143 +425,167 @@ _surfaces = [{
 [node name="Map" type="Node3D"]
 script = ExtResource("1_4xfga")
 
-[node name="world" type="Node3D" parent="."]
+[node name="Tiles" type="Node3D" parent="."]
 
-[node name="Cylinder_000" type="MeshInstance3D" parent="world"]
+[node name="Cylinder_000" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(3.57809, 0, 0, 0, 0.714547, 0, 0, 0, 3.57809, 0, 0.696715, -0.0423228)
 mesh = SubResource("ArrayMesh_1w5w0")
 skeleton = NodePath("")
 script = ExtResource("2_gldc4")
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
-[node name="StaticBody3D" type="Area3D" parent="world/Cylinder_000"]
+[node name="StaticBody3D" type="Area3D" parent="Tiles/Cylinder_000"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/Cylinder_000/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tiles/Cylinder_000/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_4xfga")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="world/Cylinder_000"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles/Cylinder_000"]
 visible = false
 mesh = SubResource("ArrayMesh_4xfga")
 surface_material_override/0 = ExtResource("2_paxxb")
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="world"]
+[node name="Marker3D" type="Marker3D" parent="Tiles/Cylinder_000"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958078, 0)
+
+[node name="Cylinder_001" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(3.57809, 0, 0, 0, 0.431491, 0, 0, 0, 3.57809, 6.11564, 0.416766, 2.58169)
 mesh = SubResource("ArrayMesh_2l5rk")
 skeleton = NodePath("")
 script = ExtResource("2_gldc4")
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
-[node name="StaticBody3D" type="Area3D" parent="world/Cylinder_001"]
+[node name="StaticBody3D" type="Area3D" parent="Tiles/Cylinder_001"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/Cylinder_001/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tiles/Cylinder_001/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_paxxb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="world/Cylinder_001"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles/Cylinder_001"]
 visible = false
 mesh = SubResource("ArrayMesh_gldc4")
 surface_material_override/0 = ExtResource("2_paxxb")
 
-[node name="Cylinder_002" type="MeshInstance3D" parent="world"]
+[node name="Marker3D" type="Marker3D" parent="Tiles/Cylinder_001"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03127, 0)
+
+[node name="Cylinder_002" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(3.57809, 0, 0, 0, 0.227619, 0, 0, 0, 3.57809, 8.63385, 0.197072, 8.69733)
 mesh = SubResource("ArrayMesh_saa4h")
 skeleton = NodePath("")
 script = ExtResource("2_gldc4")
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
-[node name="StaticBody3D" type="Area3D" parent="world/Cylinder_002"]
+[node name="StaticBody3D" type="Area3D" parent="Tiles/Cylinder_002"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/Cylinder_002/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tiles/Cylinder_002/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_gldc4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="world/Cylinder_002"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles/Cylinder_002"]
 visible = false
 mesh = SubResource("ArrayMesh_0cso3")
 surface_material_override/0 = ExtResource("2_paxxb")
 
-[node name="Cylinder_003" type="MeshInstance3D" parent="world"]
+[node name="Marker3D" type="Marker3D" parent="Tiles/Cylinder_002"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977477, 0)
+
+[node name="Cylinder_003" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(3.57809, 0, 0, 0, 0.37717, 0, 0, 0, 3.57809, -2.58169, 0.377832, 6.07332)
 mesh = SubResource("ArrayMesh_2daou")
 skeleton = NodePath("")
 script = ExtResource("2_gldc4")
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
-[node name="StaticBody3D" type="Area3D" parent="world/Cylinder_003"]
+[node name="StaticBody3D" type="Area3D" parent="Tiles/Cylinder_003"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/Cylinder_003/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tiles/Cylinder_003/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0cso3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="world/Cylinder_003"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles/Cylinder_003"]
 visible = false
 mesh = SubResource("ArrayMesh_2klcf")
 surface_material_override/0 = ExtResource("2_paxxb")
 
-[node name="Cylinder_004" type="MeshInstance3D" parent="world"]
+[node name="Marker3D" type="Marker3D" parent="Tiles/Cylinder_003"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99829, 0)
+
+[node name="Cylinder_004" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(3.57809, 0, 0, 0, 0.227619, 0, 0, 0, 3.57809, -0.0677164, 0.197072, 12.244)
 mesh = SubResource("ArrayMesh_lx7w4")
 skeleton = NodePath("")
 script = ExtResource("2_gldc4")
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
-[node name="StaticBody3D" type="Area3D" parent="world/Cylinder_004"]
+[node name="StaticBody3D" type="Area3D" parent="Tiles/Cylinder_004"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/Cylinder_004/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tiles/Cylinder_004/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_2klcf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="world/Cylinder_004"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles/Cylinder_004"]
 visible = false
 mesh = SubResource("ArrayMesh_2lpho")
 surface_material_override/0 = ExtResource("2_paxxb")
 
-[node name="Cylinder_005" type="MeshInstance3D" parent="world"]
+[node name="Marker3D" type="Marker3D" parent="Tiles/Cylinder_004"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03644, 0)
+
+[node name="Cylinder_005" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(3.57809, 0, 0, 0, 0.342953, 0, 0, 0, 3.57809, 6.02676, 0.339944, 14.758)
 mesh = SubResource("ArrayMesh_6vock")
 skeleton = NodePath("")
 script = ExtResource("2_gldc4")
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
-[node name="StaticBody3D" type="Area3D" parent="world/Cylinder_005"]
+[node name="StaticBody3D" type="Area3D" parent="Tiles/Cylinder_005"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/Cylinder_005/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tiles/Cylinder_005/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_2lpho")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="world/Cylinder_005"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles/Cylinder_005"]
 visible = false
 mesh = SubResource("ArrayMesh_be0no")
 surface_material_override/0 = ExtResource("2_paxxb")
 
-[node name="Cylinder_006" type="MeshInstance3D" parent="world"]
+[node name="Marker3D" type="Marker3D" parent="Tiles/Cylinder_005"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923692, 0)
+
+[node name="Cylinder_006" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(3.57809, 0, 0, 0, 0.227619, 0, 0, 0, 3.57809, -8.67617, 0.197072, 8.58729)
 mesh = SubResource("ArrayMesh_myb0g")
 skeleton = NodePath("")
 script = ExtResource("2_gldc4")
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
-[node name="StaticBody3D" type="Area3D" parent="world/Cylinder_006"]
+[node name="StaticBody3D" type="Area3D" parent="Tiles/Cylinder_006"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/Cylinder_006/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tiles/Cylinder_006/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_nakos")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="world/Cylinder_006"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles/Cylinder_006"]
 visible = false
 mesh = SubResource("ArrayMesh_nakos")
 surface_material_override/0 = ExtResource("2_paxxb")
 
-[node name="Cylinder_007" type="MeshInstance3D" parent="world"]
+[node name="Marker3D" type="Marker3D" parent="Tiles/Cylinder_006"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16555, 0)
+
+[node name="Cylinder_007" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(3.57809, 0, 0, 0, 0.227619, 0, 0, 0, 3.57809, -2.60708, 0.197072, -6.11564)
 mesh = SubResource("ArrayMesh_tqj0n")
 skeleton = NodePath("")
 script = ExtResource("2_gldc4")
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
-[node name="StaticBody3D" type="Area3D" parent="world/Cylinder_007"]
+[node name="StaticBody3D" type="Area3D" parent="Tiles/Cylinder_007"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="world/Cylinder_007/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tiles/Cylinder_007/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_jh32y")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="world/Cylinder_007"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles/Cylinder_007"]
 visible = false
 mesh = SubResource("ArrayMesh_jh32y")
 surface_material_override/0 = ExtResource("2_paxxb")
+
+[node name="Marker3D" type="Marker3D" parent="Tiles/Cylinder_007"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977477, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.670323, 0.742069, 0, -0.742069, 0.670323, 0, 10.9887, 21.126)
