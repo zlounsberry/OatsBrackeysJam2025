@@ -1,11 +1,11 @@
 extends Node3D
 class_name Army
 
-signal movement_complete
-
 const CC = preload("res://assets/resources/CC.tres")
 const SCC = preload("res://assets/resources/SCC.tres")
 const SJ = preload("res://assets/resources/SJ.tres")
+
+signal movement_complete
 
 @export var is_ai: bool = false
 @export var currently_taking_turn: bool = false

@@ -37,6 +37,12 @@ left_click={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="dice_reader"
+3d_physics/layer_3="dice_face"
+
 [rendering]
 
 renderer/rendering_method="mobile"
