@@ -9,6 +9,7 @@ const SJ = preload("res://assets/resources/SJ.tres")
 
 @export var is_ai: bool = false
 @export var currently_taking_turn: bool = false
+@export var controlling_player_id: int = -99
 @export var faction_id: int = 0
 
 

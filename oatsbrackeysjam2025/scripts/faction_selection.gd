@@ -1,5 +1,7 @@
 extends NinePatchRect
 
+signal start_game
+
 @onready var current_selection: int = GameState.FACTIONS.SANDWICH_COOKIE_CHAN
 @onready var left_position: Vector2 = $SCC.position
 @onready var right_position: Vector2 = $CC.position
@@ -86,6 +88,7 @@ func _on_confirm_pressed() -> void:
 	current_player_choosing += 1
 	if current_player_choosing >= GameState.number_of_players:
 		print("all done!")
+		start_game.emit()
 		GameState.current_state = GameState.STATE_MACHINE.SELECTING_IN_GAME 
 		self.queue_free()
 

@@ -33,3 +33,4 @@ shadow_enabled = true
 
 [connection signal="clicked_this_tile" from="Map" to="." method="_on_map_clicked_this_tile"]
 [connection signal="player_confirmed" from="HUD" to="." method="_on_hud_player_confirmed"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

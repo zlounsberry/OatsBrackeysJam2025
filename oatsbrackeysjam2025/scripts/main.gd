@@ -5,15 +5,6 @@ const ARMY = preload("res://scenes/army.tscn")
 signal player_confirmed(is_yes: bool)
 
 
-func _ready():
-	for player_value in GameState.number_of_players:
-		var new_army: Army = ARMY.instantiate()
-		new_army.name = str("Army", player_value)
-		add_child(new_army)
-	#GameState.current_state = GameState.STATE_MACHINE.SELECTING_START
-	_update_current_player()
-
-
 func _show_confirm_menu():
 	$HUD/ConfirmMenu.show()
 
@@ -58,3 +49,14 @@ func _on_map_clicked_this_tile(tile_position: Vector3) -> void:
 
 func _on_hud_player_confirmed(is_yes: bool) -> void:
 	player_confirmed.emit(is_yes)
+
+
+func _on_hud_start_game() -> void:
+	for player_value in GameState.number_of_players:
+		var new_army: Army = ARMY.instantiate()
+		new_army.controlling_player_id = player_value
+		new_army.name = str("Army", player_value)
+		add_child(new_army)
+		new_army.skin_self(GameState.current_player_dict[player_value]["faction_id"])
+	#GameState.current_state = GameState.STATE_MACHINE.SELECTING_START
+	_update_current_player()

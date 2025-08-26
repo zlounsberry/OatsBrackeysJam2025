@@ -19,3 +19,4 @@ text = "Player turn: "
 [node name="FactionSelection" parent="." instance=ExtResource("3_5ysmq")]
 
 [connection signal="player_selected_yes" from="ConfirmMenu" to="." method="_on_confirm_menu_player_selected_yes"]
+[connection signal="start_game" from="FactionSelection" to="." method="_on_faction_selection_start_game"]
