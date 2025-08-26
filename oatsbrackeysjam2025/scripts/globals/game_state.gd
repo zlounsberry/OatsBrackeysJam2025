@@ -27,12 +27,30 @@ enum STATE_MACHINE {
 @onready var current_state: int = STATE_MACHINE.SELECTING_IN_GAME # For testing confirm button
 @onready var current_player_turn: int = GameState.PLAYER_IDS.PLAYER_99 # This gets updated with _update_current_player in the main scene ready function
 @onready var current_player_dict: Dictionary = {
-	PLAYER_IDS.PLAYER_99: 
+	PLAYER_IDS.PLAYER_1: 
 		{
-			"is_player": true,
+			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
 			"is_eliminated": false
-		}
+		},
+	PLAYER_IDS.PLAYER_2: 
+		{
+			"is_ai": true,
+			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
+			"is_eliminated": false
+		},
+	PLAYER_IDS.PLAYER_3: 
+		{
+			"is_ai": true,
+			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
+			"is_eliminated": false
+		},
+	PLAYER_IDS.PLAYER_4: 
+		{
+			"is_ai": true,
+			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
+			"is_eliminated": false
+		},
 }
 
 @onready var number_of_players: int = 2 # This will get updated to an export var controlling the main scene
