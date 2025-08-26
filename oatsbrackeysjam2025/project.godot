@@ -23,7 +23,7 @@ GameState="*res://scripts/globals/game_state.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=540
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [filesystem]
 

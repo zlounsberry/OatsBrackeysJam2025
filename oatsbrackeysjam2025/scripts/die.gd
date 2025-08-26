@@ -13,7 +13,9 @@ const IMPULSE_STRENGTH = 3
 
 
 func _ready() -> void:
+	rotation_degrees.x = randf_range(0, 360)
 	rotation_degrees.y = randf_range(0, 360)
+	rotation_degrees.z = randf_range(0, 360)
 	_toss_self()
 
 

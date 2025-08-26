@@ -26,6 +26,10 @@ func _ready() -> void:
 	_throw_dice()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		movement_complete.emit()
+
 func _compare_dice():
 	var number_of_dice_rolled: int = min(len(attacker_player_rolls_array), len(defender_player_rolls_array))
 #	 Use the first value in each sub-array within the attacker and defender arrays
@@ -72,8 +76,8 @@ func _move_dice(is_attacker: bool):
 			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)).global_position, 0.1)
 			element_counter += 1
 			await tween.finished
-	movement_complete.emit()
-	movement_completed = true # Set this to avoid triggering multiple signals
+	#movement_complete.emit()
+	#movement_completed = true # Set this to avoid triggering multiple signals
 
 
 func read_and_sort_dice() -> void:
@@ -138,5 +142,5 @@ func _on_reorder_complete() -> void:
 func _on_movement_complete() -> void:
 	if movement_completed:
 		return
-	await get_tree().create_timer(4).timeout
+	#await get_tree().create_timer(4).timeout
 	_compare_dice()
