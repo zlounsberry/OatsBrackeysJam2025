@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp3uca8anltpu"]
+
+[ext_resource type="PackedScene" uid="uid://cxrq0y8oacs2e" path="res://scenes/confirm_menu.tscn" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://b8goq67pxid8j" path="res://scripts/hud.gd" id="1_oo0fn"]
+[ext_resource type="PackedScene" uid="uid://57epoytwmhh7" path="res://scenes/faction_selection.tscn" id="3_5ysmq"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_oo0fn")
+
+[node name="ConfirmMenu" parent="." instance=ExtResource("1_ahhtf")]
+visible = false
+
+[node name="PlayerTurn" type="Label" parent="."]
+offset_left = 845.0
+offset_right = 960.0
+offset_bottom = 31.0
+text = "Player turn: "
+
+[node name="FactionSelection" parent="." instance=ExtResource("3_5ysmq")]
+
+[connection signal="player_selected_yes" from="ConfirmMenu" to="." method="_on_confirm_menu_player_selected_yes"]
+[connection signal="start_game" from="FactionSelection" to="." method="_on_faction_selection_start_game"]

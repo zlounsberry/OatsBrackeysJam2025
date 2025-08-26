@@ -1,0 +1,146 @@
+extends Node2D
+
+signal reorder_complete # to avoid race conditions...
+signal movement_complete # to avoid race conditions...
+signal deal_damage_to_army(is_defender: bool, damage_value: int) # to avoid race conditions...
+
+const DIE = preload("res://scenes/die.tscn")
+
+@onready var damage_to_attacker: int = 0
+@onready var damage_to_defender: int = 0
+@onready var reorder_completed: bool = false
+@onready var movement_completed: bool = false
+
+
+@export var attacker_player_id: int
+@export var attacker_player_rolls_array: Array = []
+@export var attacker_army_size: int
+@export var defender_player_id: int
+@export var defender_player_rolls_array: Array = []
+@export var defender_army_size: int
+
+
+func _ready() -> void:
+	self.reorder_complete.connect(_on_reorder_complete)
+	self.movement_complete.connect(_on_movement_complete)
+	_throw_dice()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		movement_complete.emit()
+
+func _compare_dice():
+	var number_of_dice_rolled: int = min(len(attacker_player_rolls_array), len(defender_player_rolls_array))
+#	 Use the first value in each sub-array within the attacker and defender arrays
+	prints("comparing",number_of_dice_rolled,"dice")
+	for array_position in range(number_of_dice_rolled):
+		if attacker_player_rolls_array[array_position][0] < defender_player_rolls_array[array_position][0]:
+			damage_to_attacker += 1
+			attacker_player_rolls_array[array_position][1].queue_free()
+		if attacker_player_rolls_array[array_position][0] > defender_player_rolls_array[array_position][0]:
+			damage_to_defender += 1
+			defender_player_rolls_array[array_position][1].queue_free()
+	deal_damage_to_army.emit(damage_to_attacker, damage_to_defender)
+	prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
+
+
+func _move_dice(is_attacker: bool):
+	var element_counter: int = 0 
+	if is_attacker:
+		for attacker_roll in attacker_player_rolls_array:
+			var die = attacker_roll[1]
+			await get_tree().process_frame
+			if die == null:
+				print("continuing!")
+				continue
+			print("moving attacker: ", attacker_roll)
+			die.get_node("CollisionShape3D").disabled = true
+			die.freeze = true
+			var tween: Tween = create_tween()
+			prints(len(attacker_player_rolls_array), element_counter, get_node(str("3DView/SubViewport/FinalPositions/AttackerDie", element_counter)))
+			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/FinalPositions/AttackerDie", element_counter)).global_position, 0.1)
+			element_counter += 1
+			await tween.finished
+	else:
+		for defender_roll in defender_player_rolls_array:
+			var die = defender_roll[1]
+			await get_tree().process_frame
+			if die == null:
+				continue
+			print("moving defender: ", defender_roll)
+			die.get_node("CollisionShape3D").disabled = true
+			die.freeze = true
+			var tween: Tween = create_tween()
+			prints(len(defender_player_rolls_array), element_counter, get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)))
+			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)).global_position, 0.1)
+			element_counter += 1
+			await tween.finished
+	#movement_complete.emit()
+	#movement_completed = true # Set this to avoid triggering multiple signals
+
+
+func read_and_sort_dice() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property($"3DView/SubViewport/Chutes", "global_position:y", -2, 1.5)
+	await tween.finished
+	var played_dice: Array = $"3DView/SubViewport/DiceReader".get_overlapping_areas()
+	for i in played_dice:
+		print(i.get_parent())
+	prints("count of dice played:", len(played_dice), played_dice)
+	for die_area in played_dice:
+		var die: RigidBody3D = die_area.get_parent()
+		match die.player_id:
+			attacker_player_id:
+				attacker_player_rolls_array.append([die_area.face_value, die])
+				die.roll_value = die_area.face_value
+			defender_player_id:
+				defender_player_rolls_array.append([die_area.face_value, die])
+				die.roll_value = die_area.face_value
+	attacker_player_rolls_array.sort()
+	attacker_player_rolls_array.reverse()
+	defender_player_rolls_array.sort()
+	defender_player_rolls_array.reverse()
+	print("attacker: ", attacker_player_rolls_array)
+	print("defender: ", defender_player_rolls_array)
+	reorder_complete.emit()
+	reorder_completed = true # Set this to avoid triggering multiple signals
+
+
+func _throw_dice() -> void:
+	for value in range(attacker_army_size):
+		var die: RigidBody3D = DIE.instantiate()
+		die.is_attacking = true
+		die.player_id = attacker_player_id
+		die.faction_id = GameState.current_player_dict[attacker_player_id]["faction_id"]
+		add_child(die)
+		die.global_position = get_node(str("3DView/SubViewport/SpawnPositions/AttackerDie", value)).global_position
+		await get_tree().create_timer(0.1).timeout
+
+	for value in range(defender_army_size):
+		var die: RigidBody3D = DIE.instantiate()
+		die.is_attacking = false
+		die.player_id = defender_player_id
+		die.faction_id = GameState.current_player_dict[defender_player_id]["faction_id"]
+		add_child(die)
+		die.global_position = get_node(str("3DView/SubViewport/SpawnPositions/DefenderDie", value)).global_position
+		await get_tree().create_timer(0.1).timeout
+	$ReadTimer.start()
+
+
+func _on_read_timer_timeout() -> void:
+	read_and_sort_dice()
+
+
+func _on_reorder_complete() -> void:
+	if reorder_completed:
+		return
+	_move_dice(true)
+	_move_dice(false)
+
+
+func _on_movement_complete() -> void:
+	if movement_completed:
+		return
+	#await get_tree().create_timer(4).timeout
+	_compare_dice()
