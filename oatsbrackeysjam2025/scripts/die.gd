@@ -10,8 +10,6 @@ const IMPULSE_STRENGTH = 3
 @export var player_id: int 
 @export var is_attacking: bool
 @export var roll_value: int
-@export var roll_position: int
-@export var impulse_direction: Vector3
 
 
 func _ready() -> void:
@@ -21,12 +19,12 @@ func _ready() -> void:
 
 func _toss_self() -> void:
 	if is_attacking:
-		apply_central_impulse(impulse_direction * IMPULSE_STRENGTH)
+		apply_central_impulse((Vector3.UP / 2 + Vector3.RIGHT) * IMPULSE_STRENGTH)
 	else:
-		apply_central_impulse(impulse_direction * IMPULSE_STRENGTH)
-	var random_float_x: float = randf_range(1, 5)
-	var random_float_y: float = randf_range(1, 5)
-	var random_float_z: float = randf_range(1, 5)
+		apply_central_impulse((Vector3.UP / 2 + Vector3.LEFT) * IMPULSE_STRENGTH)
+	var random_float_x: float = randf_range(1, 3)
+	var random_float_y: float = randf_range(1, 3)
+	var random_float_z: float = randf_range(1, 3)
 	angular_velocity = Vector3(random_float_x, random_float_y, random_float_z)
 
 
