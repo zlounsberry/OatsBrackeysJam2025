@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 signal player_selected_yes(is_yes: bool)
 

@@ -5,6 +5,34 @@ enum PLAYER_IDS {
 	PLAYER_2,
 	PLAYER_3,
 	PLAYER_4,
+	PLAYER_99,
 }
 
-@export var number_of_players: int = 1
+enum FACTIONS {
+	SANDWICH_COOKIE_CHAN,
+	CHOCCY_CHIP,
+	STRAWBRY_JAMMER,
+}
+
+enum STATE_MACHINE {
+	DISABLED,
+	SELECTING_START,
+	CONFIRMING_START,
+	SELECTING_IN_GAME,
+	CONFIRMING_IN_GAME,
+	TRANSITIONING,
+	GAME_OVER,
+}
+
+@onready var current_state: int = STATE_MACHINE.SELECTING_IN_GAME # For testing confirm button
+@onready var current_player_turn: int = GameState.PLAYER_IDS.PLAYER_1
+@onready var current_player_dict: Dictionary = {
+	PLAYER_IDS.PLAYER_99: 
+		{
+			"is_player": true,
+			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
+			"is_eliminated": false
+		}
+}
+
+@export var number_of_players: int = 2

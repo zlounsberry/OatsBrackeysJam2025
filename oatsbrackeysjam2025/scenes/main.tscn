@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://p6j7jv8tuhyu"]
+[gd_scene load_steps=7 format=3 uid="uid://p6j7jv8tuhyu"]
 
 [ext_resource type="Script" uid="uid://csg3ewm43obn5" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bdg1r1l2nq1n3" path="res://scenes/map.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://btla7125qo0jb" path="res://scenes/army.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://cxrq0y8oacs2e" path="res://scenes/confirm_menu.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bp3uca8anltpu" path="res://scenes/hud.tscn" id="5_tbgi4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sugp2"]
@@ -30,12 +28,6 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Map" parent="." instance=ExtResource("2_0wfyh")]
-
-[node name="Army0" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76084, 0.533266, 6.04989)
-
-[node name="ConfirmMenu" parent="." instance=ExtResource("4_jyhfs")]
-visible = false
 
 [node name="HUD" parent="." instance=ExtResource("5_tbgi4")]
 

@@ -12,6 +12,8 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if GameState.STATE_MACHINE.DISABLED:
+		return
 	if event.is_action_pressed("left_click"):
 		if is_hovered:
 			prints(self, "is hovered")
@@ -19,10 +21,14 @@ func _input(event: InputEvent) -> void:
 
 
 func _show_outline():
+	if GameState.STATE_MACHINE.DISABLED:
+		return
 	is_hovered = true
 	$MeshInstance3D.show()
 
 
 func _hide_outline():
+	if GameState.STATE_MACHINE.DISABLED:
+		return
 	is_hovered = false
 	$MeshInstance3D.hide()

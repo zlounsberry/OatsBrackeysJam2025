@@ -4,9 +4,12 @@ class_name Army
 signal movement_complete
 
 @export var army_id: int = 0
+@export var currently_taking_turn: bool = false
 
 
 func move_to_new_space(new_position: Vector3) -> void:
+	if not currently_taking_turn:
+		return
 	print(new_position)
 	var htween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel(true)
 	htween.tween_property(self, "global_position:z", new_position.z, 1)
@@ -15,4 +18,4 @@ func move_to_new_space(new_position: Vector3) -> void:
 	vtween.tween_property(self, "global_position:y", 3, 0.5)
 	vtween.tween_property(self, "global_position:y", new_position.y, 0.5)
 	await htween.finished
-	movement_complete
+	movement_complete.emit()
