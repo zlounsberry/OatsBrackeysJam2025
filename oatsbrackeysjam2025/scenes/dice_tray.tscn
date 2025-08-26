@@ -18,9 +18,9 @@ size = Vector3(3.94238, 0.0996094, 3.83301)
 
 [node name="DiceTray" type="Node2D"]
 script = ExtResource("1_xrqg8")
-attacker_army_size = 6
+attacker_army_size = 7
 defender_player_id = 1
-defender_army_size = 6
+defender_army_size = 7
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -44,9 +44,8 @@ mesh = SubResource("CylinderMesh_h6acc")
 shape = SubResource("ConcavePolygonShape3D_h6acc")
 
 [node name="Camera3D" type="Camera3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -0.104754, 0.994498, 0, -0.994498, -0.104754, -4.76837e-07, 4.42562, -0.477207)
-projection = 1
-fov = 42.1875
+transform = Transform3D(-1, 8.74228e-08, 5.85976e-15, 2.10903e-08, 0.241244, 0.970464, 8.48407e-08, 0.970464, -0.241244, -4.76837e-07, 3.9982, -1.22174)
+fov = 52.3641
 size = 3.85487
 
 [node name="DiceReader" type="Area3D" parent="3DView/SubViewport"]
@@ -70,47 +69,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.527, 0.368, 0)
 [node name="AimHere" type="Marker3D" parent="3DView/SubViewport/DefenderSpawn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0679772, 0, -0.250577)
 
-[node name="AttackerDie0" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, -1.5)
-
-[node name="AttackerDie1" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, -1)
-
-[node name="AttackerDie2" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, -0.5)
-
-[node name="AttackerDie3" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, 0)
-
-[node name="AttackerDie4" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, 0.5)
+[node name="AttackerDie6" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.15, -1.5)
 
 [node name="AttackerDie5" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.15, -1)
 
-[node name="AttackerDie6" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, 1.5)
+[node name="AttackerDie4" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.15, -0.5)
 
-[node name="DefenderDie0" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.15, -1.5)
+[node name="AttackerDie3" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.15, 0)
 
-[node name="DefenderDie1" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.15, -1)
+[node name="AttackerDie2" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.15, 0.5)
 
-[node name="DefenderDie2" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.15, -0.5)
+[node name="AttackerDie1" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.15, 1)
 
-[node name="DefenderDie3" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.15, 0)
-
-[node name="DefenderDie4" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.15, 0.5)
-
-[node name="DefenderDie5" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.15, 1)
+[node name="AttackerDie0" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.15, 1.5)
 
 [node name="DefenderDie6" type="Marker3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.15, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.15, -1.5)
+
+[node name="DefenderDie5" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.15, -1)
+
+[node name="DefenderDie4" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.15, -0.5)
+
+[node name="DefenderDie3" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.15, 0)
+
+[node name="DefenderDie2" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.15, 0.5)
+
+[node name="DefenderDie1" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.15, 1)
+
+[node name="DefenderDie0" type="Marker3D" parent="3DView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.15, 1.5)
 
 [node name="ReadTimer" type="Timer" parent="."]
 wait_time = 3.0
