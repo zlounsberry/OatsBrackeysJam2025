@@ -24,6 +24,8 @@ enum STATE_MACHINE {
 	GAME_OVER,
 }
 
+const MAX_ARMY_SIZE: int = 7
+
 @onready var current_state: int = STATE_MACHINE.SELECTING_IN_GAME # For testing confirm button
 @onready var current_player_turn: int = GameState.PLAYER_IDS.PLAYER_99 # This gets updated with _update_current_player in the main scene ready function
 @onready var current_player_dict: Dictionary = {

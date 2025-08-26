@@ -1,6 +1,7 @@
 extends Node2D
 
 signal read_complete # to avoid race conditions...
+signal reorder_complete # to avoid race conditions...
 
 const DIE = preload("res://scenes/die.tscn")
 
@@ -11,33 +12,57 @@ const DIE = preload("res://scenes/die.tscn")
 @export var defender_player_rolls_array: Array = []
 @export var defender_army_size: int
 
+
 func _ready() -> void:
+	self.read_complete.connect(_on_read_complete)
+	self.reorder_complete.connect(_on_reorder_complete)
 	_throw_dice()
+
+
+func _move_dice(is_attacker: bool):
+	print("moving!")
+	if is_attacker:
+		for attacker_roll in attacker_player_rolls_array:
+			var die = attacker_roll[1]
+			if die == null:
+				continue
+			die.get_node("CollisionShape3D").disabled = true
+			die.freeze = true
+			var tween: Tween = create_tween()
+			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/AttackerDie", die.roll_position)).global_position, 0.25)
+			await get_tree().create_timer(0.2).timeout
+	else:
+		for defender_roll in defender_player_rolls_array:
+			var die = defender_roll[1]
+			if die == null:
+				continue
+			die.get_node("CollisionShape3D").disabled = true
+			die.freeze = true
+			var tween: Tween = create_tween()
+			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/DefenderDie", die.roll_position)).global_position, 0.25)
+			await get_tree().create_timer(0.2).timeout
 
 
 func reorder_dice(is_attacker: bool) -> void:
 	var dice_counter: int = 0
 	var number_to_roll: int = min(len(attacker_player_rolls_array), len(defender_player_rolls_array))
+#	 attacker_player_rolls_array is an array of arrays where the 1st position determines order and the 2nd position is the scene itself
+	print("only use ", number_to_roll)
 	if is_attacker:
 		for attacker_roll in attacker_player_rolls_array:
-			for dice in get_tree().get_nodes_in_group("dice"):
-				if dice.player_id == attacker_player_id:
-					if dice_counter > number_to_roll:
-						dice.queue_free() # TODO: animate
-					else:
-						print("move this one up ", attacker_roll)
-						dice.roll_position = dice_counter
-						dice_counter += 1
+			if dice_counter >= number_to_roll:
+				attacker_roll[1].queue_free() # TODO: animate
+			else:
+				attacker_roll[1].roll_position = dice_counter
+				dice_counter += 1
 	else:
 		for defender_roll in defender_player_rolls_array:
-			for dice in get_tree().get_nodes_in_group("dice"):
-				if dice.player_id == defender_player_id:
-					if dice_counter > number_to_roll:
-						dice.queue_free() # TODO: animate
-					else:
-						print("move this one up ", defender_roll)
-						dice.roll_position = dice_counter
-						dice_counter += 1
+			if dice_counter >= number_to_roll:
+				defender_roll[1].queue_free() # TODO: animate
+			else:
+				defender_roll[1].roll_position = dice_counter
+				dice_counter += 1
+	reorder_complete.emit()
 
 
 func read_dice() -> void:
@@ -46,10 +71,10 @@ func read_dice() -> void:
 		var die: RigidBody3D = die_area.get_parent()
 		match die.player_id:
 			attacker_player_id:
-				attacker_player_rolls_array.append(die_area.face_value)
+				attacker_player_rolls_array.append([die_area.face_value, die])
 				die.roll_value = die_area.face_value
 			defender_player_id:
-				defender_player_rolls_array.append(die_area.face_value)
+				defender_player_rolls_array.append([die_area.face_value, die])
 				die.roll_value = die_area.face_value
 	attacker_player_rolls_array.sort()
 	attacker_player_rolls_array.reverse()
@@ -66,20 +91,34 @@ func _throw_dice() -> void:
 		die.is_attacking = true
 		die.player_id = attacker_player_id
 		die.faction_id = GameState.current_player_dict[attacker_player_id]["faction_id"]
+		die.impulse_direction = $"3DView/SubViewport/AttackerSpawn".global_position.direction_to($"3DView/SubViewport/AttackerSpawn/AimHere".global_position)
+		$"3DView/SubViewport/AttackerSpawn".rotate_y(deg_to_rad(-160 / attacker_army_size))
 		add_child(die)
 		die.global_position = $"3DView/SubViewport/AttackerSpawn".global_position
+		await get_tree().create_timer(0.5).timeout
+
 	for _value in range(defender_army_size):
 		var die: RigidBody3D = DIE.instantiate()
 		die.is_attacking = false
 		die.player_id = defender_player_id
 		die.faction_id = GameState.current_player_dict[defender_player_id]["faction_id"]
+		die.impulse_direction = $"3DView/SubViewport/DefenderSpawn".global_position.direction_to($"3DView/SubViewport/DefenderSpawn/AimHere".global_position)
+		$"3DView/SubViewport/DefenderSpawn".rotate_y(deg_to_rad(-160 / defender_army_size))
 		add_child(die)
 		die.global_position = $"3DView/SubViewport/DefenderSpawn".global_position
+		await get_tree().create_timer(0.5).timeout
 	$ReadTimer.start()
 
 
 func _on_read_timer_timeout() -> void:
 	read_dice()
-	await read_complete
+
+
+func _on_read_complete() -> void:
 	reorder_dice(true)
 	reorder_dice(false)
+
+
+func _on_reorder_complete() -> void:
+	_move_dice(true)
+	_move_dice(false)
