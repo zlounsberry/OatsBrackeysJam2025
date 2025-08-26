@@ -4,7 +4,7 @@ signal player_confirmed(is_yes: bool)
 
 
 func update_player_turn_label() -> void:
-	$PlayerTurn.text = str("Player: ", GameState.current_player_turn)
+	$PlayerTurn.text = str("Player: ", GameState.current_player_turn + 1)
 
 
 func _on_confirm_menu_player_selected_yes(is_yes: bool) -> void:

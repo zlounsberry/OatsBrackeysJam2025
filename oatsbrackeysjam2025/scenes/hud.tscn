@@ -7,10 +7,12 @@
 script = ExtResource("1_oo0fn")
 
 [node name="ConfirmMenu" parent="." instance=ExtResource("1_ahhtf")]
+visible = false
 
 [node name="PlayerTurn" type="Label" parent="."]
 offset_left = 845.0
 offset_right = 960.0
 offset_bottom = 31.0
+text = "Player turn: "
 
 [connection signal="player_selected_yes" from="ConfirmMenu" to="." method="_on_confirm_menu_player_selected_yes"]

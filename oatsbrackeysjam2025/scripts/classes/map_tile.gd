@@ -4,6 +4,7 @@ class_name MapTile
 signal clicked_this_tile(tile_position: Vector3)
 
 @onready var is_hovered: bool = false
+@onready var owned_faction: int = -99
 
 
 func _ready() -> void:
@@ -18,6 +19,10 @@ func _input(event: InputEvent) -> void:
 		if is_hovered:
 			prints(self, "is hovered")
 			clicked_this_tile.emit($Marker3D.global_position)
+
+
+func update_owned_faction(faction_id: int) -> void:
+	owned_faction = faction_id
 
 
 func _show_outline():
