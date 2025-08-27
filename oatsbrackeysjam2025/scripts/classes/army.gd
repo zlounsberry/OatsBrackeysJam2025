@@ -13,8 +13,8 @@ signal movement_complete
 @export var faction_id: int = 0
 
 
-func skin_self(faction_id: int):
-	match faction_id:
+func skin_self(player_faction: int):
+	match player_faction:
 		GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
 			$CSGMesh3D.material_override = SCC
 		GameState.FACTIONS.CHOCCY_CHIP:
@@ -26,7 +26,6 @@ func skin_self(faction_id: int):
 func move_to_new_space(new_position: Vector3) -> void:
 	if not currently_taking_turn:
 		return
-	print(new_position)
 	var htween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel(true)
 	htween.tween_property(self, "global_position:z", new_position.z, 1)
 	htween.tween_property(self, "global_position:x", new_position.x, 1)

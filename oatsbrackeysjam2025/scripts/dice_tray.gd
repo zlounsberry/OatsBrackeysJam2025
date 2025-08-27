@@ -25,15 +25,14 @@ func _ready() -> void:
 	self.movement_complete.connect(_on_movement_complete)
 	_throw_dice()
 
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		movement_complete.emit()
+#
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_accept"):
+		#movement_complete.emit()
 
 func _compare_dice():
 	var number_of_dice_rolled: int = min(len(attacker_player_rolls_array), len(defender_player_rolls_array))
 #	 Use the first value in each sub-array within the attacker and defender arrays
-	prints("comparing",number_of_dice_rolled,"dice")
 	for array_position in range(number_of_dice_rolled):
 		if attacker_player_rolls_array[array_position][0] < defender_player_rolls_array[array_position][0]:
 			damage_to_attacker += 1
@@ -54,7 +53,6 @@ func _move_dice(is_attacker: bool):
 			if die == null:
 				print("continuing!")
 				continue
-			print("moving attacker: ", attacker_roll)
 			die.get_node("CollisionShape3D").disabled = true
 			die.freeze = true
 			var tween: Tween = create_tween()
@@ -68,7 +66,6 @@ func _move_dice(is_attacker: bool):
 			await get_tree().process_frame
 			if die == null:
 				continue
-			print("moving defender: ", defender_roll)
 			die.get_node("CollisionShape3D").disabled = true
 			die.freeze = true
 			var tween: Tween = create_tween()
@@ -76,8 +73,8 @@ func _move_dice(is_attacker: bool):
 			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)).global_position, 0.1)
 			element_counter += 1
 			await tween.finished
-	#movement_complete.emit()
-	#movement_completed = true # Set this to avoid triggering multiple signals
+	movement_complete.emit()
+	movement_completed = true # Set this to avoid triggering multiple signals
 
 
 func read_and_sort_dice() -> void:
@@ -85,9 +82,6 @@ func read_and_sort_dice() -> void:
 	tween.tween_property($"3DView/SubViewport/Chutes", "global_position:y", -2, 1.5)
 	await tween.finished
 	var played_dice: Array = $"3DView/SubViewport/DiceReader".get_overlapping_areas()
-	for i in played_dice:
-		print(i.get_parent())
-	prints("count of dice played:", len(played_dice), played_dice)
 	for die_area in played_dice:
 		var die: RigidBody3D = die_area.get_parent()
 		match die.player_id:
@@ -101,8 +95,6 @@ func read_and_sort_dice() -> void:
 	attacker_player_rolls_array.reverse()
 	defender_player_rolls_array.sort()
 	defender_player_rolls_array.reverse()
-	print("attacker: ", attacker_player_rolls_array)
-	print("defender: ", defender_player_rolls_array)
 	reorder_complete.emit()
 	reorder_completed = true # Set this to avoid triggering multiple signals
 
@@ -142,5 +134,5 @@ func _on_reorder_complete() -> void:
 func _on_movement_complete() -> void:
 	if movement_completed:
 		return
-	#await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(2).timeout
 	_compare_dice()

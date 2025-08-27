@@ -59,7 +59,6 @@ func _scroll_left():
 
 func _scroll_right():
 	is_animating = true
-	print("current faction on scroll right: ", current_selection)
 	match current_selection:
 		GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
 			anim.play("Select_CC_right")
@@ -84,10 +83,8 @@ func _update_current_selection(faction_id: int) -> void:
 func _on_confirm_pressed() -> void:
 	GameState.current_player_dict[current_player_choosing]["faction_id"] = current_selection
 	GameState.current_player_dict[current_player_choosing]["is_ai"] = is_ai
-	print(GameState.current_player_dict)
 	current_player_choosing += 1
 	if current_player_choosing >= GameState.number_of_players:
-		print("all done!")
 		start_game.emit()
 		GameState.current_state = GameState.STATE_MACHINE.SELECTING_IN_GAME 
 		self.queue_free()

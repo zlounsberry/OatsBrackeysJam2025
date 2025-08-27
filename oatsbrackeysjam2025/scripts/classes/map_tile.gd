@@ -3,6 +3,9 @@ class_name MapTile
 
 signal clicked_this_tile(tile_position: Vector3)
 
+@export var continent_id: int = 0
+@export var current_owner: int = 0
+
 @onready var is_hovered: bool = false
 @onready var owned_faction: int = -99
 
@@ -17,7 +20,6 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("left_click"):
 		if is_hovered:
-			prints(self, "is hovered")
 			clicked_this_tile.emit($Marker3D.global_position)
 
 
