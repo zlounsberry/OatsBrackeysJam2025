@@ -26,7 +26,6 @@ func select_this_army() -> void:
 	currently_taking_turn = true
 	GameState.current_selected_army = self
 	$TurnIndicator.show()
-	print(self, "selected!")
 
 
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
@@ -41,16 +40,18 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 	GameState.current_state = GameState.STATE_MACHINE.TRANSITIONING
 	var model_scene: Node3D
 	var first_model_down: bool = false
-	match faction_id:
-		GameState.FACTIONS.SANDWICH_COOKIE:
-			model_scene = SANDWICH_COOKIE_MODEL.instantiate()
-		GameState.FACTIONS.CHOCCY_CHIP:
-			model_scene = CHOCCY_MODEL.instantiate() 
-		GameState.FACTIONS.STRAWBRY_JAMMER:
-			model_scene = JAMMER_MODEL.instantiate() 
 	var new_position: Vector3 = new_tile.get_node("Marker3D").global_position
 	for _value in unit_count:
-		add_child(model_scene)
+		match faction_id:
+			GameState.FACTIONS.SANDWICH_COOKIE:
+				model_scene = SANDWICH_COOKIE_MODEL.instantiate()
+				add_child(model_scene)
+			GameState.FACTIONS.CHOCCY_CHIP:
+				model_scene = CHOCCY_MODEL.instantiate() 
+				add_child(model_scene)
+			GameState.FACTIONS.STRAWBRY_JAMMER:
+				model_scene = JAMMER_MODEL.instantiate()
+				add_child(model_scene)
 		var htween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel(true)
 		htween.tween_property(model_scene, "global_position:z", new_position.z, 0.25)
 		htween.tween_property(model_scene, "global_position:x", new_position.x, 0.25)
@@ -64,6 +65,13 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 			currently_occupied_tile = new_tile
 		else:
 			model_scene.queue_free()
+	army_size -= unit_count
 	current_tile.update_ownership(false, null) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
 	movement_complete.emit()
 	GameState.current_state = GameState.STATE_MACHINE.SELECTING_IN_GAME
+	if army_size <= 0: 
+		var current_army_array: Array = GameState.current_player_dict[GameState.current_player_turn]["current_armies"]
+		var army_position: int = current_army_array.find(self)
+		var remove_army: Army = GameState.current_player_dict[GameState.current_player_turn]["current_armies"].pop_at(army_position)
+		prints("removing", remove_army, "from", self)
+		self.queue_free()

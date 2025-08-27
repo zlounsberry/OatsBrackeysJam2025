@@ -10,11 +10,13 @@ signal player_selected_yes(is_yes: bool, amount: int)
 func _on_confirm_pressed() -> void:
 	player_selected_yes.emit(true, unit_count)
 	unit_count = 1 # Reset for next time
+	$UnitCount.text = str(unit_count)
 
 
 func _on_deny_pressed() -> void:
 	player_selected_yes.emit(false, unit_count)
 	unit_count = 1 # Reset for next time
+	$UnitCount.text = str(unit_count)
 
 
 func _on_subtract_pressed() -> void:

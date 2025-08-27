@@ -23,7 +23,6 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("left_click"):
 		if is_hovered:
-			prints("clicked", self)
 			clicked_this_tile.emit(self)
 
 
@@ -38,11 +37,9 @@ func remove_army_units_from_tile(army_scene: Army, unit_count: int):
 
 func update_ownership(is_occupied: bool, army_scene: Army) -> void:
 	if is_occupied:
-		print("occupied")
 		occupying_army = army_scene
 		is_occupied = false
 	else:
-		print("unoccupied")
 		occupying_army = army_scene
 		is_occupied = true
 	
