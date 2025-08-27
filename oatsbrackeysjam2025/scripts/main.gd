@@ -1,6 +1,8 @@
 extends Node3D
 
-const ARMY = preload("res://scenes/army.tscn")
+const CHOCCY = preload("res://scenes/choccy.tscn")
+const JAMMER = preload("res://scenes/jammer.tscn")
+const SANDWICH_COOKIE = preload("res://scenes/sandwich_cookie.tscn")
 
 signal player_confirmed(is_yes: bool)
 
@@ -58,7 +60,6 @@ func _on_map_clicked_this_tile(tile_position: Vector3) -> void:
 	var confirmed: bool = await player_confirmed
 	if confirmed:
 		_hide_confirm_menu()
-		print(get_node(str("Army", GameState.current_player_turn)))
 		get_node(str("Army", GameState.current_player_turn)).move_to_new_space(tile_position)
 		GameState.current_state = GameState.STATE_MACHINE.TRANSITIONING
 		await get_node(str("Army", GameState.current_player_turn)).movement_complete
@@ -75,7 +76,14 @@ func _on_hud_player_confirmed(is_yes: bool) -> void:
 
 func _on_hud_start_game() -> void:
 	for player_value in GameState.number_of_players:
-		var new_army: Army = ARMY.instantiate()
+		var new_army: Army
+		match GameState.current_player_dict[player_value]["faction_id"]:
+			GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
+				new_army = SANDWICH_COOKIE.instantiate()
+			GameState.FACTIONS.CHOCCY_CHIP:
+				new_army = CHOCCY.instantiate()
+			GameState.FACTIONS.STRAWBRY_JAMMER:
+				new_army = JAMMER.instantiate()
 		new_army.controlling_player_id = player_value
 		new_army.name = str("Army", player_value)
 		add_child(new_army)

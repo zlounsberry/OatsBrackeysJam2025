@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bbtmgwh3f2mc5" path="res://assets/resources/cookie_heightmap.png" id="4"]
 
 [resource]
-albedo_color = Color(0.244776, 0.244776, 0.244776, 1)
+albedo_color = Color(0.243137, 0.243137, 0.243137, 1)
 albedo_texture = ExtResource("1")
 roughness_texture = ExtResource("2")
 roughness_texture_channel = 1
@@ -20,5 +20,5 @@ heightmap_deep_parallax = true
 heightmap_min_layers = 8
 heightmap_max_layers = 32
 heightmap_texture = ExtResource("4")
-uv1_scale = Vector3(1.5, 1.5, 1.5)
-uv1_offset = Vector3(0.125, -0.625, 0)
+uv1_scale = Vector3(1.39, 1.39, 1.39)
+uv1_offset = Vector3(0.155, -0.54, 0)
