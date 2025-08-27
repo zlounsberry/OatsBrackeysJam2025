@@ -15,10 +15,10 @@ signal start_game
 
 func _ready() -> void:
 #	 Initialize player dictionary
-	for value in range(GameState.number_of_players):
-		GameState.current_player_dict[value]["faction_id"] = -99
-		GameState.current_player_dict[value]["is_ai"] = false
-		GameState.current_player_dict[value]["is_eliminated"] = false
+	#for value in range(GameState.number_of_players):
+		#GameState.current_player_dict[value]["faction_id"] = -99
+		#GameState.current_player_dict[value]["is_ai"] = false
+		#GameState.current_player_dict[value]["is_eliminated"] = false
 	print("current game dict: ", GameState.current_player_dict)
 	is_animating = true
 	anim.play("Select_SCC_left")

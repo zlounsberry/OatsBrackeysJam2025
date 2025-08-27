@@ -4,15 +4,16 @@ class_name MapTile
 signal clicked_this_tile(self_id: MapTile)
 
 @onready var is_hovered: bool = false
-@onready var is_occupied: bool = false
 
 @export var continent_id: int = 0
 @export var current_owner: int = 0
 
+var is_occupied: bool = false
 var occupying_army: Army
 
 
 func _ready() -> void:
+	add_to_group("map_tile")
 	$StaticBody3D.mouse_entered.connect(_show_outline)
 	$StaticBody3D.mouse_exited.connect(_hide_outline)
 

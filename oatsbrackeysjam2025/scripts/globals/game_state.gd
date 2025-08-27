@@ -5,7 +5,6 @@ enum PLAYER_IDS {
 	PLAYER_2,
 	PLAYER_3,
 	PLAYER_4,
-	PLAYER_99,
 }
 
 enum CONTINENT_IDS {
@@ -34,8 +33,8 @@ enum STATE_MACHINE {
 
 const MAX_ARMY_SIZE: int = 10
 
-@onready var current_state: int = STATE_MACHINE.SELECTING_IN_GAME # For testing confirm button
-@onready var current_player_turn: int = GameState.PLAYER_IDS.PLAYER_99 # This gets updated with _update_current_player in the main scene ready function
+@onready var current_state: int = STATE_MACHINE.SELECTING_START # For testing confirm button
+@onready var current_player_turn: int = GameState.PLAYER_IDS.PLAYER_1 # This gets updated with _update_current_player in the main scene ready function
 @onready var current_player_dict: Dictionary = {
 	PLAYER_IDS.PLAYER_1: 
 		{
@@ -68,3 +67,5 @@ const MAX_ARMY_SIZE: int = 10
 }
 
 @onready var number_of_players: int = 2 # This will get updated to an export var controlling the main scene
+
+var current_selected_army: Army

@@ -5,24 +5,38 @@ const SANDWICH_COOKIE_MODEL = preload("res://scenes/armies/sandwich_cookie_model
 const CHOCCY_MODEL = preload("res://scenes/armies/choccy_model.tscn")
 const JAMMER_MODEL = preload("res://scenes/armies/jammer_model.tscn")
 
-
 signal movement_complete
 
 @export var is_ai: bool = false
 @export var currently_taking_turn: bool = false
-@export var controlling_player_id: int = -99
+@export var currently_occupied_tile: MapTile
+@export var controlling_player_id: int
 @export var faction_id: int = 0
 @export var army_size: int = 0
+
+
+func _ready() -> void:
+	add_to_group("army")
 
 
 func select_this_army() -> void:
 	for army_child: Army in get_tree().get_nodes_in_group("army"):
 		army_child.currently_taking_turn = false
+		army_child.get_node("TurnIndicator").hide()
 	currently_taking_turn = true
+	GameState.current_selected_army = self
+	$TurnIndicator.show()
+	print(self, "selected!")
 
 
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
 	if not currently_taking_turn:
+		return
+	if current_tile == null:
+		prints("no current tile!", currently_occupied_tile)
+		return
+	if new_tile == null:
+		print("no new tile!")
 		return
 	GameState.current_state = GameState.STATE_MACHINE.TRANSITIONING
 	var model_scene: Node3D
@@ -47,6 +61,7 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 		if not first_model_down:
 			first_model_down = true
 			new_tile.update_ownership(true, self) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
+			currently_occupied_tile = new_tile
 		else:
 			model_scene.queue_free()
 	current_tile.update_ownership(false, null) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?

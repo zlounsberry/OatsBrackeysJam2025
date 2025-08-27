@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxogrg8q3bsc0"]
+[gd_scene load_steps=4 format=3 uid="uid://cxogrg8q3bsc0"]
 
 [ext_resource type="Script" uid="uid://bxr3s631xobdo" path="res://scripts/armies/jammer.gd" id="1_n76qe"]
 [ext_resource type="PackedScene" uid="uid://c1cjxjwhtkspy" path="res://scenes/armies/jammer_model.tscn" id="2_udmue"]
+[ext_resource type="PackedScene" uid="uid://dwgx5jvy7ocjs" path="res://scenes/turn_indicator.tscn" id="3_1bopp"]
 
 [node name="SJArmy" type="Node3D"]
 script = ExtResource("1_n76qe")
@@ -9,3 +10,6 @@ faction_id = 2
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
 
 [node name="jammer" parent="." instance=ExtResource("2_udmue")]
+
+[node name="TurnIndicator" parent="." instance=ExtResource("3_1bopp")]
+visible = false
