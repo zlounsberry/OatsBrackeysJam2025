@@ -34,7 +34,7 @@ func skin_self() -> void:
 	if is_attacking:
 		print("attacker! need new skin!")
 	match faction_id:
-		GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
+		GameState.FACTIONS.SANDWICH_COOKIE:
 			$RigidBody3D/Cube.set_surface_override_material(0, SCC)
 			$RigidBody3D/Cube.set_surface_override_material(0, OUTLINE_MATERIAL)
 		GameState.FACTIONS.CHOCCY_CHIP:

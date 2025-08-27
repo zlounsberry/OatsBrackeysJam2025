@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqivh5dmuk0q6"]
-
-[ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/choccy_model.tscn" id="1_gjy2c"]
-
-[node name="ChoccyArmy" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-
-[node name="choccy" parent="." instance=ExtResource("1_gjy2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqivh5dmuk0q6"]
+
+[ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/armies/choccy_model.tscn" id="1_gjy2c"]
+[ext_resource type="Script" uid="uid://dvfe75of0np0y" path="res://scripts/armies/choccy.gd" id="1_rcjnm"]
+[ext_resource type="PackedScene" uid="uid://dwgx5jvy7ocjs" path="res://scenes/turn_indicator.tscn" id="3_ka8dc"]
+
+[node name="ChoccyArmy" type="Node3D"]
+script = ExtResource("1_rcjnm")
+faction_id = 1
+metadata/_custom_type_script = "uid://rdxpnq83wl3o"
+
+[node name="choccy" parent="." instance=ExtResource("1_gjy2c")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="TurnIndicator" parent="." instance=ExtResource("3_ka8dc")]

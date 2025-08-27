@@ -2,7 +2,7 @@ extends NinePatchRect
 
 signal start_game
 
-@onready var current_selection: int = GameState.FACTIONS.SANDWICH_COOKIE_CHAN
+@onready var current_selection: int = GameState.FACTIONS.SANDWICH_COOKIE
 @onready var left_position: Vector2 = $SCC.position
 @onready var right_position: Vector2 = $CC.position
 @onready var center_position: Vector2 = $SJ.position
@@ -38,15 +38,15 @@ func _input(event: InputEvent) -> void:
 func _scroll_left():
 	is_animating = true
 	match current_selection:
-		GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
+		GameState.FACTIONS.SANDWICH_COOKIE:
 			anim.play("Select_SJ_left")
 			_update_current_selection(GameState.FACTIONS.STRAWBRY_JAMMER)
 			confirm_button.text = "STRAWBRY_JAMMER"
-			#current_selection = GameState.FACTIONS.SANDWICH_COOKIE_CHAN
+			#current_selection = GameState.FACTIONS.SANDWICH_COOKIE
 		GameState.FACTIONS.CHOCCY_CHIP:
 			anim.play("Select_SCC_left")
-			_update_current_selection(GameState.FACTIONS.SANDWICH_COOKIE_CHAN)
-			confirm_button.text = "SANDWICH_COOKIE_CHAN"
+			_update_current_selection(GameState.FACTIONS.SANDWICH_COOKIE)
+			confirm_button.text = "SANDWICH_COOKIE"
 			#current_selection = GameState.FACTIONS.CHOCCY_CHIP
 		GameState.FACTIONS.STRAWBRY_JAMMER:
 			anim.play("Select_CC_left")
@@ -60,7 +60,7 @@ func _scroll_left():
 func _scroll_right():
 	is_animating = true
 	match current_selection:
-		GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
+		GameState.FACTIONS.SANDWICH_COOKIE:
 			anim.play("Select_CC_right")
 			_update_current_selection(GameState.FACTIONS.CHOCCY_CHIP)
 			confirm_button.text = "CHOCCY_CHIP"
@@ -70,8 +70,8 @@ func _scroll_right():
 			confirm_button.text = "STRAWBRY_JAMMER"
 		GameState.FACTIONS.STRAWBRY_JAMMER:
 			anim.play("Select_SCC_right")
-			_update_current_selection(GameState.FACTIONS.SANDWICH_COOKIE_CHAN)
-			confirm_button.text = "SANDWICH_COOKIE_CHAN"
+			_update_current_selection(GameState.FACTIONS.SANDWICH_COOKIE)
+			confirm_button.text = "SANDWICH_COOKIE"
 	await anim.animation_finished
 	is_animating = false
 

@@ -17,7 +17,7 @@ enum CONTINENT_IDS {
 }
 
 enum FACTIONS {
-	SANDWICH_COOKIE_CHAN,
+	SANDWICH_COOKIE,
 	CHOCCY_CHIP,
 	STRAWBRY_JAMMER,
 }
@@ -40,26 +40,30 @@ const MAX_ARMY_SIZE: int = 10
 	PLAYER_IDS.PLAYER_1: 
 		{
 			"is_ai": true,
-			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
-			"is_eliminated": false
+			"faction_id": FACTIONS.SANDWICH_COOKIE,
+			"is_eliminated": false,
+			"current_armies": [],
 		},
 	PLAYER_IDS.PLAYER_2: 
 		{
 			"is_ai": true,
-			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
-			"is_eliminated": false
+			"faction_id": FACTIONS.SANDWICH_COOKIE,
+			"is_eliminated": false,
+			"current_armies": [],
 		},
 	PLAYER_IDS.PLAYER_3: 
 		{
 			"is_ai": true,
-			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
-			"is_eliminated": false
+			"faction_id": FACTIONS.SANDWICH_COOKIE,
+			"is_eliminated": false,
+			"current_armies": [],
 		},
 	PLAYER_IDS.PLAYER_4: 
 		{
 			"is_ai": true,
-			"faction_id": FACTIONS.SANDWICH_COOKIE_CHAN,
-			"is_eliminated": false
+			"faction_id": FACTIONS.SANDWICH_COOKIE,
+			"is_eliminated": false,
+			"current_armies": [],
 		},
 }
 

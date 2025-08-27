@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8wxsm7vvlm7g"]
+
+[ext_resource type="PackedScene" uid="uid://bnir5pksbjrs7" path="res://scenes/armies/sandwich_cookie_model.tscn" id="1_6gm4l"]
+[ext_resource type="Script" uid="uid://bapfhsa78c0yb" path="res://scripts/armies/sandwich_cookie.gd" id="1_7dnmr"]
+
+[node name="SCArmy" type="Node3D"]
+script = ExtResource("1_7dnmr")
+metadata/_custom_type_script = "uid://rdxpnq83wl3o"
+
+[node name="sandwich_cookie" parent="." instance=ExtResource("1_6gm4l")]

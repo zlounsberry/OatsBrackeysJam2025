@@ -1,8 +1,8 @@
 extends Node3D
 
-const CHOCCY = preload("res://scenes/choccy.tscn")
-const JAMMER = preload("res://scenes/jammer.tscn")
-const SANDWICH_COOKIE = preload("res://scenes/sandwich_cookie.tscn")
+const CHOCCY = preload("res://scenes/armies/choccy.tscn")
+const JAMMER = preload("res://scenes/armies/jammer.tscn")
+const SANDWICH_COOKIE = preload("res://scenes/armies/sandwich_cookie.tscn")
 
 signal player_confirmed(is_yes: bool)
 
@@ -47,11 +47,14 @@ func _update_current_player() -> void:
 		GameState.current_player_turn = GameState.PLAYER_IDS.PLAYER_1
 	else:
 		GameState.current_player_turn += 1
-	get_node(str("Army", GameState.current_player_turn)).currently_taking_turn = true
 	$HUD.update_player_turn_label()
+	for army_child: Army in get_tree().get_nodes_in_group("army"):
+		if army_child.controlling_player_id == GameState.current_player_turn:
+			army_child.select_this_army()
+			return
 
 
-func _on_map_clicked_this_tile(tile_position: Vector3) -> void:
+func _on_map_clicked_this_tile(tile_scene: MapTile) -> void:
 	if not GameState.current_state == GameState.STATE_MACHINE.SELECTING_IN_GAME:
 		print('wrong state')
 		return
@@ -60,7 +63,7 @@ func _on_map_clicked_this_tile(tile_position: Vector3) -> void:
 	var confirmed: bool = await player_confirmed
 	if confirmed:
 		_hide_confirm_menu()
-		get_node(str("Army", GameState.current_player_turn)).move_to_new_space(tile_position)
+		get_node(str("Army", GameState.current_player_turn)).move_to_new_space(tile_scene.get_node("Marker3D").global_position)
 		GameState.current_state = GameState.STATE_MACHINE.TRANSITIONING
 		await get_node(str("Army", GameState.current_player_turn)).movement_complete
 		_update_current_player()
@@ -78,7 +81,7 @@ func _on_hud_start_game() -> void:
 	for player_value in GameState.number_of_players:
 		var new_army: Army
 		match GameState.current_player_dict[player_value]["faction_id"]:
-			GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
+			GameState.FACTIONS.SANDWICH_COOKIE:
 				new_army = SANDWICH_COOKIE.instantiate()
 			GameState.FACTIONS.CHOCCY_CHIP:
 				new_army = CHOCCY.instantiate()
@@ -86,7 +89,7 @@ func _on_hud_start_game() -> void:
 				new_army = JAMMER.instantiate()
 		new_army.controlling_player_id = player_value
 		new_army.name = str("Army", player_value)
+		
 		add_child(new_army)
-		new_army.skin_self(GameState.current_player_dict[player_value]["faction_id"])
 	#GameState.current_state = GameState.STATE_MACHINE.SELECTING_START
 	_update_current_player()

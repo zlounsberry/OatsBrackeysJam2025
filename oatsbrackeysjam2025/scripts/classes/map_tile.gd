@@ -1,13 +1,15 @@
 extends MeshInstance3D
 class_name MapTile
 
-signal clicked_this_tile(tile_position: Vector3)
+signal clicked_this_tile(self_id: MapTile)
+
+@onready var is_hovered: bool = false
+@onready var is_occupied: bool = false
 
 @export var continent_id: int = 0
 @export var current_owner: int = 0
 
-@onready var is_hovered: bool = false
-@onready var owned_faction: int = -99
+var occupying_army: Army
 
 
 func _ready() -> void:
@@ -20,11 +22,30 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("left_click"):
 		if is_hovered:
-			clicked_this_tile.emit($Marker3D.global_position)
+			prints("clicked", self)
+			clicked_this_tile.emit(self)
 
 
-func update_owned_faction(faction_id: int) -> void:
-	owned_faction = faction_id
+func remove_army_units_from_tile(army_scene: Army, unit_count: int):
+	army_scene.army_size -= unit_count
+
+	if army_scene.army_size <= 0:
+		update_ownership(false , army_scene)
+		army_scene.queue_free()
+	
+
+
+func update_ownership(is_occupied: bool, army_scene: Army) -> void:
+	if is_occupied:
+		print("occupied")
+		occupying_army = army_scene
+		is_occupied = false
+	else:
+		print("unoccupied")
+		occupying_army = army_scene
+		is_occupied = true
+	
+		
 
 
 func _show_outline():

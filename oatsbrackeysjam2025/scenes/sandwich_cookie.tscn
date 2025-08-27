@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8wxsm7vvlm7g"]
-
-[ext_resource type="PackedScene" uid="uid://bnir5pksbjrs7" path="res://scenes/sandwich_cookie_model.tscn" id="1_6gm4l"]
-
-[node name="SCArmy" type="Node3D"]
-
-[node name="sandwich_cookie" parent="." instance=ExtResource("1_6gm4l")]
