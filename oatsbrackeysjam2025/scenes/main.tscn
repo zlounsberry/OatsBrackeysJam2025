@@ -43,8 +43,8 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41227, 0, 5.66175)
 
 [node name="Camera3D" type="Camera3D" parent="Marker3D"]
-transform = Transform3D(1, 0, 0, 0, 0.256964, 0.966421, 0, -0.966421, 0.256964, 0, 19.6695, 6.3888)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, 0.256964, 0.966421, 0, -0.966421, 0.256964, 0, 15.95, 8.60801)
+fov = 88.3
 size = 31.155
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

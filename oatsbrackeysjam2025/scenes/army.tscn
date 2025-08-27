@@ -1,13 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://btla7125qo0jb"]
+[gd_scene load_steps=2 format=3 uid="uid://btla7125qo0jb"]
 
 [ext_resource type="Script" uid="uid://rdxpnq83wl3o" path="res://scripts/classes/army.gd" id="1_n4j7m"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
 [node name="Army" type="Node3D"]
 script = ExtResource("1_n4j7m")
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00513, 0)
-mesh = SubResource("CapsuleMesh_u8vuu")

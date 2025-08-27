@@ -11,16 +11,18 @@ signal movement_complete
 @export var currently_taking_turn: bool = false
 @export var controlling_player_id: int = -99
 @export var faction_id: int = 0
+@export var army_size: int = 0
 
 
-func skin_self(player_faction: int):
-	match player_faction:
-		GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
-			$CSGMesh3D.material_override = SCC
-		GameState.FACTIONS.CHOCCY_CHIP:
-			$CSGMesh3D.material_override = CC
-		GameState.FACTIONS.STRAWBRY_JAMMER:
-			$CSGMesh3D.material_override = SJ
+
+#func skin_self(player_faction: int):
+	#match player_faction:
+		#GameState.FACTIONS.SANDWICH_COOKIE_CHAN:
+			#$CSGMesh3D.material_override = SCC
+		#GameState.FACTIONS.CHOCCY_CHIP:
+			#$CSGMesh3D.material_override = CC
+		#GameState.FACTIONS.STRAWBRY_JAMMER:
+			#$CSGMesh3D.material_override = SJ
 
 
 func move_to_new_space(new_position: Vector3) -> void:
