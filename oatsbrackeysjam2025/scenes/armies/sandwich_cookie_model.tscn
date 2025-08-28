@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://bnir5pksbjrs7"]
+[gd_scene load_steps=23 format=4 uid="uid://bnir5pksbjrs7"]
 
 [ext_resource type="Material" uid="uid://6a23r7bdmf0y" path="res://assets/resources/cookie.tres" id="1_241ww"]
 [ext_resource type="Texture2D" uid="uid://yctgraigy0nk" path="res://assets/resources/cookie_albedo.png" id="2_rjo87"]
 [ext_resource type="Texture2D" uid="uid://cnigdytp2cyvs" path="res://assets/resources/cookie_orm.png" id="3_dek4b"]
 [ext_resource type="Texture2D" uid="uid://bbtmgwh3f2mc5" path="res://assets/resources/cookie_heightmap.png" id="4_vgpnx"]
 [ext_resource type="Texture2D" uid="uid://c5ie48uaaeu06" path="res://assets/resources/cookie_normal.png" id="5_ljm88"]
+[ext_resource type="Texture2D" uid="uid://b15h46v1sclpr" path="res://assets/face_2_sprites.png" id="6_wosb5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8vif"]
 
@@ -149,7 +150,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sjh1v")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5glg4"]
-albedo_color = Color(0.244776, 0.244776, 0.244776, 1)
 albedo_texture = ExtResource("2_rjo87")
 roughness_texture = ExtResource("3_dek4b")
 roughness_texture_channel = 1
@@ -165,6 +165,35 @@ heightmap_max_layers = 32
 heightmap_texture = ExtResource("4_vgpnx")
 uv1_scale = Vector3(1.5, 1.5, 1.5)
 uv1_offset = Vector3(0.375, -0.625, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7q7u"]
+atlas = ExtResource("6_wosb5")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbqv1"]
+atlas = ExtResource("6_wosb5")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kmfd"]
+atlas = ExtResource("6_wosb5")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nd2vt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7q7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbqv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kmfd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="sandwich_cookie" type="Node3D"]
 
@@ -186,3 +215,13 @@ mesh = SubResource("ArrayMesh_m4mnt")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_5glg4")
 surface_material_override/1 = ExtResource("1_241ww")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.07261, 0.167061)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_nd2vt")
+autoplay = "default"
+frame_progress = 0.742246
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30641, 1.21136)

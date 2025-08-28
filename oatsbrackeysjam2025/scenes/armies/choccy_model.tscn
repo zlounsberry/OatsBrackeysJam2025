@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://dsnpqjfw7a0mu"]
+[gd_scene load_steps=11 format=4 uid="uid://dsnpqjfw7a0mu"]
 
 [ext_resource type="Material" uid="uid://c614m4qn2cjda" path="res://assets/resources/choccy.tres" id="1_jhdat"]
+[ext_resource type="Texture2D" uid="uid://k1lt0i5u5hyq" path="res://assets/face_3_sprites.png" id="2_hb1q2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyd3g"]
 
@@ -60,12 +61,50 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3govo")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojk37"]
+atlas = ExtResource("2_hb1q2")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flece"]
+atlas = ExtResource("2_hb1q2")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ler"]
+atlas = ExtResource("2_hb1q2")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqsox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojk37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flece")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4ler")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
 [node name="choccy" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.269123, 0, 0, 0, 1, 0, -4.5012e-08, -1.02975)
+transform = Transform3D(1, 0, 0, 0, -1.17637e-08, -1, 0, 0.269123, -4.37114e-08, 0, 1.01113, 0)
 mesh = SubResource("ArrayMesh_401al")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_jhdat")
 surface_material_override/1 = ExtResource("1_jhdat")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.07261, 0.273213)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_nqsox")
+autoplay = "default"
+frame_progress = 0.410235
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30641, 1.21136)

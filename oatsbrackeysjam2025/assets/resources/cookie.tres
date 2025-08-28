@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bbtmgwh3f2mc5" path="res://assets/resources/cookie_heightmap.png" id="4"]
 
 [resource]
-albedo_color = Color(0.243137, 0.243137, 0.243137, 1)
 albedo_texture = ExtResource("1")
 roughness_texture = ExtResource("2")
 roughness_texture_channel = 1

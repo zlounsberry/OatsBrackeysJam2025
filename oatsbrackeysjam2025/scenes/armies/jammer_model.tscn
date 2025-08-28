@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://c1cjxjwhtkspy"]
+[gd_scene load_steps=18 format=4 uid="uid://c1cjxjwhtkspy"]
 
-[ext_resource type="Material" path="res://assets/resources/bread-by-saurav72.tres" id="1_w6amg"]
+[ext_resource type="Material" uid="uid://q7rdmyai4w1u" path="res://assets/resources/bread-by-saurav72.tres" id="1_w6amg"]
+[ext_resource type="Texture2D" uid="uid://dv8be6oc3l3mr" path="res://assets/face_1_sprites.png" id="2_g3btn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s54t3"]
 
@@ -88,12 +89,42 @@ color_ramp = SubResource("Gradient_bl13t")
 noise = SubResource("FastNoiseLite_iyx0m")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpvoh"]
-albedo_color = Color(0.420241, 0, 0.0673611, 1)
+albedo_color = Color(1, 0.517874, 0.262825, 1)
 metallic = 1.0
 roughness_texture = SubResource("NoiseTexture2D_j5jx5")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_74lek")
 heightmap_enabled = true
+heightmap_texture = SubResource("NoiseTexture2D_74lek")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3btn"]
+atlas = ExtResource("2_g3btn")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dd57"]
+atlas = ExtResource("2_g3btn")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jsm8"]
+atlas = ExtResource("2_g3btn")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3u665"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3btn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dd57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jsm8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="jammer" type="Node3D"]
 
@@ -108,3 +139,13 @@ transform = Transform3D(0.594572, 0, 0, 0, -2.59896e-08, -0.594572, 0, 0.594572,
 mesh = SubResource("ArrayMesh_ls535")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_lpvoh")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.915087, 0.104544)
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_3u665")
+autoplay = "default"
+frame_progress = 0.839585
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30641, 1.21136)
