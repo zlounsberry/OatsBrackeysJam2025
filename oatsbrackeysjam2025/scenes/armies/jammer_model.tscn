@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://c1cjxjwhtkspy"]
+[gd_scene load_steps=19 format=4 uid="uid://c1cjxjwhtkspy"]
 
+[ext_resource type="Script" uid="uid://bcdc4hjfr8831" path="res://scripts/classes/army_model.gd" id="1_1dd57"]
 [ext_resource type="Material" uid="uid://q7rdmyai4w1u" path="res://assets/resources/bread-by-saurav72.tres" id="1_w6amg"]
 [ext_resource type="Texture2D" uid="uid://dv8be6oc3l3mr" path="res://assets/face_1_sprites.png" id="2_g3btn"]
 
@@ -127,6 +128,7 @@ animations = [{
 }]
 
 [node name="jammer" type="Node3D"]
+script = ExtResource("1_1dd57")
 
 [node name="Cookie" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.995154, 0)
@@ -145,7 +147,4 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.915087, 0.104544)
 double_sided = false
 sprite_frames = SubResource("SpriteFrames_3u665")
 autoplay = "default"
-frame_progress = 0.839585
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30641, 1.21136)
+frame_progress = 0.00591899

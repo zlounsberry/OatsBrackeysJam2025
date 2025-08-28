@@ -28,6 +28,16 @@ func select_this_army() -> void:
 	$TurnIndicator.show()
 
 
+func update_army_size_visuals() -> void:
+	if army_size <= 0:
+		return
+	for child in $ArmyVisuals.get_children():
+		child.hide()
+	get_node(str("ArmyVisuals/", army_size)).show()
+	for child in $ArmyVisuals.get_children():
+		prints(army_size, child.visible)
+
+
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
 	if not currently_taking_turn:
 		return
@@ -46,12 +56,15 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 			GameState.FACTIONS.SANDWICH_COOKIE:
 				model_scene = SANDWICH_COOKIE_MODEL.instantiate()
 				add_child(model_scene)
+				model_scene.look_at(new_position)
 			GameState.FACTIONS.CHOCCY_CHIP:
 				model_scene = CHOCCY_MODEL.instantiate() 
 				add_child(model_scene)
+				model_scene.look_at(new_position)
 			GameState.FACTIONS.STRAWBRY_JAMMER:
 				model_scene = JAMMER_MODEL.instantiate()
 				add_child(model_scene)
+				model_scene.look_at(new_position)
 		var htween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel(true)
 		htween.tween_property(model_scene, "global_position:z", new_position.z, 0.25)
 		htween.tween_property(model_scene, "global_position:x", new_position.x, 0.25)
@@ -75,3 +88,4 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 		var remove_army: Army = GameState.current_player_dict[GameState.current_player_turn]["current_armies"].pop_at(army_position)
 		prints("removing", remove_army, "from", self)
 		self.queue_free()
+	update_army_size_visuals()

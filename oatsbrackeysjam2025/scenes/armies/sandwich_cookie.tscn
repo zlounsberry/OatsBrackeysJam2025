@@ -8,7 +8,202 @@
 script = ExtResource("1_7dnmr")
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
 
-[node name="sandwich_cookie" parent="." instance=ExtResource("1_6gm4l")]
-
 [node name="TurnIndicator" parent="." instance=ExtResource("3_2mpg4")]
 visible = false
+
+[node name="ArmyVisuals" type="Node3D" parent="."]
+
+[node name="1" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/1" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0637331, 0, 0.13326)
+
+[node name="2" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/2" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0637331, 0, 0.13326)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/2" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 0.191198, 0, -0.324458)
+
+[node name="3" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/3" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231752, 0, 0.353428)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/3" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 0.278107, 0, -0.10429)
+
+[node name="sandwich_cookie3" parent="ArmyVisuals/3" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.988081, 0, -0.153934, 0, 1, 0, 0.153934, 0, -0.988081, -0.260726, 0, -0.619947)
+
+[node name="4" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/4" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231752, 0, 0.353428)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/4" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 1.10663, 0, -0.121672)
+
+[node name="sandwich_cookie3" parent="ArmyVisuals/4" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.988081, 0, -0.153934, 0, 1, 0, 0.153934, 0, -0.988081, -0.260726, 0, -0.619947)
+
+[node name="sandwich_cookie4" parent="ArmyVisuals/4" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.996851, 0, 0.0792942, 0, 1, 0, -0.0792942, 0, 0.996851, -1.05449, 0, -0.0927025)
+
+[node name="5" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/5" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2839, 0, 0.307077)
+
+[node name="sandwich_cookie5" parent="ArmyVisuals/5" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.970917, 0, -0.239415, 0, 1, 0, 0.239415, 0, 0.970917, -0.793765, 0, 0.631535)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/5" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 1.36736, 0, -0.168023)
+
+[node name="sandwich_cookie3" parent="ArmyVisuals/5" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.988081, 0, -0.153934, 0, 1, 0, 0.153934, 0, -0.988081, -9.53674e-07, 0, -0.666299)
+
+[node name="sandwich_cookie4" parent="ArmyVisuals/5" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.996851, 0, 0.0792942, 0, 1, 0, -0.0792942, 0, 0.996851, -0.793766, 0, -0.139054)
+
+[node name="6" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/6" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0521441, 0, 0.214374)
+
+[node name="sandwich_cookie5" parent="ArmyVisuals/6" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.970917, 0, -0.239415, 0, 1, 0, 0.239415, 0, 0.970917, -1.02552, 0, 0.538833)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/6" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 1.1356, 0, -0.260725)
+
+[node name="sandwich_cookie6" parent="ArmyVisuals/6" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.964142, 0, 0.265388, 0, 1, 0, -0.265388, 0, 0.964142, 1.11822, 0, 0.562008)
+
+[node name="sandwich_cookie3" parent="ArmyVisuals/6" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.988081, 0, -0.153934, 0, 1, 0, 0.153934, 0, -0.988081, -0.231757, 0, -0.759001)
+
+[node name="sandwich_cookie4" parent="ArmyVisuals/6" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.996851, 0, 0.0792942, 0, 1, 0, -0.0792942, 0, 0.996851, -1.02552, 0, -0.231756)
+
+[node name="7" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/7" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.376603, 0, 0.179611)
+
+[node name="sandwich_cookie5" parent="ArmyVisuals/7" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.970917, 0, -0.239415, 0, 1, 0, 0.239415, 0, 0.970917, -0.701063, 0, 0.504069)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/7" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 1.46006, 0, -0.295489)
+
+[node name="sandwich_cookie6" parent="ArmyVisuals/7" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.964142, 0, 0.265388, 0, 1, 0, -0.265388, 0, 0.964142, 1.44268, 0, 0.527245)
+
+[node name="sandwich_cookie3" parent="ArmyVisuals/7" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.988081, 0, -0.153934, 0, 1, 0, 0.153934, 0, -0.988081, 0.0927014, 0, -0.793764)
+
+[node name="sandwich_cookie4" parent="ArmyVisuals/7" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.996851, 0, 0.0792942, 0, 1, 0, -0.0792942, 0, 0.996851, -0.701063, 0, -0.26652)
+
+[node name="sandwich_cookie7" parent="ArmyVisuals/7" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.0413174, 0, -0.999146, 0, 1, 0, 0.999146, 0, 0.0413174, -1.90619, 0, 0.034763)
+
+[node name="8" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/8" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475099, 0, 0.330252)
+
+[node name="sandwich_cookie5" parent="ArmyVisuals/8" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.970917, 0, -0.239415, 0, 1, 0, 0.239415, 0, 0.970917, -0.602566, 0, 0.654711)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/8" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 1.55856, 0, -0.144847)
+
+[node name="sandwich_cookie6" parent="ArmyVisuals/8" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.964142, 0, 0.265388, 0, 1, 0, -0.265388, 0, 0.964142, 1.54118, 0, 0.677886)
+
+[node name="sandwich_cookie3" parent="ArmyVisuals/8" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.988081, 0, -0.153934, 0, 1, 0, 0.153934, 0, -0.988081, 0.191198, 0, -0.643123)
+
+[node name="sandwich_cookie8" parent="ArmyVisuals/8" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.92143, 0, -0.388545, 0, 1, 0, 0.388545, 0, -0.92143, -0.677887, 0, -1.01393)
+
+[node name="sandwich_cookie4" parent="ArmyVisuals/8" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.996851, 0, 0.0792942, 0, 1, 0, -0.0792942, 0, 0.996851, -0.602567, 0, -0.115878)
+
+[node name="sandwich_cookie7" parent="ArmyVisuals/8" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.0413174, 0, -0.999146, 0, 1, 0, 0.999146, 0, 0.0413174, -1.8077, 0, 0.185405)
+
+[node name="9" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278107, 0, 0.393985)
+
+[node name="sandwich_cookie5" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.970917, 0, -0.239415, 0, 1, 0, 0.239415, 0, 0.970917, -0.799559, 0, 0.718444)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 1.36157, 0, -0.0811147)
+
+[node name="sandwich_cookie9" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.862637, 0, 0.505823, 0, 1, 0, -0.505823, 0, -0.862637, 1.57594, 0, -0.811146)
+
+[node name="sandwich_cookie6" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.964142, 0, 0.265388, 0, 1, 0, -0.265388, 0, 0.964142, 1.34418, 0, 0.741619)
+
+[node name="sandwich_cookie3" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.988081, 0, -0.153934, 0, 1, 0, 0.153934, 0, -0.988081, -0.00579453, 0, -0.57939)
+
+[node name="sandwich_cookie8" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.92143, 0, -0.388545, 0, 1, 0, 0.388545, 0, -0.92143, -0.874879, 0, -0.9502)
+
+[node name="sandwich_cookie4" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.996851, 0, 0.0792942, 0, 1, 0, -0.0792942, 0, 0.996851, -0.799559, 0, -0.0521453)
+
+[node name="sandwich_cookie7" parent="ArmyVisuals/9" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.0413174, 0, -0.999146, 0, 1, 0, 0.999146, 0, 0.0413174, -2.00469, 0, 0.249137)
+
+[node name="10" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="sandwich_cookie" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00579453, 0, 0.422955)
+
+[node name="sandwich_cookie5" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.970917, 0, -0.239415, 0, 1, 0, 0.239415, 0, 0.970917, -1.08346, 0, 0.747413)
+
+[node name="sandwich_cookie2" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.994821, 0, 0.101647, 0, 1, 0, -0.101647, 0, -0.994821, 1.07766, 0, -0.0521451)
+
+[node name="sandwich_cookie9" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.862637, 0, 0.505823, 0, 1, 0, -0.505823, 0, -0.862637, 1.29204, 0, -0.782176)
+
+[node name="sandwich_cookie6" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.964142, 0, 0.265388, 0, 1, 0, -0.265388, 0, 0.964142, 1.07766, 0, 0.770588)
+
+[node name="sandwich_cookie10" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.0101576, 0, 0.999949, 0, 1, 0, -0.999949, 0, 0.0101576, 2.43923, 0, -0.0289695)
+
+[node name="sandwich_cookie3" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.988081, 0, -0.153934, 0, 1, 0, 0.153934, 0, -0.988081, -0.289696, 0, -0.550421)
+
+[node name="sandwich_cookie8" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(-0.92143, 0, -0.388545, 0, 1, 0, 0.388545, 0, -0.92143, -1.15878, 0, -0.92123)
+
+[node name="sandwich_cookie4" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.996851, 0, 0.0792942, 0, 1, 0, -0.0792942, 0, 0.996851, -1.08346, 0, -0.0231758)
+
+[node name="sandwich_cookie7" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
+transform = Transform3D(0.0413174, 0, -0.999146, 0, 1, 0, 0.999146, 0, 0.0413174, -2.28859, 0, 0.278107)

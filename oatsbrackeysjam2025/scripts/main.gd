@@ -87,8 +87,9 @@ func _add_new_army(map_tile: MapTile, player_value: int, new_army_size: int) -> 
 	new_army.currently_occupied_tile = map_tile
 	map_tile.is_occupied = true
 	map_tile.occupying_army = new_army
-	new_army.army_size = 4 # Start w/ 4 units, hardcoded for now
+	new_army.army_size = new_army_size
 	add_child(new_army)
+	new_army.update_army_size_visuals()
 	GameState.current_player_dict[player_value]["current_armies"].append(new_army)
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
 
@@ -109,12 +110,14 @@ func _on_map_clicked_this_tile(tile_scene: MapTile) -> void:
 		current_army.move_to_new_space(current_army.currently_occupied_tile, tile_scene, units_to_move)
 		GameState.current_state = GameState.STATE_MACHINE.TRANSITIONING
 		await current_army.movement_complete
+		prints("moving", units_to_move, "units, _on_map_clicked_this_tile")
 		_add_new_army(current_army.currently_occupied_tile, -99, units_to_move) # -99 means "use global variable for current player turn (not used in _on_hud_start_game())
 		_update_current_player(false)
 	GameState.current_state = GameState.STATE_MACHINE.SELECTING_IN_GAME
 
 
 func _on_hud_player_confirmed(is_yes: bool, unit_count: int) -> void:
+	prints("moving", unit_count, "units, _on_hud_player_confirmed")
 	units_to_move = unit_count
 	player_confirmed.emit(is_yes)
 

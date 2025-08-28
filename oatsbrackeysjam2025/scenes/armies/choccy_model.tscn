@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://dsnpqjfw7a0mu"]
+[gd_scene load_steps=12 format=4 uid="uid://dsnpqjfw7a0mu"]
 
 [ext_resource type="Material" uid="uid://c614m4qn2cjda" path="res://assets/resources/choccy.tres" id="1_jhdat"]
+[ext_resource type="Script" uid="uid://bcdc4hjfr8831" path="res://scripts/classes/army_model.gd" id="1_ojk37"]
 [ext_resource type="Texture2D" uid="uid://k1lt0i5u5hyq" path="res://assets/face_3_sprites.png" id="2_hb1q2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyd3g"]
@@ -91,6 +92,7 @@ animations = [{
 }]
 
 [node name="choccy" type="Node3D"]
+script = ExtResource("1_ojk37")
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.17637e-08, -1, 0, 0.269123, -4.37114e-08, 0, 1.01113, 0)
@@ -104,7 +106,4 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.07261, 0.273213)
 double_sided = false
 sprite_frames = SubResource("SpriteFrames_nqsox")
 autoplay = "default"
-frame_progress = 0.410235
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30641, 1.21136)
+frame_progress = 0.57757

@@ -9,8 +9,204 @@ script = ExtResource("1_rcjnm")
 faction_id = 1
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
 
-[node name="choccy" parent="." instance=ExtResource("1_gjy2c")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-
 [node name="TurnIndicator" parent="." instance=ExtResource("3_ka8dc")]
 visible = false
+
+[node name="ArmyVisuals" type="Node3D" parent="."]
+
+[node name="1" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/1" instance=ExtResource("1_gjy2c")]
+
+[node name="2" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/2" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.461594, 0, -0.887091, 0, 1, 0, 0.887091, 0, 0.461594, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/2" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.0021991, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.0021991, 0, 0, 0)
+
+[node name="3" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/3" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.461594, 0, -0.887091, 0, 1, 0, 0.887091, 0, 0.461594, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/3" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.0021991, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.0021991, 0, 0, 0)
+
+[node name="choccy3" parent="ArmyVisuals/3" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.940952, 0, -0.338541, 0, 1, 0, 0.338541, 0, -0.940952, 0, 0, 0)
+
+[node name="4" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/4" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996706, 0, 0.0811036, 0, 1, 0, -0.0811036, 0, 0.996706, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/4" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.990696, 0, 0.136096, 0, 1, 0, -0.136096, 0, 0.990696, 0, 0, 0)
+
+[node name="choccy3" parent="ArmyVisuals/4" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.570685, 0, -0.821169, 0, 1, 0, 0.821169, 0, -0.570685, 0, 0, 0)
+
+[node name="choccy4" parent="ArmyVisuals/4" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.936152, 0, 0.351597, 0, 1, 0, -0.351597, 0, -0.936152, 0, 0, 0)
+
+[node name="5" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/5" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996706, 0, 0.0811036, 0, 1, 0, -0.0811036, 0, 0.996706, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/5" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.990696, 0, 0.136096, 0, 1, 0, -0.136096, 0, 0.990696, 0, 0, 0)
+
+[node name="choccy3" parent="ArmyVisuals/5" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.570685, 0, -0.821169, 0, 1, 0, 0.821169, 0, -0.570685, 0, 0, 0)
+
+[node name="choccy4" parent="ArmyVisuals/5" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.897666, 0, 0.440676, 0, 1, 0, -0.440676, 0, -0.897666, 0, 0, 0)
+
+[node name="choccy5" parent="ArmyVisuals/5" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.939148, 0, 0.343512, 0, 1, 0, -0.343512, 0, -0.939148, 0, 0, 0)
+
+[node name="6" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/6" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996706, 0, 0.0811036, 0, 1, 0, -0.0811036, 0, 0.996706, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/6" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.990696, 0, 0.136096, 0, 1, 0, -0.136096, 0, 0.990696, 0, 0, 0)
+
+[node name="choccy3" parent="ArmyVisuals/6" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.935961, 0, -0.352103, 0, 1, 0, 0.352103, 0, -0.935961, 0, 0, 0)
+
+[node name="choccy4" parent="ArmyVisuals/6" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.970038, 0, 0.242955, 0, 1, 0, -0.242955, 0, 0.970038, 0, 0, 0)
+
+[node name="choccy5" parent="ArmyVisuals/6" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.974276, 0, -0.225359, 0, 1, 0, 0.225359, 0, -0.974276, 0, 0, 0)
+
+[node name="choccy6" parent="ArmyVisuals/6" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.947891, 0, -0.318595, 0, 1, 0, 0.318595, 0, -0.947891, 0, 0, 0)
+
+[node name="7" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/7" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996706, 0, 0.0811036, 0, 1, 0, -0.0811036, 0, 0.996706, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/7" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.972812, 0, -0.231595, 0, 1, 0, 0.231595, 0, -0.972812, 0, 0, 0)
+
+[node name="choccy3" parent="ArmyVisuals/7" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.935961, 0, -0.352103, 0, 1, 0, 0.352103, 0, -0.935961, 0, 0, 0)
+
+[node name="choccy7" parent="ArmyVisuals/7" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.791277, 0, 0.611458, 0, 1, 0, -0.611458, 0, -0.791277, 0, 0, 0)
+
+[node name="choccy4" parent="ArmyVisuals/7" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.908698, 0, 0.417455, 0, 1, 0, -0.417455, 0, -0.908698, 0, 0, 0)
+
+[node name="choccy5" parent="ArmyVisuals/7" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996872, 0, 0.0790334, 0, 1, 0, -0.0790334, 0, 0.996872, 0, 0, 0)
+
+[node name="choccy6" parent="ArmyVisuals/7" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.984543, 0, 0.175143, 0, 1, 0, -0.175143, 0, 0.984543, 0, 0, 0)
+
+[node name="8" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/8" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996706, 0, 0.0811036, 0, 1, 0, -0.0811036, 0, 0.996706, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/8" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.972812, 0, -0.231595, 0, 1, 0, 0.231595, 0, -0.972812, 0, 0, 0)
+
+[node name="choccy5" parent="ArmyVisuals/8" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996872, 0, 0.0790334, 0, 1, 0, -0.0790334, 0, 0.996872, 0, 0, 0)
+
+[node name="choccy6" parent="ArmyVisuals/8" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.984543, 0, 0.175143, 0, 1, 0, -0.175143, 0, 0.984543, 0, 0, 0)
+
+[node name="choccy3" parent="ArmyVisuals/8" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.99994, 0, 0.0109779, 0, 1, 0, -0.0109779, 0, -0.99994, 0, 0, 0)
+
+[node name="choccy4" parent="ArmyVisuals/8" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.141005, 0, 0.990009, 0, 1, 0, -0.990009, 0, 0.141005, 0, 0, 0)
+
+[node name="choccy7" parent="ArmyVisuals/8" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.846611, 0, 0.532211, 0, 1, 0, -0.532211, 0, -0.846611, 0, 0, 0)
+
+[node name="choccy8" parent="ArmyVisuals/8" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.741531, 0, -0.670919, 0, 1, 0, 0.670919, 0, -0.741531, 0, 0, 0)
+
+[node name="9" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996706, 0, 0.0811036, 0, 1, 0, -0.0811036, 0, 0.996706, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.972812, 0, -0.231595, 0, 1, 0, 0.231595, 0, -0.972812, 0, 0, 0)
+
+[node name="choccy5" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996872, 0, 0.0790334, 0, 1, 0, -0.0790334, 0, 0.996872, 0, 0, 0)
+
+[node name="choccy6" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.984543, 0, 0.175143, 0, 1, 0, -0.175143, 0, 0.984543, 0, 0, 0)
+
+[node name="choccy3" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.99994, 0, 0.0109779, 0, 1, 0, -0.0109779, 0, -0.99994, 0, 0, 0)
+
+[node name="choccy9" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.964728, 0, -0.26325, 0, 1, 0, 0.26325, 0, 0.964728, 0, 0, 0)
+
+[node name="choccy4" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.141005, 0, 0.990009, 0, 1, 0, -0.990009, 0, 0.141005, 0, 0, 0)
+
+[node name="choccy7" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.846611, 0, 0.532211, 0, 1, 0, -0.532211, 0, -0.846611, 0, 0, 0)
+
+[node name="choccy8" parent="ArmyVisuals/9" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.741531, 0, -0.670919, 0, 1, 0, 0.670919, 0, -0.741531, 0, 0, 0)
+
+[node name="10" type="Node3D" parent="ArmyVisuals"]
+visible = false
+
+[node name="choccy" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996706, 0, 0.0811036, 0, 1, 0, -0.0811036, 0, 0.996706, 0, 0, 0)
+
+[node name="choccy2" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.972812, 0, -0.231595, 0, 1, 0, 0.231595, 0, -0.972812, 0, 0, 0)
+
+[node name="choccy5" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.996872, 0, 0.0790334, 0, 1, 0, -0.0790334, 0, 0.996872, 0, 0, 0)
+
+[node name="choccy11" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.810941, 0, 0.585128, 0, 1, 0, -0.585128, 0, 0.810941, 0, 0, 0)
+
+[node name="choccy6" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.984543, 0, 0.175143, 0, 1, 0, -0.175143, 0, 0.984543, 0, 0, 0)
+
+[node name="choccy3" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.99994, 0, 0.0109779, 0, 1, 0, -0.0109779, 0, -0.99994, 0, 0, 0)
+
+[node name="choccy9" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(0.964728, 0, -0.26325, 0, 1, 0, 0.26325, 0, 0.964728, 0, 0, 0)
+
+[node name="choccy4" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.356934, 0, -0.93413, 0, 1, 0, 0.93413, 0, -0.356934, 0, 0, 0)
+
+[node name="choccy7" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.846611, 0, 0.532211, 0, 1, 0, -0.532211, 0, -0.846611, 0, 0, 0)
+
+[node name="choccy8" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.741531, 0, -0.670919, 0, 1, 0, 0.670919, 0, -0.741531, 0, 0, 0)
+
+[node name="choccy10" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
+transform = Transform3D(-0.741531, 0, -0.670919, 0, 1, 0, 0.670919, 0, -0.741531, 0, 0, 0)
