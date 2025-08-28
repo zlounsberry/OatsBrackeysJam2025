@@ -11,6 +11,7 @@
    sodipodi:docname="faces.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -23,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="2.1997091"
-     inkscape:cx="261.17089"
-     inkscape:cy="327.99791"
+     inkscape:zoom="4.3994182"
+     inkscape:cx="13.06991"
+     inkscape:cy="434.03466"
      inkscape:window-width="2560"
      inkscape:window-height="1369"
      inkscape:window-x="3832"
@@ -1996,5 +1997,28 @@
        inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
        inkscape:export-xdpi="192"
        inkscape:export-ydpi="192" />
+    <rect
+       style="opacity:0.75;fill:#c2c3c7;fill-opacity:1;stroke:#5f574f;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="rect1210"
+       width="25.4"
+       height="25.4"
+       x="3.8489938"
+       y="109.2152"
+       rx="4.2333331"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\nine-patch.png"
+       inkscape:export-xdpi="201.89691"
+       inkscape:export-ydpi="201.89691" />
+    <image
+       width="33.866665"
+       height="2.1166666"
+       preserveAspectRatio="none"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAICAYAAAAx3fd+AAAAfklEQVR4Ae3BoQ3CUBSG0e/dBNek
+uqICRRoSNmCAaoKpA1LXARCo7oFCItslXpiDHUgFsMG/wL3nJOCHUG8PKKcFaTx/UZ6vN8q8qlAu
+wxVlv1sjlT3SY0JqNyjpU6I0OaN0+Y5ySwXS0VCM4JoRXDOCa0ZwzQiuGcE1I7j2BxZeEYT8Sdib
+AAAAAElFTkSuQmCC
+"
+       id="image1300"
+       x="6.1606302"
+       y="150.13496" />
   </g>
 </svg>

@@ -46,7 +46,7 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 	if new_tile == null:
 		print("no new tile!")
 		return
-	GameState.current_state = GameState.STATE_MACHINE.TRANSITIONING
+	GameState.update_state(GameState.STATE_MACHINE.TRANSITIONING)
 	var model_scene: Node3D
 	var first_model_down: bool = false
 	var new_position: Vector3 = new_tile.get_node("Marker3D").global_position
@@ -77,14 +77,13 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 	army_size -= unit_count
 	current_tile.update_ownership(false, null) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
 	movement_complete.emit()
-	GameState.current_state = GameState.STATE_MACHINE.SELECTING_IN_GAME
+	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 	if army_size <= 0: 
 		var current_army_array: Array = GameState.current_player_dict[GameState.current_player_turn]["current_armies"]
 		var army_position: int = current_army_array.find(self)
 		prints("player game state:", GameState.current_player_turn, "player army: ", controlling_player_id)
 		print(GameState.current_player_dict[GameState.current_player_turn])
-		var remove_army: Army = GameState.current_player_dict[GameState.current_player_turn]["current_armies"].pop_at(army_position)
-		prints("removing", remove_army, "from", self)
+		GameState.current_player_dict[GameState.current_player_turn]["current_armies"].pop_at(army_position)
+		print("removed army: ", GameState.current_player_dict[GameState.current_player_turn])
 		self.queue_free()
-		print(GameState.current_player_dict[GameState.current_player_turn])
 	update_army_size_visuals()

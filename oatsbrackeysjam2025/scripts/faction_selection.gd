@@ -27,56 +27,34 @@ func _ready() -> void:
 	print("current game dict: ", GameState.current_player_dict)
 
 
-func _input(event: InputEvent) -> void:
-	if is_animating:
-		return
-	if event.is_action("ui_left"):
-		_scroll_left()
-	#if event.is_action("ui_right"):
-		#_scroll_right()
-
-
 func _scroll_left():
 	is_animating = true
-	prints("can_select", can_select)
 	can_select = true
 	match current_selection:
 		GameState.FACTIONS.SANDWICH_COOKIE:
 			anim.play("Select_CC_left")
-			prints("cc can_select", can_select, cc_has_been_picked)
 			if not cc_has_been_picked:
-				print('can select cc')
 				confirm_button.text = CC_UNPICKED_TEXT
 			else:
-				print('cannot select cc')
 				can_select = false
 				confirm_button.text = ALREADY_PICKED_TEXT
 			_update_current_selection(GameState.FACTIONS.CHOCCY_CHIP)
-			prints("cc can_select", can_select, cc_has_been_picked)
 		GameState.FACTIONS.CHOCCY_CHIP:
 			anim.play("Select_SJ_left")
-			prints("sj can_select", can_select, sj_has_been_picked)
 			if not sj_has_been_picked:
-				print('can select sj')
 				confirm_button.text = SJ_UNPICKED_TEXT
 			else:
-				print('cannot select sj')
 				can_select = false
 				confirm_button.text = ALREADY_PICKED_TEXT
 			_update_current_selection(GameState.FACTIONS.STRAWBRY_JAMMER)
-			prints("sj can_select", can_select, sj_has_been_picked)
 		GameState.FACTIONS.STRAWBRY_JAMMER:
 			anim.play("Select_SCC_left")
-			prints("scc can_select", can_select, scc_has_been_picked)
 			if not scc_has_been_picked:
-				print('can select scc')
 				confirm_button.text = SCC_UNPICKED_TEXT
 			else:
-				print('cannot select scc')
 				can_select = false
 				confirm_button.text = ALREADY_PICKED_TEXT
 			_update_current_selection(GameState.FACTIONS.SANDWICH_COOKIE)
-			prints("scc can_select", can_select, scc_has_been_picked)
 	await anim.animation_finished
 	is_animating = false
 
@@ -88,7 +66,6 @@ func _update_current_selection(faction_id: int) -> void:
 func _on_confirm_pressed() -> void:
 	if not can_select:
 		return
-	print("SELECTING ", current_selection)
 	GameState.current_player_dict[current_player_choosing]["faction_id"] = current_selection
 	GameState.current_player_dict[current_player_choosing]["is_ai"] = is_ai
 	match current_selection:
@@ -104,7 +81,8 @@ func _on_confirm_pressed() -> void:
 	current_player_choosing += 1
 	if current_player_choosing >= GameState.number_of_players:
 		start_game.emit()
-		GameState.current_state = GameState.STATE_MACHINE.SELECTING_IN_GAME 
+		GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
+		GameState.menu_open = false
 		self.queue_free()
 
 
@@ -113,3 +91,9 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		is_ai = true
 	else:
 		is_ai = false
+
+
+func _on_next_team_pressed() -> void:
+	if is_animating:
+		return
+	_scroll_left()

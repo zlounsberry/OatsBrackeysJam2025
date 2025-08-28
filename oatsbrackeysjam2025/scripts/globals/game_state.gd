@@ -68,5 +68,11 @@ const MAX_PLAYER_COUNT: int = 3
 }
 
 @onready var number_of_players: int = 2 # This will get updated to an export var controlling the main scene
+@onready var menu_open: bool = true # This will get updated to an export var controlling the main scene
 
 var current_selected_army: Army
+
+
+func update_state(new_state: int) -> void:
+	prints("updating to state", new_state)
+	current_state = new_state

@@ -1,17 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://57epoytwmhh7"]
+[gd_scene load_steps=11 format=3 uid="uid://57epoytwmhh7"]
 
 [ext_resource type="Script" uid="uid://y6adcvth0dmn" path="res://scripts/faction_selection.gd" id="1_00o52"]
+[ext_resource type="Texture2D" uid="uid://bauxj0x2byc8" path="res://assets/nine-patch.png" id="1_xgy2r"]
 [ext_resource type="Texture2D" uid="uid://cnadodyu0itsv" path="res://icon.svg" id="2_8e1ou"]
-
-[sub_resource type="Gradient" id="Gradient_8e1ou"]
-colors = PackedColorArray(0.597176, 0.597176, 0.597176, 1, 0, 0, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xgy2r"]
-noise_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gvdtk"]
-color_ramp = SubResource("Gradient_8e1ou")
-noise = SubResource("FastNoiseLite_xgy2r")
 
 [sub_resource type="Animation" id="Animation_nkasc"]
 resource_name = "Select_CC_left"
@@ -489,8 +480,16 @@ _data = {
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.75
-offset_bottom = -3.05176e-05
-texture = SubResource("NoiseTexture2D_gvdtk")
+offset_right = -480.0
+offset_bottom = -333.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_xgy2r")
+patch_margin_left = 68
+patch_margin_top = 68
+patch_margin_right = 68
+patch_margin_bottom = 68
 script = ExtResource("1_00o52")
 
 [node name="Title" type="Label" parent="."]
@@ -504,14 +503,13 @@ offset_right = 82.0
 offset_bottom = 58.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-text = "Choose your faction"
+text = "Faction Selection"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SCC" type="Sprite2D" parent="."]
 modulate = Color(0.78292, 0.214683, 0.484692, 1)
-position = Vector2(96, 128)
-scale = Vector2(0.5, 0.5)
+position = Vector2(240, 256)
 texture = ExtResource("2_8e1ou")
 
 [node name="Label" type="Label" parent="SCC"]
@@ -523,7 +521,7 @@ text = "SCC"
 
 [node name="CC" type="Sprite2D" parent="."]
 modulate = Color(0.596142, 0.487097, 0, 1)
-position = Vector2(384, 128)
+position = Vector2(96, 128)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_8e1ou")
 
@@ -536,7 +534,8 @@ text = "CC"
 
 [node name="SJ" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(240, 256)
+position = Vector2(384, 128)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_8e1ou")
 
 [node name="Label3" type="Label" parent="SJ"]
@@ -565,13 +564,29 @@ offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="CheckButton" type="CheckBox" parent="."]
+[node name="NextTeam" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -127.0
+offset_right = 102.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Next Team"
+
+[node name="AI" type="CheckBox" parent="."]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 368.0
-offset_right = 123.0
-offset_bottom = 399.0
+offset_left = 12.0
+offset_top = 418.0
+offset_right = 130.0
+offset_bottom = 449.0
 text = "Set as AI "
 
 [connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]
-[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="NextTeam" to="." method="_on_next_team_pressed"]
+[connection signal="toggled" from="AI" to="." method="_on_check_button_toggled"]
