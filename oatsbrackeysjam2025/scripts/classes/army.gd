@@ -55,15 +55,13 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 			GameState.FACTIONS.SANDWICH_COOKIE:
 				model_scene = SANDWICH_COOKIE_MODEL.instantiate()
 				add_child(model_scene)
-				model_scene.look_at(new_position)
 			GameState.FACTIONS.CHOCCY_CHIP:
 				model_scene = CHOCCY_MODEL.instantiate() 
 				add_child(model_scene)
-				model_scene.look_at(new_position)
 			GameState.FACTIONS.STRAWBRY_JAMMER:
 				model_scene = JAMMER_MODEL.instantiate()
 				add_child(model_scene)
-				model_scene.look_at(new_position)
+				
 		var htween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel(true)
 		htween.tween_property(model_scene, "global_position:z", new_position.z, 0.25)
 		htween.tween_property(model_scene, "global_position:x", new_position.x, 0.25)

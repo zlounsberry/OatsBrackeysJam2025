@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="8.7988366"
-     inkscape:cx="175.98918"
-     inkscape:cy="327.25918"
+     inkscape:zoom="2.1997091"
+     inkscape:cx="261.17089"
+     inkscape:cy="327.99791"
      inkscape:window-width="2560"
      inkscape:window-height="1369"
      inkscape:window-x="3832"
@@ -286,6 +286,40 @@
            style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529168;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
            d="m 14.163094,71.958138 c 1.865856,1.990701 0.676685,4.254714 -0.300703,6.404967 -0.455639,1.002406 -1.038021,2.250237 -1.954567,2.916817 -0.752949,0.547598 -1.9628616,0.602234 -2.8566749,0.691616 -3.713554,0.371356 -4.4804692,-2.550711 -4.4804692,-5.743422 0,-1.60061 0.6763846,-3.096844 1.353162,-4.450397"
            id="path41070-6-4" />
+      </g>
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath41066-6">
+      <g
+         id="g41072-3"
+         style="display:inline;stroke-width:0.999999">
+        <path
+           style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529168;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           d="m 5.9238419,71.777719 c 3.8753907,-0.296117 4.4012091,0.72871 8.2392521,0.180419"
+           id="path41068-76"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529168;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           d="m 14.163094,71.958138 c 1.865856,1.990701 0.676685,4.254714 -0.300703,6.404967 -0.455639,1.002406 -1.038021,2.250237 -1.954567,2.916817 -0.752949,0.547598 -1.9628616,0.602234 -2.8566749,0.691616 -3.713554,0.371356 -4.4804692,-2.550711 -4.4804692,-5.743422 0,-1.60061 0.6763846,-3.096844 1.353162,-4.450397"
+           id="path41070-1" />
+      </g>
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath41066-0-6">
+      <g
+         id="g41072-2-5"
+         style="display:inline;stroke-width:0.999999">
+        <path
+           style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529168;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           d="m 5.9238419,71.777719 c 3.8753907,-0.296117 4.4012091,0.72871 8.2392521,0.180419"
+           id="path41068-7-9"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529168;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           d="m 14.163094,71.958138 c 1.865856,1.990701 0.676685,4.254714 -0.300703,6.404967 -0.455639,1.002406 -1.038021,2.250237 -1.954567,2.916817 -0.752949,0.547598 -1.9628616,0.602234 -2.8566749,0.691616 -3.713554,0.371356 -4.4804692,-2.550711 -4.4804692,-5.743422 0,-1.60061 0.6763846,-3.096844 1.353162,-4.450397"
+           id="path41070-6-6" />
       </g>
     </clipPath>
   </defs>
@@ -1651,12 +1685,15 @@
        inkscape:export-xdpi="192"
        inkscape:export-ydpi="192" />
     <rect
-       style="fill:#38fff0;fill-opacity:0.993007;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       style="fill:#38fff0;fill-opacity:0;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="rect33506"
        width="33.866665"
        height="33.866665"
        x="-4.4408921e-16"
-       y="67.73333" />
+       y="67.73333"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <ellipse
        style="fill:#fffff0;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path38374"
@@ -1665,10 +1702,16 @@
        rx="7.0665116"
        ry="7.0364418"
        clip-path="url(#clipPath41066)"
-       transform="translate(0,3.7041668)" />
+       transform="translate(0,3.7041668)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <g
        id="g40423"
-       transform="translate(0,3.7041668)">
+       transform="translate(0,3.7041668)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
       <path
          style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
          d="m 2.8266048,71.777719 c 3.8753907,-0.296117 7.9194302,0.578361 11.7574732,0.03007 1.702274,-0.243184 1.25405,-1.49293 0.270632,-1.984637"
@@ -1684,7 +1727,10 @@
        cx="13.746456"
        cy="77.95417"
        rx="0.49967784"
-       ry="0.63788664" />
+       ry="0.63788664"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <ellipse
        style="display:inline;fill:#fffff0;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path38374-9"
@@ -1693,11 +1739,17 @@
        rx="7.0665116"
        ry="7.0364418"
        clip-path="url(#clipPath41066-0)"
-       transform="translate(16.323481,4.2103456)" />
+       transform="translate(16.323481,4.2103456)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <g
        id="g40423-0"
        style="display:inline"
-       transform="translate(16.323481,4.2103456)">
+       transform="translate(16.323481,4.2103456)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
       <path
          style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
          d="m 2.8266048,71.777719 c 3.8753907,-0.296117 7.9194302,0.578361 11.7574732,0.03007 1.702274,-0.243184 1.25405,-1.49293 0.270632,-1.984637"
@@ -1713,22 +1765,34 @@
        cx="30.069937"
        cy="78.46035"
        rx="0.49967784"
-       ry="0.63788664" />
+       ry="0.63788664"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <path
        style="fill:#fffff0;fill-opacity:1;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="m 19.615657,88.827555 c -1.882643,1.498016 -4.886759,-1.48056 -6.825949,0.781828 -0.404105,0.471456 -0.608338,1.138076 -0.481124,1.774145 0.252354,1.261774 2.476591,2.544286 3.698642,2.195129 1.042351,-0.297812 1.913746,-1.098992 2.946886,-1.443371 1.377275,-0.459092 1.22793,0.924568 2.525902,-1.02239 0.794997,-1.192495 -0.588132,-3.379247 -1.864357,-2.285341 z"
-       id="path41360" />
+       id="path41360"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <path
        style="fill:none;fill-opacity:1;stroke:#1a1c14;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 12.311212,91.217786 c 0.633987,0.110757 1.291354,0.06379 1.934922,0.06379"
-       id="path41588" />
+       id="path41588"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <rect
-       style="display:inline;fill:#38fff0;fill-opacity:0.993007;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       style="display:inline;fill:#38fff0;fill-opacity:0;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="rect33506-7"
        width="33.866665"
        height="33.866665"
        x="33.866665"
-       y="67.733322" />
+       y="67.733322"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <ellipse
        style="display:inline;fill:#fffff0;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path38374-7"
@@ -1737,11 +1801,17 @@
        rx="7.0665116"
        ry="7.0364418"
        clip-path="url(#clipPath41066-3)"
-       transform="translate(33.866665,3.7041577)" />
+       transform="translate(33.866665,3.7041577)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <g
        id="g40423-6"
        transform="translate(33.866665,3.7041577)"
-       style="display:inline">
+       style="display:inline"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
       <path
          style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
          d="m 2.9967079,71.777719 c 3.8753907,-0.296117 7.7122021,0.149524 11.5873701,0.03007 1.681011,-0.05182 1.339102,-1.365353 0.355684,-1.85706"
@@ -1760,7 +1830,10 @@
        cy="62.473282"
        rx="0.49967784"
        ry="0.63788664"
-       transform="rotate(15.43269)" />
+       transform="rotate(15.43269)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <ellipse
        style="display:inline;fill:#fffff0;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path38374-9-4"
@@ -1769,11 +1842,17 @@
        rx="7.0665116"
        ry="7.0364418"
        clip-path="url(#clipPath41066-0-8)"
-       transform="translate(50.190146,4.2103366)" />
+       transform="translate(50.190146,4.2103366)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <g
        id="g40423-0-6"
        style="display:inline"
-       transform="translate(50.190146,4.2103366)">
+       transform="translate(50.190146,4.2103366)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
       <path
          style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
          d="M 2.5559724,71.702543 C 6.4012929,71.526707 10.776105,72.446291 14.584078,71.807789 16.27996,71.523432 16.01855,70.375 15.035132,69.883293"
@@ -1789,18 +1868,27 @@
        style="display:inline;fill:#fffff0;fill-opacity:1;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="m 53.482322,88.827546 c -1.882643,1.498016 -4.743925,-1.352761 -6.825949,0.781828 -0.433566,0.444513 -0.676598,1.155633 -0.481124,1.774145 0.372635,1.179081 2.025537,2.416489 3.698642,2.195129 1.074695,-0.142188 1.930281,-1.052871 2.946886,-1.443371 1.33217,-0.511715 1.405844,1.03208 2.525902,-1.02239 0.674716,-1.2376 -0.460333,-3.191308 -1.864357,-2.285341 z"
        id="path41360-1"
-       sodipodi:nodetypes="csssssc" />
+       sodipodi:nodetypes="csssssc"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <path
        style="display:inline;fill:none;fill-opacity:1;stroke:#1a1c14;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 46.25992,91.120058 c 0.636765,0.09348 1.292611,0.02865 1.935941,0.01115"
-       id="path41588-5" />
+       id="path41588-5"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <rect
-       style="display:inline;fill:#38fff0;fill-opacity:0.993007;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       style="display:inline;fill:#38fff0;fill-opacity:0;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="rect33506-1"
        width="33.866665"
        height="33.866665"
        x="67.73333"
-       y="67.73333" />
+       y="67.73333"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <ellipse
        style="display:inline;fill:#fffff0;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path38374-2"
@@ -1809,27 +1897,38 @@
        rx="7.0665116"
        ry="7.0364418"
        clip-path="url(#clipPath41066-8)"
-       transform="translate(67.733332,3.7041657)" />
+       transform="translate(67.733332,3.7041657)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <g
        id="g40423-03"
        transform="translate(67.733332,3.7041657)"
-       style="display:inline">
+       style="display:inline"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
       <path
          style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         d="m 2.8266048,71.777719 c 3.8753907,-0.296117 7.9194302,0.578361 11.7574732,0.03007 1.702274,-0.243184 1.25405,-1.49293 0.270632,-1.984637"
-         id="path35007-1" />
+         d="m 3.0179708,71.735193 c 3.8753907,-0.296117 7.6523742,0.721801 11.5661072,0.0726 1.707735,-0.283277 1.190261,-1.34409 0.419472,-1.920848"
+         id="path35007-1"
+         sodipodi:nodetypes="csc" />
       <path
          style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         d="m 14.163094,71.958138 c 1.865856,1.990701 0.676685,4.254714 -0.300703,6.404967 -0.455639,1.002406 -1.038021,2.250237 -1.954567,2.916817 -0.752949,0.547598 -1.9628616,0.602234 -2.8566749,0.691616 -3.713554,0.371356 -4.4804692,-2.550711 -4.4804692,-5.743422 0,-1.60061 0.6763846,-3.096844 1.353162,-4.450397"
-         id="path35011-2" />
+         d="m 14.163094,71.958138 c 1.865856,1.990701 0.676685,4.254714 -0.300703,6.404967 -0.455639,1.002406 -1.038021,2.250237 -1.954567,2.916817 -0.752949,0.547598 -1.9841245,0.580971 -2.8779378,0.670353 -3.713554,0.371356 -4.4592063,-2.529448 -4.4592063,-5.722159 0,-1.60061 0.6763846,-3.096844 1.353162,-4.450397"
+         id="path35011-2"
+         sodipodi:nodetypes="cssssc" />
     </g>
     <ellipse
        style="display:inline;fill:#1a1c14;fill-opacity:1;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path35353-2"
-       cx="81.47979"
-       cy="77.95417"
+       cx="81.330948"
+       cy="77.826591"
        rx="0.49967784"
-       ry="0.63788664" />
+       ry="0.63788664"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <ellipse
        style="display:inline;fill:#fffff0;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path38374-9-44"
@@ -1838,35 +1937,54 @@
        rx="7.0665116"
        ry="7.0364418"
        clip-path="url(#clipPath41066-0-88)"
-       transform="translate(84.056813,4.2103445)" />
+       transform="translate(84.056813,4.2103445)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <g
        id="g40423-0-2"
        style="display:inline"
-       transform="translate(84.056813,4.2103445)">
+       transform="translate(84.056813,4.2103445)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
       <path
          style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         d="m 2.8266048,71.777719 c 3.8753907,-0.296117 7.9194302,0.578361 11.7574732,0.03007 1.702274,-0.243184 1.25405,-1.49293 0.270632,-1.984637"
-         id="path35007-3-2" />
+         d="m 2.7415533,71.777719 c 3.8753907,-0.296117 7.9690837,0.196362 11.8425247,0.03007 1.702274,-0.07308 1.317839,-1.407878 0.334421,-1.899585"
+         id="path35007-3-2"
+         sodipodi:nodetypes="csc" />
       <path
          style="fill:none;fill-opacity:0.993007;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         d="m 14.163094,71.958138 c 1.865856,1.990701 0.676685,4.254714 -0.300703,6.404967 -0.455639,1.002406 -1.038021,2.250237 -1.954567,2.916817 -0.752949,0.547598 -1.9628616,0.602234 -2.8566749,0.691616 -3.713554,0.371356 -4.4804692,-2.550711 -4.4804692,-5.743422 0,-1.60061 0.6763846,-3.096844 1.353162,-4.450397"
-         id="path35011-8-4" />
+         d="m 14.163094,71.958138 c 1.355547,2.20333 0.740474,4.1484 -0.1306,6.362441 -0.40313,1.024652 -1.080547,1.952557 -2.12467,2.959343 -0.670204,0.646238 -1.9584079,0.6944 -2.8566749,0.691616 -3.6710282,-0.01138 -4.331629,-2.529448 -4.331629,-5.722159 0,-1.60061 0.7189104,-3.054318 1.3956878,-4.407871"
+         id="path35011-8-4"
+         sodipodi:nodetypes="cssssc" />
     </g>
     <ellipse
        style="display:inline;fill:#1a1c14;fill-opacity:1;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path35353-1-9"
-       cx="97.803268"
-       cy="78.46035"
+       cx="97.654427"
+       cy="78.332771"
        rx="0.49967784"
-       ry="0.63788664" />
+       ry="0.63788664"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <path
        style="display:inline;fill:#fffff0;fill-opacity:1;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-       d="m 87.348989,88.827554 c -1.882643,1.498016 -4.886759,-1.48056 -6.825949,0.781828 -0.404105,0.471456 -0.608338,1.138076 -0.481124,1.774145 0.252354,1.261774 2.476591,2.544286 3.698642,2.195129 1.042351,-0.297812 1.913746,-1.098992 2.946886,-1.443371 1.377275,-0.459092 1.22793,0.924568 2.525902,-1.02239 0.794997,-1.192495 -0.588132,-3.379247 -1.864357,-2.285341 z"
-       id="path41360-8" />
+       d="m 87.514375,88.812519 c -1.925168,1.274756 -4.988356,-1.603734 -6.927546,0.658654 -0.404105,0.471456 -0.682758,1.361337 -0.555544,1.997406 0.252354,1.261774 2.457304,2.328924 3.709273,2.110077 1.095508,-0.191498 1.988166,-1.01394 3.021306,-1.358319 1.377275,-0.459092 1.133141,0.686923 2.616868,-1.122477 0.89068,-1.086181 -0.588132,-3.379247 -1.864357,-2.285341 z"
+       id="path41360-8"
+       sodipodi:nodetypes="csssssc"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <path
        style="display:inline;fill:none;fill-opacity:1;stroke:#1a1c14;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 80.044544,91.217785 c 0.633987,0.110757 1.291354,0.06379 1.934922,0.06379"
-       id="path41588-6" />
+       d="m 80.044544,91.217785 c 0.72967,0.06823 1.291354,0.148842 1.934922,0.148842"
+       id="path41588-6"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <ellipse
        style="display:inline;fill:#1a1c14;fill-opacity:1;stroke:#1a1c14;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        id="path35353-5-4"
@@ -1874,6 +1992,9 @@
        cy="58.616917"
        rx="0.49967784"
        ry="0.63788664"
-       transform="rotate(15.43269)" />
+       transform="rotate(15.43269)"
+       inkscape:export-filename="C:\Users\zloun\Documents\GitHub\OatsBrackeysJam\oatsbrackeysjam2025\assets\face_3_sprites.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
   </g>
 </svg>
