@@ -510,7 +510,8 @@ vertical_alignment = 1
 
 [node name="SCC" type="Sprite2D" parent="."]
 modulate = Color(0.78292, 0.214683, 0.484692, 1)
-position = Vector2(240, 256)
+position = Vector2(96, 128)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_8e1ou")
 
 [node name="Label" type="Label" parent="SCC"]
@@ -522,7 +523,7 @@ text = "SCC"
 
 [node name="CC" type="Sprite2D" parent="."]
 modulate = Color(0.596142, 0.487097, 0, 1)
-position = Vector2(96, 128)
+position = Vector2(384, 128)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_8e1ou")
 
@@ -535,8 +536,7 @@ text = "CC"
 
 [node name="SJ" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(384, 128)
-scale = Vector2(0.5, 0.5)
+position = Vector2(240, 256)
 texture = ExtResource("2_8e1ou")
 
 [node name="Label3" type="Label" parent="SJ"]

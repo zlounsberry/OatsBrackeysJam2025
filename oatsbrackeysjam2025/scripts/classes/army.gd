@@ -34,8 +34,7 @@ func update_army_size_visuals() -> void:
 	for child in $ArmyVisuals.get_children():
 		child.hide()
 	get_node(str("ArmyVisuals/", army_size)).show()
-	for child in $ArmyVisuals.get_children():
-		prints(army_size, child.visible)
+	$DEBUG.text = str("Player ", controlling_player_id)
 
 
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
@@ -76,8 +75,7 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 			first_model_down = true
 			new_tile.update_ownership(true, self) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
 			currently_occupied_tile = new_tile
-		else:
-			model_scene.queue_free()
+		model_scene.queue_free()
 	army_size -= unit_count
 	current_tile.update_ownership(false, null) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
 	movement_complete.emit()
@@ -85,7 +83,10 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 	if army_size <= 0: 
 		var current_army_array: Array = GameState.current_player_dict[GameState.current_player_turn]["current_armies"]
 		var army_position: int = current_army_array.find(self)
+		prints("player game state:", GameState.current_player_turn, "player army: ", controlling_player_id)
+		print(GameState.current_player_dict[GameState.current_player_turn])
 		var remove_army: Army = GameState.current_player_dict[GameState.current_player_turn]["current_armies"].pop_at(army_position)
 		prints("removing", remove_army, "from", self)
 		self.queue_free()
+		print(GameState.current_player_dict[GameState.current_player_turn])
 	update_army_size_visuals()

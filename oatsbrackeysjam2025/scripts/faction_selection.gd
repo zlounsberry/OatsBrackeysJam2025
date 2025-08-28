@@ -20,10 +20,10 @@ func _ready() -> void:
 		#GameState.current_player_dict[value]["is_ai"] = false
 		#GameState.current_player_dict[value]["is_eliminated"] = false
 	print("current game dict: ", GameState.current_player_dict)
-	is_animating = true
-	anim.play("Select_SCC_left")
-	await anim.animation_finished
-	is_animating = false
+	#is_animating = true
+	#anim.play("Select_SCC_left")
+	#await anim.animation_finished
+	#is_animating = false
 
 
 func _input(event: InputEvent) -> void:
@@ -39,19 +39,19 @@ func _scroll_left():
 	is_animating = true
 	match current_selection:
 		GameState.FACTIONS.SANDWICH_COOKIE:
-			anim.play("Select_SJ_left")
-			_update_current_selection(GameState.FACTIONS.STRAWBRY_JAMMER)
-			confirm_button.text = "STRAWBRY_JAMMER"
+			anim.play("Select_CC_left")
+			_update_current_selection(GameState.FACTIONS.CHOCCY_CHIP)
+			confirm_button.text = "CHOCCY CHIP"
 			#current_selection = GameState.FACTIONS.SANDWICH_COOKIE
 		GameState.FACTIONS.CHOCCY_CHIP:
+			anim.play("Select_SJ_left")
+			_update_current_selection(GameState.FACTIONS.STRAWBRY_JAMMER)
+			confirm_button.text = "STRAWBRY JAMMER"
+			#current_selection = GameState.FACTIONS.CHOCCY_CHIP
+		GameState.FACTIONS.STRAWBRY_JAMMER:
 			anim.play("Select_SCC_left")
 			_update_current_selection(GameState.FACTIONS.SANDWICH_COOKIE)
 			confirm_button.text = "SANDWICH_COOKIE"
-			#current_selection = GameState.FACTIONS.CHOCCY_CHIP
-		GameState.FACTIONS.STRAWBRY_JAMMER:
-			anim.play("Select_CC_left")
-			_update_current_selection(GameState.FACTIONS.CHOCCY_CHIP)
-			confirm_button.text = "CHOCCY_CHIP"
 			#current_selection = GameState.FACTIONS.STRAWBRY_JAMMER
 	await anim.animation_finished
 	is_animating = false
@@ -61,17 +61,17 @@ func _scroll_right():
 	is_animating = true
 	match current_selection:
 		GameState.FACTIONS.SANDWICH_COOKIE:
-			anim.play("Select_CC_right")
-			_update_current_selection(GameState.FACTIONS.CHOCCY_CHIP)
-			confirm_button.text = "CHOCCY_CHIP"
-		GameState.FACTIONS.CHOCCY_CHIP:
 			anim.play("Select_SJ_right")
 			_update_current_selection(GameState.FACTIONS.STRAWBRY_JAMMER)
-			confirm_button.text = "STRAWBRY_JAMMER"
-		GameState.FACTIONS.STRAWBRY_JAMMER:
+			confirm_button.text = "STRAWBRY JAMMER"
+		GameState.FACTIONS.CHOCCY_CHIP:
 			anim.play("Select_SCC_right")
 			_update_current_selection(GameState.FACTIONS.SANDWICH_COOKIE)
-			confirm_button.text = "SANDWICH_COOKIE"
+			confirm_button.text = "SANDWICH COOKIE"
+		GameState.FACTIONS.STRAWBRY_JAMMER:
+			anim.play("Select_CC_right")
+			_update_current_selection(GameState.FACTIONS.CHOCCY_CHIP)
+			confirm_button.text = "CHOCCY CHIP"
 	await anim.animation_finished
 	is_animating = false
 

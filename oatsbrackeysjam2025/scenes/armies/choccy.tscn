@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dvfe75of0np0y" path="res://scripts/armies/choccy.gd" id="1_rcjnm"]
 [ext_resource type="PackedScene" uid="uid://dwgx5jvy7ocjs" path="res://scenes/turn_indicator.tscn" id="3_ka8dc"]
 
-[node name="ChoccyArmy" type="Node3D"]
+[node name="CCArmy" type="Node3D"]
 script = ExtResource("1_rcjnm")
 faction_id = 1
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
@@ -210,3 +210,9 @@ transform = Transform3D(-0.741531, 0, -0.670919, 0, 1, 0, 0.670919, 0, -0.741531
 
 [node name="choccy10" parent="ArmyVisuals/10" instance=ExtResource("1_gjy2c")]
 transform = Transform3D(-0.741531, 0, -0.670919, 0, 1, 0, 0.670919, 0, -0.741531, 0, 0, 0)
+
+[node name="DEBUG" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.833677, 0)
+billboard = 1
+no_depth_test = true
+font_size = 128

@@ -32,6 +32,7 @@ enum STATE_MACHINE {
 }
 
 const MAX_ARMY_SIZE: int = 10
+const MAX_PLAYER_COUNT: int = 3
 
 @onready var current_state: int = STATE_MACHINE.SELECTING_START # For testing confirm button
 @onready var current_player_turn: int = GameState.PLAYER_IDS.PLAYER_1 # This gets updated with _update_current_player in the main scene ready function

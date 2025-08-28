@@ -19,7 +19,6 @@ visible = false
 [node name="ArmyVisuals" type="Node3D" parent="."]
 
 [node name="1" type="Node3D" parent="ArmyVisuals"]
-visible = false
 
 [node name="jammer" parent="ArmyVisuals/1" instance=ExtResource("2_udmue")]
 
@@ -214,3 +213,10 @@ transform = Transform3D(-0.984205, 0, -0.177033, 0, 1, 0, 0.177033, 0, -0.984205
 
 [node name="jammer10" parent="ArmyVisuals/10" instance=ExtResource("2_udmue")]
 transform = Transform3D(0.993431, 0, 0.114434, 0, 1, 0, -0.114434, 0, 0.993431, 2.00043, 0, 0.416724)
+
+[node name="DEBUG" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47576, 0)
+billboard = 1
+no_depth_test = true
+text = "OK!"
+font_size = 128

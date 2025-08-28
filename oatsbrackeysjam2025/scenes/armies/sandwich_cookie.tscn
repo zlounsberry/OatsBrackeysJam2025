@@ -8,6 +8,12 @@
 script = ExtResource("1_7dnmr")
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
 
+[node name="DEBUG" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.833677, 0)
+billboard = 1
+no_depth_test = true
+font_size = 128
+
 [node name="TurnIndicator" parent="." instance=ExtResource("3_2mpg4")]
 visible = false
 
