@@ -28,6 +28,7 @@ enum STATE_MACHINE {
 	SELECTING_IN_GAME,
 	CONFIRMING_IN_GAME,
 	TRANSITIONING,
+	ATTACK_HAPPENING,
 	GAME_OVER,
 }
 
@@ -42,28 +43,24 @@ const MAX_PLAYER_COUNT: int = 3
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
 			"is_eliminated": false,
-			"current_armies": [],
 		},
 	PLAYER_IDS.PLAYER_2: 
 		{
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
 			"is_eliminated": false,
-			"current_armies": [],
 		},
 	PLAYER_IDS.PLAYER_3: 
 		{
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
 			"is_eliminated": false,
-			"current_armies": [],
 		},
 	PLAYER_IDS.PLAYER_4: 
 		{
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
 			"is_eliminated": false,
-			"current_armies": [],
 		},
 }
 

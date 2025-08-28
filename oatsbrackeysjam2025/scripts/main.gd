@@ -8,6 +8,7 @@ signal player_confirmed(is_yes: bool)
 
 @onready var moving_camera: bool = false
 @onready var units_to_move: int = 0
+@onready var total_army_count: int = 0
 
 
 func _input(event: InputEvent) -> void:
@@ -16,6 +17,10 @@ func _input(event: InputEvent) -> void:
 
 	if moving_camera:
 		return
+
+	if event.is_action_pressed("ui_end"):
+		#DEBUG CAMERA TOP VIEW
+		$Marker3D.rotation_degrees.x = -32
 
 	if event.is_action_pressed("ui_left"):
 		moving_camera = true
@@ -35,19 +40,11 @@ func _input(event: InputEvent) -> void:
 		var new_army: Army
 		if GameState.current_state <= GameState.STATE_MACHINE.SELECTING_IN_GAME:
 			return
-		var army_array: Array = GameState.current_player_dict[GameState.current_player_turn]["current_armies"]
-		var array_position = army_array.find(GameState.current_selected_army)
-		if array_position == len(army_array):
-			new_army = army_array[0]
-		else:
-			new_army = army_array[array_position + 1]
 
 
-func _show_confirm_menu(available_units: int):
-	print('show confirm')
-	$HUD/ConfirmMenu.show() # Easiest for this menu to start hidden so it doesn't mess w/ the faction selection menu. Just show it once, it doesn't hide again
-	$HUD/ConfirmMenu.available_units = available_units
-	$HUD/ConfirmMenu.tween_menu_in()
+func _show_confirm_menu(available_units: int, is_attack_action: bool):
+	prints('show confirm', available_units, is_attack_action)
+	$HUD.open_confirm_menu(available_units, is_attack_action)
 
 
 func _hide_confirm_menu():
@@ -75,6 +72,7 @@ func select_next_army() -> void:
 
 func _add_new_army(map_tile: MapTile, player_value: int, new_army_size: int) -> void:
 	var new_army: Army
+	total_army_count += 1
 	if player_value == -99:
 		player_value = GameState.current_player_turn
 	match GameState.current_player_dict[player_value]["faction_id"]:
@@ -87,26 +85,42 @@ func _add_new_army(map_tile: MapTile, player_value: int, new_army_size: int) -> 
 	new_army.controlling_player_id = player_value
 	new_army.name = str("Army", player_value)
 	new_army.currently_occupied_tile = map_tile
-	map_tile.is_occupied = true
-	map_tile.occupying_army = new_army
 	new_army.army_size = new_army_size
+	new_army.army_id = total_army_count
 	add_child(new_army)
+	print("Update ownership from _add_new_army() in main.gd")
+	map_tile.update_ownership(true, new_army)
 	new_army.update_army_size_visuals()
-	GameState.current_player_dict[player_value]["current_armies"].append(new_army)
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
 
 
 func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_is_occupied: bool) -> void:
+##	Receiving this signal means that a tile was clicked on and the signal made its way up here
+## If tile_is_occupied is true, that means the clicked tile is currently occupied by occupying_army
+## Otherwise, occupying_army is null and tile_is_occupied comes in false
 	if not GameState.current_state == GameState.STATE_MACHINE.SELECTING_IN_GAME:
 		print('wrong state')
 		return
 	if GameState.current_selected_army == null:
 		print("no army selected!")
 		return
-	GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
-	if not tile_is_occupied:
-		var current_army: Army = GameState.current_selected_army
-		_show_confirm_menu(current_army.army_size)
+	var current_army: Army = GameState.current_selected_army
+	if tile_is_occupied:
+#		 If the tile is occupied, ensure that the invading army and occupying army are not controlled by the same team
+		print("This tile is occupied from main script!")
+		if tile_scene.occupying_army.controlling_player_id == GameState.current_player_turn:
+			print("cannot attack self!")
+			GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME) # Not sure this is needed
+			return
+		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
+		_show_confirm_menu(current_army.army_size, true)
+		var confirmed: bool = await player_confirmed 
+		if confirmed:
+			GameState.update_state(GameState.STATE_MACHINE.ATTACK_HAPPENING)
+			prints("menu closed, fight time!")
+	else:
+		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
+		_show_confirm_menu(current_army.army_size, false)
 		var confirmed: bool = await player_confirmed # Note the function that emits this signal also defines the units_to_move variable!
 		_hide_confirm_menu()
 		if confirmed:
@@ -115,8 +129,7 @@ func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_i
 			await current_army.movement_complete
 			_add_new_army(current_army.currently_occupied_tile, -99, units_to_move) # -99 means "use global variable for current player turn (not used in _on_hud_start_game())
 			_update_current_player(false)
-	else:
-		print("attack time")
+	units_to_move = 0 # Just reset this for good measure
 	print("got here!")
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 

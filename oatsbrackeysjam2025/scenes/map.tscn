@@ -884,6 +884,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_001"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.455936, -1.09103)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_001"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_002" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58762, 0.012533, 7.47079)
 mesh = SubResource("ArrayMesh_wfymt")
@@ -905,6 +911,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_002"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826898, 0)
+
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_002"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
 
 [node name="Plane_003" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.977801, 0.012533, 11.9715)
@@ -928,6 +940,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_003"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647327, -1.92502)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_003"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_004" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329055, 0.012533, 17.4046)
 mesh = SubResource("ArrayMesh_a4c3j")
@@ -949,6 +967,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_004"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06477, -0.308642, -2.09625)
+
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_004"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
 
 [node name="Plane_005" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31917, 0.012533, 16.1272)
@@ -972,6 +996,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_005"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.447907, 0.362291, 0.165682)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_005"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_007" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6934, -0.00234825, -3.91079)
 mesh = SubResource("ArrayMesh_my82q")
@@ -993,6 +1023,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_007"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.156395, 0.0266018, -0.439285)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_007"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_008" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4785, -0.00234825, 0.886857)
 mesh = SubResource("ArrayMesh_0041x")
@@ -1013,6 +1049,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_008"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486941, 1.94236)
+
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_008"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
 
 [node name="Plane_010" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64297, 0, -6.21746)
@@ -1036,6 +1078,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_010"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0213826, 0)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_010"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_011" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68664, 0, -4.51945)
 mesh = SubResource("ArrayMesh_ptojk")
@@ -1057,6 +1105,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_011"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485025, 0)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_011"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_012" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92461, 0, -2.95022)
 mesh = SubResource("ArrayMesh_knes2")
@@ -1077,6 +1131,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_012"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.642227, 0.876567, -0.780428)
+
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_012"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
 
 [node name="Plane_013" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08999, 0, -0.118583)
@@ -1100,6 +1160,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_013"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0100164, 2.18128, -0.57249)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_013"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_014" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30582, 0, 2.13599)
 mesh = SubResource("ArrayMesh_kbhl1")
@@ -1121,6 +1187,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_014"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29327, 1.42865, -2.5914)
+
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_014"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
 
 [node name="Plane_009" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2115, 0, -0.64609)
@@ -1144,6 +1216,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_009"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57082, 0)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_009"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_015" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5262, 0, 6.23972)
 mesh = SubResource("ArrayMesh_jwer3")
@@ -1165,6 +1243,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_015"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.312359, 0.340567, -0.728838)
+
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_015"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
 
 [node name="Plane_016" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1001, 0, 10.2125)
@@ -1188,6 +1272,12 @@ visible = false
 mesh = SubResource("ArrayMesh_lhdcv")
 surface_material_override/0 = ExtResource("2_paxxb")
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_016"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_017" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2723, 0, 11.3)
 mesh = SubResource("ArrayMesh_56xfx")
@@ -1210,6 +1300,12 @@ surface_material_override/0 = ExtResource("2_paxxb")
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_017"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594182, 0)
 
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_017"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
+
 [node name="Plane_018" type="MeshInstance3D" parent="TilesMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7477, 0, 12.9227)
 mesh = SubResource("ArrayMesh_rcmny")
@@ -1231,3 +1327,9 @@ surface_material_override/0 = ExtResource("2_paxxb")
 
 [node name="Marker3D" type="Marker3D" parent="TilesMap/Plane_018"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40834, 0.0219033, 0.23667)
+
+[node name="DEBUG" type="Label3D" parent="TilesMap/Plane_018"]
+billboard = 1
+no_depth_test = true
+text = "ok"
+font_size = 256
