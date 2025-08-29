@@ -39,6 +39,7 @@ func _compare_dice():
 			defender_player_rolls_array[array_position][1].queue_free()
 	prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
 	deal_damage_to_army.emit(damage_to_attacker, damage_to_defender)
+	await get_tree().create_timer(3).timeout # DEBUG
 	self.queue_free()
 
 

@@ -60,6 +60,8 @@ func _update_current_player(initialize: bool) -> void:
 	if initialize:
 		GameState.current_player_turn = randi_range(0, (GameState.number_of_players - 1)) # If this is the first selection, pick a random army
 	$HUD.update_player_turn_label()
+	for tile in get_tree().get_nodes_in_group("map_tile"):
+		tile._hide_outline()
 	for army_child: Army in get_tree().get_nodes_in_group("army"):
 		if army_child.controlling_player_id == GameState.current_player_turn:
 			GameState.current_tile_id = army_child.currently_occupied_tile.tile_id
