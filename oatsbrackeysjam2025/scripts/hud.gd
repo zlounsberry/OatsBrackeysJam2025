@@ -21,10 +21,8 @@ func open_confirm_menu(available_units: int, is_attack: bool):
 	var confirm_menu = CONFIRM_MENU.instantiate()
 	confirm_menu.available_units = available_units
 	confirm_menu.is_attack = is_attack
-	print("first attempt: ", confirm_menu.is_attack)
 	add_child(confirm_menu)
 	confirm_menu.player_selected_yes.connect(_on_confirm_menu_player_selected_yes)
-	print("after add: ", confirm_menu.is_attack)
 
 
 func update_player_turn_label() -> void:

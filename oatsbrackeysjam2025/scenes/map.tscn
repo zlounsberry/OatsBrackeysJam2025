@@ -869,6 +869,7 @@ mesh = SubResource("ArrayMesh_1w5w0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_2lpho")
 script = ExtResource("2_gldc4")
+tile_id = 1
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_001"]
@@ -897,6 +898,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_nakos")
 script = ExtResource("2_gldc4")
 continent_id = 1
+tile_id = 2
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_002"]
@@ -925,6 +927,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_nakos")
 script = ExtResource("2_gldc4")
 continent_id = 1
+tile_id = 3
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_003"]
@@ -953,6 +956,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_nakos")
 script = ExtResource("2_gldc4")
 continent_id = 1
+tile_id = 4
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_004"]
@@ -981,6 +985,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_nakos")
 script = ExtResource("2_gldc4")
 continent_id = 1
+tile_id = 5
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_005"]
@@ -1008,6 +1013,7 @@ mesh = SubResource("ArrayMesh_my82q")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_2lpho")
 script = ExtResource("2_gldc4")
+tile_id = 7
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_007"]
@@ -1035,6 +1041,7 @@ mesh = SubResource("ArrayMesh_0041x")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_2lpho")
 script = ExtResource("2_gldc4")
+tile_id = 8
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_008"]
@@ -1063,6 +1070,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_jh32y")
 script = ExtResource("2_gldc4")
 continent_id = 2
+tile_id = 10
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_010"]
@@ -1090,6 +1098,7 @@ mesh = SubResource("ArrayMesh_ptojk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_2lpho")
 script = ExtResource("2_gldc4")
+tile_id = 11
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_011"]
@@ -1117,6 +1126,7 @@ mesh = SubResource("ArrayMesh_knes2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_jh32y")
 script = ExtResource("2_gldc4")
+tile_id = 12
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_012"]
@@ -1145,6 +1155,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_jh32y")
 script = ExtResource("2_gldc4")
 continent_id = 2
+tile_id = 13
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_013"]
@@ -1173,6 +1184,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_jh32y")
 script = ExtResource("2_gldc4")
 continent_id = 2
+tile_id = 14
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_014"]
@@ -1201,6 +1213,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_jh32y")
 script = ExtResource("2_gldc4")
 continent_id = 2
+tile_id = 9
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_009"]
@@ -1229,6 +1242,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_nakos")
 script = ExtResource("2_gldc4")
 continent_id = 3
+tile_id = 15
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_015"]
@@ -1257,6 +1271,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_nakos")
 script = ExtResource("2_gldc4")
 continent_id = 3
+tile_id = 16
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_016"]
@@ -1285,6 +1300,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_nakos")
 script = ExtResource("2_gldc4")
 continent_id = 3
+tile_id = 17
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_017"]
@@ -1313,6 +1329,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_nakos")
 script = ExtResource("2_gldc4")
 continent_id = 3
+tile_id = 18
 metadata/_custom_type_script = "uid://cqxugqu324pb4"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TilesMap/Plane_018"]

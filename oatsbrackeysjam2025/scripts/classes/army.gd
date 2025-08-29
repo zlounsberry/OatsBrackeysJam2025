@@ -69,11 +69,7 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 		vtween.tween_property(model_scene, "global_position:y", new_position.y, 0.125)
 		await htween.finished
 		if not first_model_down:
-			print("First model down, update ownership and don't you come back now!")
 			first_model_down = true
-			print("No longer touching ownership from move_to_new_space()) in army.gd")
-			#print("Update ownership from move_to_new_space()) in army.gd")
-			#new_tile.update_ownership(true, self) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
 			currently_occupied_tile = new_tile
 		model_scene.queue_free()
 	army_size -= unit_count

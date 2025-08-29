@@ -43,12 +43,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _show_confirm_menu(available_units: int, is_attack_action: bool):
-	prints('show confirm', available_units, is_attack_action)
 	$HUD.open_confirm_menu(available_units, is_attack_action)
 
 
 func _hide_confirm_menu():
-	print('hide confirm')
 	$HUD/ConfirmMenu.tween_menu_out()
 
 
@@ -62,8 +60,19 @@ func _update_current_player(initialize: bool) -> void:
 	$HUD.update_player_turn_label()
 	for army_child: Army in get_tree().get_nodes_in_group("army"):
 		if army_child.controlling_player_id == GameState.current_player_turn:
+			GameState.current_tile_id = army_child.currently_occupied_tile.tile_id
 			army_child.select_this_army()
+			set_adjacent_tiles_selectable()
 			return
+
+
+func set_adjacent_tiles_selectable() -> void:
+	for map_tile in get_tree().get_nodes_in_group("map_tile"):
+		map_tile.can_select = false
+	for map_id in GameState.TILE_ADJACENT_MAP_DICT[GameState.current_tile_id]:
+		for map_tile: MapTile in get_tree().get_nodes_in_group("map_tile"):
+			if map_id == map_tile.tile_id:
+				map_tile.can_select = true
 
 
 func select_next_army() -> void:
@@ -88,7 +97,6 @@ func _add_new_army(map_tile: MapTile, player_value: int, new_army_size: int) -> 
 	new_army.army_size = new_army_size
 	new_army.army_id = total_army_count
 	add_child(new_army)
-	print("Update ownership from _add_new_army() in main.gd")
 	map_tile.update_ownership(true, new_army)
 	new_army.update_army_size_visuals()
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
@@ -130,7 +138,6 @@ func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_i
 			_add_new_army(current_army.currently_occupied_tile, -99, units_to_move) # -99 means "use global variable for current player turn (not used in _on_hud_start_game())
 			_update_current_player(false)
 	units_to_move = 0 # Just reset this for good measure
-	print("got here!")
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 
 

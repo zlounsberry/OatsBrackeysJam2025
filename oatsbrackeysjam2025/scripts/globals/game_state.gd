@@ -34,6 +34,25 @@ enum STATE_MACHINE {
 
 const MAX_ARMY_SIZE: int = 10
 const MAX_PLAYER_COUNT: int = 3
+const TILE_ADJACENT_MAP_DICT: Dictionary = {
+	1: [7,8,11],
+	2: [3,5,8],
+	3: [2,4,5,14],
+	4: [3,5,16],
+	5: [2,3,4],
+	7: [8,1],
+	8: [1,2,7],
+	9: [12,14,15],
+	10: [11,12,13],
+	11: [1,10,12,13],
+	12: [9,10,11,13,14],
+	13: [10,11,12,14],
+	14: [3,9,12,13],
+	15: [9,16],
+	16: [4,15, 17],
+	17: [16,18],
+	18: [17],
+}
 
 @onready var current_state: int = STATE_MACHINE.SELECTING_START # For testing confirm button
 @onready var current_player_turn: int = GameState.PLAYER_IDS.PLAYER_1 # This gets updated with _update_current_player in the main scene ready function
@@ -68,6 +87,7 @@ const MAX_PLAYER_COUNT: int = 3
 @onready var menu_open: bool = true # This will get updated to an export var controlling the main scene
 
 var current_selected_army: Army
+var current_tile_id: int
 
 
 func update_state(new_state: int) -> void:

@@ -3,18 +3,23 @@ class_name MapTile
 
 signal clicked_this_tile(self_id: MapTile, occupying_army: Army, tile_is_occupied: bool)
 
+@onready var can_select: bool = false
 @onready var is_hovered: bool = false
 
 @export var continent_id: int = 0
+@export var tile_id: int
 
 var is_occupied: bool = false
 var occupying_army: Army
+var adjacent_tiles: Array = []
 
 
 func _ready() -> void:
 	add_to_group("map_tile")
 	$StaticBody3D.mouse_entered.connect(_show_outline)
 	$StaticBody3D.mouse_exited.connect(_hide_outline)
+	adjacent_tiles = GameState.TILE_ADJACENT_MAP_DICT[tile_id]
+	prints(tile_id, "adjacent: ", adjacent_tiles)
 
 
 func _process(delta: float) -> void:
@@ -29,6 +34,10 @@ func _input(event: InputEvent) -> void:
 			return
 		if is_hovered:
 			if is_occupied:
+				if occupying_army == null:
+					print("edge case!")
+					clicked_this_tile.emit(self, null, false) # Edge case where tile isn't occupied TODO: Consider removing if it fucks up!
+					return
 				print("tile is occupied from tile map class script", self, is_occupied, occupying_army)
 				clicked_this_tile.emit(self, occupying_army, true)
 			else:
@@ -61,6 +70,8 @@ func _show_outline():
 	if GameState.STATE_MACHINE.DISABLED:
 		return
 	if GameState.menu_open:
+		return
+	if not can_select:
 		return
 	for tile in get_tree().get_nodes_in_group("map_tile"):
 		tile._hide_outline()
