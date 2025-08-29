@@ -6,10 +6,9 @@ const SANDWICH_COOKIE = preload("res://scenes/armies/sandwich_cookie.tscn")
 const DICE_TRAY = preload("res://scenes/dice_tray.tscn")
 
 signal player_confirmed(is_yes: bool)
-signal army_defeated(is_defeated: bool)
+#signal army_defeated(is_defeated: bool)
 
 @onready var moving_camera: bool = false
-@onready var units_to_move: int = 0
 @onready var total_army_count: int = 0
 
 
@@ -20,6 +19,9 @@ func _input(event: InputEvent) -> void:
 
 	if moving_camera:
 		return
+
+	if event.is_action_pressed("switch_army"):
+		select_next_army()
 
 	if event.is_action_pressed("ui_end"):
 		#DEBUG CAMERA TOP VIEW
@@ -65,26 +67,48 @@ func _update_current_player(initialize: bool) -> void:
 		tile._hide_outline()
 	for army_child: Army in get_tree().get_nodes_in_group("army"):
 		if army_child.controlling_player_id == GameState.current_player_turn:
-			GameState.current_tile_id = army_child.currently_occupied_tile.tile_id
 			army_child.select_this_army()
-			set_adjacent_tiles_selectable()
+			set_adjacent_tiles_selectable(army_child.currently_occupied_tile.tile_id)
 			return
 
 
-func set_adjacent_tiles_selectable() -> void:
+func set_adjacent_tiles_selectable(tile_id: int) -> void:
 	for map_tile in get_tree().get_nodes_in_group("map_tile"):
 		map_tile.can_select = false
-	for map_id in GameState.TILE_ADJACENT_MAP_DICT[GameState.current_tile_id]:
+		map_tile._hide_outline()
+	for map_id in GameState.TILE_ADJACENT_MAP_DICT[tile_id]:
 		for map_tile: MapTile in get_tree().get_nodes_in_group("map_tile"):
 			if map_id == map_tile.tile_id:
 				map_tile.can_select = true
 
 
 func select_next_army() -> void:
-	pass
+##	 Check out this clunky shit lmao
+	var player_controlled_army_ids: Array = []
+	var army_scene: Army
+	var new_army_id: int
+	for army_child: Army in get_tree().get_nodes_in_group("army"):
+		if army_child.controlling_player_id == GameState.current_player_turn:
+			player_controlled_army_ids.append(army_child.army_id)
+	#if GameState.current_selected_army == null:
+		#return
+	if GameState.current_selected_army.army_id == player_controlled_army_ids.max():
+#		 Loop around to lowest value if it's the max value
+		new_army_id = player_controlled_army_ids.min()
+	else:
+#		 Otherwise just grab the next value
+		var current_array_position: int = player_controlled_army_ids.find(GameState.current_selected_army.army_id)
+		new_army_id = player_controlled_army_ids[current_array_position + 1]
+	for army_child: Army in get_tree().get_nodes_in_group("army"):
+		if army_child.army_id == new_army_id:
+			army_child.select_this_army()
+			set_adjacent_tiles_selectable(army_child.currently_occupied_tile.tile_id)
+			prints("army_child.currently_occupied_tile.tile_id", army_child.currently_occupied_tile.tile_id)
+			return
+	print("you borked it lol")
 
 
-func _add_new_army(map_tile: MapTile, player_value: int, new_army_size: int) -> void:
+func _add_new_army_to_map_tile(map_tile: MapTile, player_value: int, new_army_size: int) -> void:
 	var new_army: Army
 	total_army_count += 1
 	if player_value == -99:
@@ -97,19 +121,17 @@ func _add_new_army(map_tile: MapTile, player_value: int, new_army_size: int) -> 
 		GameState.FACTIONS.STRAWBRY_JAMMER:
 			new_army = JAMMER.instantiate()
 	new_army.controlling_player_id = player_value
-	new_army.name = str("Army", player_value)
 	new_army.currently_occupied_tile = map_tile
 	new_army.army_size = new_army_size
 	new_army.army_id = total_army_count
 	add_child(new_army)
-	new_army.army_defeated.connect(_on_army_army_defeated)
 	map_tile.update_ownership(true, new_army)
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
 	new_army.update_army_size_visuals()
+	prints("new army", new_army, "on tile", map_tile, new_army.currently_occupied_tile)
 
 
-
-func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_is_occupied: bool) -> void:
+func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army, tile_is_occupied: bool) -> void:
 ##	Receiving this signal means that a tile was clicked on and the signal made its way up here
 ## If tile_is_occupied is true, that means the clicked tile is currently occupied by occupying_army
 ## Otherwise, occupying_army is null and tile_is_occupied comes in false
@@ -122,40 +144,43 @@ func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_i
 	var current_army: Army = GameState.current_selected_army
 	if tile_is_occupied:
 #		 If the tile is occupied, ensure that the invading army and occupying army are not controlled by the same team
-		print("This tile is occupied from main script!")
-		if tile_scene.occupying_army.controlling_player_id == GameState.current_player_turn:
-			print("cannot attack self!")
+		if clicked_tile_scene.occupying_army.controlling_player_id == GameState.current_player_turn:
 			GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME) # Not sure this is needed
 			return
 		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
 		_show_confirm_menu(current_army.army_size, true)
 		var confirmed: Array = await player_confirmed 
-		print("confirmed variable = ", confirmed)
+#		 If the tile contains an army that is not controlled by the player, begin the attack phase by opening menu
 		if confirmed[0]:
-			GameState.update_state(GameState.STATE_MACHINE.ATTACK_HAPPENING)
-			var dice_tray: = DICE_TRAY.instantiate()
-			dice_tray.attacker_army = current_army
-			dice_tray.attacker_player_id = current_army.controlling_player_id
-			dice_tray.attacker_army_size = confirmed[1] # The 2nd variable in the player_confirmed array is the unit count
-			dice_tray.defender_army = occupying_army
-			dice_tray.defender_player_id = occupying_army.controlling_player_id
-			dice_tray.defender_army_size = occupying_army.army_size
-			$HUD.add_child(dice_tray)
-			dice_tray.deal_damage_to_army.connect(_damage_armies)
+			_initiate_attack(current_army, occupying_army, confirmed[1])
 	else:
+#		 If the tile is not currently occupied, allow the player to move onto it
 		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
 		_show_confirm_menu(current_army.army_size, false)
 		var confirmed: Array = await player_confirmed # Note the function that emits this signal also defines the units_to_move variable!
-		print("confirmed variable = ", confirmed)
 		_hide_confirm_menu()
 		if confirmed[0]:
-			current_army.move_to_new_space(current_army.currently_occupied_tile, tile_scene, units_to_move)
+			prints("army moving from", current_army.currently_occupied_tile, "to", clicked_tile_scene)
+			current_army.move_to_new_space(current_army.currently_occupied_tile, clicked_tile_scene, confirmed[1])
 			GameState.update_state(GameState.STATE_MACHINE.TRANSITIONING)
 			await current_army.movement_complete
-			_add_new_army(current_army.currently_occupied_tile, -99, units_to_move) # -99 means "use global variable for current player turn (not used in _on_hud_start_game())
+			_add_new_army_to_map_tile(clicked_tile_scene, -99, confirmed[1])
+			#_add_new_army_to_map_tile(current_army.currently_occupied_tile, -99, confirmed[1]) # -99 means "use global variable for current player turn (not used in _on_hud_start_game())
 			_update_current_player(false)
-	units_to_move = 0 # Just reset this for good measure
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
+
+
+func _initiate_attack(current_army: Army, occupying_army: Army, units_to_attack_with: int) -> void:
+	GameState.update_state(GameState.STATE_MACHINE.ATTACK_HAPPENING)
+	var dice_tray: = DICE_TRAY.instantiate()
+	dice_tray.attacker_army = current_army
+	dice_tray.attacker_player_id = current_army.controlling_player_id
+	dice_tray.attacker_army_size = units_to_attack_with # The 2nd variable in the player_confirmed array is the unit count, defined above
+	dice_tray.defender_army = occupying_army
+	dice_tray.defender_player_id = occupying_army.controlling_player_id
+	dice_tray.defender_army_size = occupying_army.army_size
+	$HUD.add_child(dice_tray)
+	dice_tray.deal_damage_to_army.connect(_damage_armies)
 
 
 func _damage_armies(
@@ -171,30 +196,33 @@ func _damage_armies(
 	if attacker_damage_taken > 0:
 		print("evaluating attack greater than 0")
 		attacker_tile_id.remove_army_units_from_tile(attacker_damage_taken) # sets occupying_army.is_defeated = true if size <= 0. Otherwise just deals w/ updating visuals and stuff
-		var army_defeated: bool = await army_defeated # if is_defeated = true, this returns true, else returns false
-		prints(attacker_army, "defeated in attacker eval:", army_defeated)
-		if army_defeated:
-			attacker_tile_id.update_ownership(false, null)
+		#var army_defeated: bool = await army_defeated # if is_defeated = true, this returns true, else returns false
+		#prints(attacker_army, "defeated in attacker eval:", army_defeated)
+		#if army_defeated:
+			#attacker_tile_id.update_ownership(false, null)
 	print("evaluating defense")
 	if defender_damage_taken > 0:
 		print("evaluating defense greater than 0")
 		defender_tile_id.remove_army_units_from_tile(defender_damage_taken)
-		var army_defeated: bool = await army_defeated
-		prints(attacker_army, "defeated in defense eval:", army_defeated)
-		if army_defeated:
-			defender_tile_id.update_ownership(true, attacker_army)
-#			 Defender damage taken should represent the number of army members that successfully attacked, which needs to move into the new tile
-			_add_new_army(defender_tile_id, attacker_army.controlling_player_id, defender_damage_taken)
+		#var army_defeated: bool = await army_defeated
+		#prints(attacker_army, "defeated in defense eval:", army_defeated)
+		#if army_defeated:
+			#defender_tile_id.update_ownership(true, attacker_army)
+##			 Defender damage taken should represent the number of army members that successfully attacked, which needs to move into the new tile
+			#_add_new_army(defender_tile_id, attacker_army.controlling_player_id, defender_damage_taken)
 
 
-func _on_army_army_defeated(is_defeated: bool) -> void:
-	if is_defeated:
-		army_defeated.emit(true)
-	army_defeated.emit(false)
+#func _on_army_army_defeated(is_defeated: bool) -> void:
+	#if is_defeated:
+		#army_defeated.emit(true)
+	#army_defeated.emit(false)
+
+
+#func _manage_tile_army_relationship(new_tile: MapTile, old_tile: MapTile, new_army: Army, old_army: Army) -> void:
+	
 
 
 func _on_hud_player_confirmed(is_yes: bool, unit_count: int, is_attack: bool) -> void:
-	units_to_move = unit_count
 	player_confirmed.emit(is_yes, unit_count, is_attack)
 
 
@@ -203,6 +231,6 @@ func _on_hud_start_game() -> void:
 	array_of_tiles.shuffle()
 	for player_value in range(GameState.number_of_players):
 		var map_tile: MapTile = array_of_tiles.pop_front()
-		_add_new_army(map_tile, player_value, 4) # Hardcoded to start game w/ 4 units per army
+		_add_new_army_to_map_tile(map_tile, player_value, 4) # Hardcoded to start game w/ 4 units per army
 	#GameState.current_state = GameState.STATE_MACHINE.SELECTING_START
 	_update_current_player(true)

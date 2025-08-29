@@ -87,7 +87,6 @@ const TILE_ADJACENT_MAP_DICT: Dictionary = {
 @onready var menu_open: bool = true # This will get updated to an export var controlling the main scene
 
 var current_selected_army: Army
-var current_tile_id: int
 
 
 func update_state(new_state: int) -> void:

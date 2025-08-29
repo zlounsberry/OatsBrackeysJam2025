@@ -6,7 +6,7 @@ const CHOCCY_MODEL = preload("res://scenes/armies/choccy_model.tscn")
 const JAMMER_MODEL = preload("res://scenes/armies/jammer_model.tscn")
 
 signal movement_complete
-signal army_defeated(is_defeated: bool)
+#signal army_defeated(is_defeated: bool)
 
 @export var is_ai: bool = false
 @export var currently_taking_turn: bool = false
@@ -15,11 +15,14 @@ signal army_defeated(is_defeated: bool)
 @export var faction_id: int = 0
 @export var army_size: int = 0
 @export var army_id: int = 0
-@export var is_defeated: bool = false
 
 
 func _ready() -> void:
 	add_to_group("army")
+
+
+func _process(_delta: float) -> void:
+	$DEBUG.text = str(currently_occupied_tile.name, " ", army_size)
 
 
 func select_this_army() -> void:
@@ -32,21 +35,35 @@ func select_this_army() -> void:
 
 
 func update_army_size_visuals() -> void:
-	prints("Updating army visuals for", self, army_size)
 	if army_size <= 0:
-		prints(self, "army is defeated from army script")
-		is_defeated = true
-		army_defeated.emit(true)
-		queue_free()
 		return
 	for child in $ArmyVisuals.get_children():
 		child.hide()
 	get_node(str("ArmyVisuals/", army_size)).show()
-	print("army is not defeated from army script")
-	army_defeated.emit(false)
+
+
+func _evaluate_if_army_needs_removing_from_current_tile() -> bool:
+	print("Army size _evaluate_if_army_needs_removing_from_current_tile:", army_size)
+	if army_size <= 0: 
+		print("remove army _evaluate_if_army_needs_removing_from_current_tile()")
+		return true
+	return false
 
 
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
+	_move_models(current_tile, new_tile, unit_count)
+	await movement_complete
+	print("got here")
+	var remove_from_tile: bool = _evaluate_if_army_needs_removing_from_current_tile()
+	if remove_from_tile:
+		print("Update ownership from move_to_new_space() in army.gd because army size is <= 0")
+		current_tile.update_ownership(false, null)
+		self.queue_free()
+	update_army_size_visuals()
+	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
+
+
+func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void: 
 	if not currently_taking_turn:
 		return
 	if current_tile == null:
@@ -77,18 +94,10 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 		vtween.tween_property(model_scene, "global_position:y", 3, 0.125)
 		vtween.tween_property(model_scene, "global_position:y", new_position.y, 0.125)
 		await htween.finished
+		prints(self, "currently occupied 1:", currently_occupied_tile)
 		if not first_model_down:
 			first_model_down = true
-			currently_occupied_tile = new_tile
-		model_scene.queue_free()
+			#currently_occupied_tile = new_tile
 	army_size -= unit_count
+	print("Army size: ",army_size)
 	movement_complete.emit()
-	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
-	if army_size <= 0: 
-		if not is_defeated:
-#			 This needs is_defeated because it triggers a different queue free event and I don't want them to clash
-			print("Update ownership from move_to_new_space() in army.gd because army size is <= 0")
-			current_tile.update_ownership(false, null) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
-			#await get_tree().process_frame # Stops a race condition that breaks ownership assignment
-			self.queue_free()
-	update_army_size_visuals()

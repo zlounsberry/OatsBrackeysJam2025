@@ -6,11 +6,7 @@
 
 [node name="SJArmy" type="Node3D"]
 script = ExtResource("1_n76qe")
-is_ai = null
-currently_taking_turn = null
-controlling_player_id = null
 faction_id = 2
-army_size = null
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
 
 [node name="TurnIndicator" parent="." instance=ExtResource("3_1bopp")]
@@ -216,7 +212,6 @@ transform = Transform3D(0.993431, 0, 0.114434, 0, 1, 0, -0.114434, 0, 0.993431, 
 
 [node name="DEBUG" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47576, 0)
-visible = false
 billboard = 1
 no_depth_test = true
 text = "OK!"

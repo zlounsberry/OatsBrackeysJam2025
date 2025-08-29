@@ -54,7 +54,7 @@ func remove_army_units_from_tile(unit_count: int):
 	var player_id_for_army = occupying_army.controlling_player_id
 	occupying_army.army_size -= unit_count
 	if occupying_army.army_size <= 0:
-		occupying_army.is_defeated = true
+		#occupying_army.is_defeated = true
 		occupying_army.update_army_size_visuals()
 		print("removing army, size <= 0")
 		update_ownership(false, null)
