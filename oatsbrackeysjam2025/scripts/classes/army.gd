@@ -6,6 +6,7 @@ const CHOCCY_MODEL = preload("res://scenes/armies/choccy_model.tscn")
 const JAMMER_MODEL = preload("res://scenes/armies/jammer_model.tscn")
 
 signal movement_complete
+signal army_defeated(is_defeated: bool)
 
 @export var is_ai: bool = false
 @export var currently_taking_turn: bool = false
@@ -14,6 +15,7 @@ signal movement_complete
 @export var faction_id: int = 0
 @export var army_size: int = 0
 @export var army_id: int = 0
+@export var is_defeated: bool = false
 
 
 func _ready() -> void:
@@ -30,13 +32,18 @@ func select_this_army() -> void:
 
 
 func update_army_size_visuals() -> void:
+	prints("Updating army visuals for", self, army_size)
 	if army_size <= 0:
-		#currently_occupied_tile.update_ownership(false, null)
-		#self.queue_free()
+		prints(self, "army is defeated from army script")
+		is_defeated = true
+		army_defeated.emit(true)
+		queue_free()
 		return
 	for child in $ArmyVisuals.get_children():
 		child.hide()
 	get_node(str("ArmyVisuals/", army_size)).show()
+	print("army is not defeated from army script")
+	army_defeated.emit(false)
 
 
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
@@ -78,8 +85,10 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 	movement_complete.emit()
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 	if army_size <= 0: 
-		print("Update ownership from move_to_new_space() in army.gd because army size is <= 0")
-		current_tile.update_ownership(false, null) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
-		await get_tree().process_frame # Stops a race condition that breaks ownership assignment
-		self.queue_free()
+		if not is_defeated:
+#			 This needs is_defeated because it triggers a different queue free event and I don't want them to clash
+			print("Update ownership from move_to_new_space() in army.gd because army size is <= 0")
+			current_tile.update_ownership(false, null) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
+			#await get_tree().process_frame # Stops a race condition that breaks ownership assignment
+			self.queue_free()
 	update_army_size_visuals()

@@ -6,6 +6,7 @@ const SANDWICH_COOKIE = preload("res://scenes/armies/sandwich_cookie.tscn")
 const DICE_TRAY = preload("res://scenes/dice_tray.tscn")
 
 signal player_confirmed(is_yes: bool)
+signal army_defeated(is_defeated: bool)
 
 @onready var moving_camera: bool = false
 @onready var units_to_move: int = 0
@@ -101,9 +102,11 @@ func _add_new_army(map_tile: MapTile, player_value: int, new_army_size: int) -> 
 	new_army.army_size = new_army_size
 	new_army.army_id = total_army_count
 	add_child(new_army)
+	new_army.army_defeated.connect(_on_army_army_defeated)
 	map_tile.update_ownership(true, new_army)
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
 	new_army.update_army_size_visuals()
+
 
 
 func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_is_occupied: bool) -> void:
@@ -155,11 +158,39 @@ func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_i
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 
 
-func _damage_armies(attacker_tile_id: MapTile, attacker_damage_taken: int, defender_tile_id: MapTile, defender_damage_taken: int) -> void:
+func _damage_armies(
+	attacker_army: Army,
+	attacker_tile_id: MapTile, 
+	attacker_damage_taken: int,
+	defender_army: Army, 
+	defender_tile_id: MapTile, 
+	defender_damage_taken: int
+) -> void:
+#	Reminder update_ownership() occurs in remove_army_units_from_tile()
+	print("evaluating attack")
 	if attacker_damage_taken > 0:
-		attacker_tile_id.remove_army_units_from_tile(attacker_damage_taken)
+		print("evaluating attack greater than 0")
+		attacker_tile_id.remove_army_units_from_tile(attacker_damage_taken) # sets occupying_army.is_defeated = true if size <= 0. Otherwise just deals w/ updating visuals and stuff
+		var army_defeated: bool = await army_defeated # if is_defeated = true, this returns true, else returns false
+		prints(attacker_army, "defeated in attacker eval:", army_defeated)
+		if army_defeated:
+			attacker_tile_id.update_ownership(false, null)
+	print("evaluating defense")
 	if defender_damage_taken > 0:
+		print("evaluating defense greater than 0")
 		defender_tile_id.remove_army_units_from_tile(defender_damage_taken)
+		var army_defeated: bool = await army_defeated
+		prints(attacker_army, "defeated in defense eval:", army_defeated)
+		if army_defeated:
+			defender_tile_id.update_ownership(true, attacker_army)
+#			 Defender damage taken should represent the number of army members that successfully attacked, which needs to move into the new tile
+			_add_new_army(defender_tile_id, attacker_army.controlling_player_id, defender_damage_taken)
+
+
+func _on_army_army_defeated(is_defeated: bool) -> void:
+	if is_defeated:
+		army_defeated.emit(true)
+	army_defeated.emit(false)
 
 
 func _on_hud_player_confirmed(is_yes: bool, unit_count: int, is_attack: bool) -> void:

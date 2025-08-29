@@ -2,7 +2,14 @@ extends Node2D
 
 signal reorder_complete # to avoid race conditions...
 signal movement_complete # to avoid race conditions...
-signal deal_damage_to_army(attacker_tile: MapTile, damage_to_attacker: int, defender_tile: MapTile, damage_to_defender: int) # to avoid race conditions...
+signal deal_damage_to_army(
+	attacker_army: Army, 
+	attacker_tile: MapTile, 
+	damage_to_attacker: int, 
+	defender_army: Army, 
+	defender_tile: MapTile, 
+	damage_to_defender: int
+	) # to avoid race conditions...
 
 const DIE = preload("res://scenes/die.tscn")
 
@@ -45,7 +52,14 @@ func _compare_dice():
 	prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
 	await get_tree().create_timer(1).timeout # DEBUG
 	print(attacker_army, defender_army)
-	deal_damage_to_army.emit(attacker_tile, damage_to_attacker, defender_tile, damage_to_defender)
+	deal_damage_to_army.emit(
+		attacker_army,
+		attacker_tile, 
+		damage_to_attacker,
+		defender_army,
+		defender_tile, 
+		damage_to_defender
+	)
 	self.queue_free()
 
 
