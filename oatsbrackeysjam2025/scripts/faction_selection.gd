@@ -24,7 +24,7 @@ const ALREADY_PICKED_TEXT = "ALREADY PICKED"
 
 
 func _ready() -> void:
-	#print("current game dict: ", GameState.current_player_dict)
+	print("current game dict: ", GameState.current_player_dict)
 
 
 func _scroll_left():

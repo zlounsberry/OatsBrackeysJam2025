@@ -12,7 +12,6 @@ enum CONTINENT_IDS {
 	COOKIES1,
 	COOKIES2,
 	COOKIES3,
-	COOKIES4,
 }
 
 enum FACTIONS {
@@ -32,7 +31,7 @@ enum STATE_MACHINE {
 	GAME_OVER,
 }
 
-const MAX_ARMY_SIZE: int = 10
+const MAX_ARMY_SIZE: int = 9
 const MAX_PLAYER_COUNT: int = 3
 const TILE_ADJACENT_MAP_DICT: Dictionary = {
 	1: [7,8,11],
@@ -80,6 +79,33 @@ const TILE_ADJACENT_MAP_DICT: Dictionary = {
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
 			"is_eliminated": false,
+		},
+}
+
+@onready var current_continent_control_dict: Dictionary = {
+	CONTINENT_IDS.COOKIES0:
+		{
+			"controlling_player": -99,
+			"continent_size": 4,
+			"continent_bonus": 1,
+		},
+	CONTINENT_IDS.COOKIES1:
+		{
+			"controlling_player": -99,
+			"continent_size": 4,
+			"continent_bonus": 1,
+		},
+	CONTINENT_IDS.COOKIES2:
+		{
+			"controlling_player": -99,
+			"continent_size": 5,
+			"continent_bonus": 2,
+		},
+	CONTINENT_IDS.COOKIES3:
+		{
+			"controlling_player": -99,
+			"continent_size": 4,
+			"continent_bonus": 1,
 		},
 }
 

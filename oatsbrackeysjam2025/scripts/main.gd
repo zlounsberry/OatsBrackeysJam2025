@@ -58,6 +58,7 @@ func _hide_confirm_menu():
 func _update_current_player(initialize: bool) -> void:
 	if GameState.current_player_turn >= (GameState.number_of_players - 1):
 		GameState.current_player_turn = GameState.PLAYER_IDS.PLAYER_1
+		_evaluate_continent_control_and_update_armies()
 	else:
 		GameState.current_player_turn += 1
 	if initialize:
@@ -171,6 +172,27 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 
 
+func _evaluate_continent_control_and_update_armies() -> void:
+	print(GameState.current_continent_control_dict)
+	for continent in GameState.current_continent_control_dict.keys():
+		print('eval for ', continent)
+		var evaluation_array: Array = []
+		GameState.current_continent_control_dict[continent]["controlling_player"] = -99
+		for map_tile:MapTile in get_tree().get_nodes_in_group("map_tile"):
+			if map_tile.is_occupied:
+				if map_tile.continent_id == continent:
+					evaluation_array.append(map_tile.occupying_army.controlling_player_id)
+					print(evaluation_array)
+#		 if the array is the size of the number of tiles in the continent, see if there are any non-unique values.
+		prints("ok:", len(evaluation_array), GameState.current_continent_control_dict[continent]["continent_size"])
+		if not evaluation_array.is_empty():
+			if evaluation_array.count(evaluation_array[0]) == GameState.current_continent_control_dict[continent]["continent_size"]:
+				GameState.current_continent_control_dict[continent]["controlling_player"] = evaluation_array[0]
+				prints("GameState.current_continent_control_dict[continent][controlling_player]:", GameState.current_continent_control_dict)
+	for army: Army in get_tree().get_nodes_in_group("army"):
+		army.add_units_to_army()
+
+
 func _initiate_attack(current_army: Army, occupying_army: Army, units_to_attack_with: int) -> void:
 	#prints("initiate attack", current_army, occupying_army, units_to_attack_with)
 	GameState.update_state(GameState.STATE_MACHINE.ATTACK_HAPPENING)
@@ -209,10 +231,30 @@ func _on_hud_player_confirmed(is_yes: bool, unit_count: int, is_attack: bool) ->
 
 
 func _on_hud_start_game() -> void:
-	var array_of_tiles: Array = get_tree().get_nodes_in_group("map_tile")
-	array_of_tiles.shuffle()
+#	 Be consistent about which factions start on which continent (none get the big one, so 2 is left off here)
+	var tiles_by_continent_0: Array = []
+	var tiles_by_continent_1: Array = []
+	var tiles_by_continent_3: Array = []
+	var final_map_tile: MapTile
+	for map_tile_scene: MapTile in get_tree().get_nodes_in_group("map_tile"):
+		match map_tile_scene.continent_id:
+			GameState.CONTINENT_IDS.COOKIES0:
+				tiles_by_continent_0.append(map_tile_scene)
+			GameState.CONTINENT_IDS.COOKIES1:
+				tiles_by_continent_1.append(map_tile_scene)
+			GameState.CONTINENT_IDS.COOKIES3:
+				tiles_by_continent_3.append(map_tile_scene)
 	for player_value in range(GameState.number_of_players):
-		var map_tile: MapTile = array_of_tiles.pop_front()
-		_add_new_army_to_map_tile(map_tile, player_value, 4) # Hardcoded to start game w/ 4 units per army
+		match GameState.current_player_dict[player_value]["faction_id"]:
+			GameState.FACTIONS.SANDWICH_COOKIE:
+				tiles_by_continent_0.shuffle()
+				final_map_tile = tiles_by_continent_0.pop_front()
+			GameState.FACTIONS.STRAWBRY_JAMMER:
+				tiles_by_continent_1.shuffle()
+				final_map_tile = tiles_by_continent_1.pop_front()
+			GameState.FACTIONS.CHOCCY_CHIP:
+				tiles_by_continent_3.shuffle()
+				final_map_tile = tiles_by_continent_3.pop_front()
+		_add_new_army_to_map_tile(final_map_tile, player_value, 4) # Hardcoded to start game w/ 4 units per army
 	#GameState.current_state = GameState.STATE_MACHINE.SELECTING_START
 	_update_current_player(true)

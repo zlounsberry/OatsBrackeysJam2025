@@ -16,9 +16,12 @@ signal movement_complete
 @export var army_size: int = 0
 @export var army_id: int = 0
 
+var max_army_size: int
+
 
 func _ready() -> void:
 	add_to_group("army")
+	max_army_size = GameState.MAX_ARMY_SIZE
 
 
 func _process(_delta: float) -> void:
@@ -42,12 +45,21 @@ func update_army_size_visuals() -> void:
 	get_node(str("ArmyVisuals/", army_size)).show()
 
 
-#func _evaluate_if_army_needs_removing_from_current_tile() -> bool:
-	###print("Army size _evaluate_if_army_needs_removing_from_current_tile:", army_size)
-	#if army_size <= 0: 
-		###print("remove army _evaluate_if_army_needs_removing_from_current_tile()")
-		#return true
-	#return false
+func add_units_to_army() -> void:
+	if army_size <= max_army_size:
+		army_size += 1
+	for continent in GameState.current_continent_control_dict.keys():
+		if GameState.current_continent_control_dict[continent]["controlling_player"] == controlling_player_id:
+			if (army_size + GameState.current_continent_control_dict[continent]["continent_bonus"]) <= max_army_size:
+				prints("adding continent bonus for",controlling_player_id)
+				army_size += GameState.current_continent_control_dict[continent]["continent_bonus"]
+			else:
+				army_size = max_army_size
+			prints("player", controlling_player_id, "gets an extra for controlling continent", continent)
+		else:
+			prints("\n\n\nno player owns: ", continent, "see?")
+			prints(GameState.current_continent_control_dict)
+	update_army_size_visuals()
 
 
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
