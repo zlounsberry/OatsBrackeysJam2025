@@ -102,8 +102,8 @@ func _add_new_army(map_tile: MapTile, player_value: int, new_army_size: int) -> 
 	new_army.army_id = total_army_count
 	add_child(new_army)
 	map_tile.update_ownership(true, new_army)
-	new_army.update_army_size_visuals()
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
+	new_army.update_army_size_visuals()
 
 
 func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_is_occupied: bool) -> void:
@@ -131,13 +131,14 @@ func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_i
 		if confirmed[0]:
 			GameState.update_state(GameState.STATE_MACHINE.ATTACK_HAPPENING)
 			var dice_tray: = DICE_TRAY.instantiate()
+			dice_tray.attacker_army = current_army
 			dice_tray.attacker_player_id = current_army.controlling_player_id
 			dice_tray.attacker_army_size = confirmed[1] # The 2nd variable in the player_confirmed array is the unit count
+			dice_tray.defender_army = occupying_army
 			dice_tray.defender_player_id = occupying_army.controlling_player_id
 			dice_tray.defender_army_size = occupying_army.army_size
 			$HUD.add_child(dice_tray)
 			dice_tray.deal_damage_to_army.connect(_damage_armies)
-			get_viewport().get_camera_3d()
 	else:
 		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
 		_show_confirm_menu(current_army.army_size, false)
@@ -154,9 +155,11 @@ func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_i
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 
 
-func _damage_armies(attacker_damage_taken: int, defender_damage_taken: int) -> void:
-	print("attacker takes ", attacker_damage_taken)
-	print("defender takes ", defender_damage_taken)
+func _damage_armies(attacker_tile_id: MapTile, attacker_damage_taken: int, defender_tile_id: MapTile, defender_damage_taken: int) -> void:
+	if attacker_damage_taken > 0:
+		attacker_tile_id.remove_army_units_from_tile(attacker_damage_taken)
+	if defender_damage_taken > 0:
+		defender_tile_id.remove_army_units_from_tile(defender_damage_taken)
 
 
 func _on_hud_player_confirmed(is_yes: bool, unit_count: int, is_attack: bool) -> void:

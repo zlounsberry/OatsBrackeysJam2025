@@ -31,6 +31,8 @@ func select_this_army() -> void:
 
 func update_army_size_visuals() -> void:
 	if army_size <= 0:
+		#currently_occupied_tile.update_ownership(false, null)
+		#self.queue_free()
 		return
 	for child in $ArmyVisuals.get_children():
 		child.hide()
@@ -78,12 +80,6 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 	if army_size <= 0: 
 		print("Update ownership from move_to_new_space() in army.gd because army size is <= 0")
 		current_tile.update_ownership(false, null) # I don't love doing this in this scene, but beats managing a bunch of signals and awaits I think?
-		#var current_army_array: Array = GameState.current_player_dict[GameState.current_player_turn]["current_armies"]
-		#var army_position: int = current_army_array.find(self)
-		#prints("player game state:", GameState.current_player_turn, "player army: ", controlling_player_id)
-		#print(GameState.current_player_dict[GameState.current_player_turn])
-		#GameState.current_player_dict[GameState.current_player_turn]["current_armies"].pop_at(army_position)
-		#print("removed army: ", GameState.current_player_dict[GameState.current_player_turn])
 		await get_tree().process_frame # Stops a race condition that breaks ownership assignment
 		self.queue_free()
 	update_army_size_visuals()

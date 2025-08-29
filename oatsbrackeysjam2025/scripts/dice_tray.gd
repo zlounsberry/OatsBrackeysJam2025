@@ -2,7 +2,7 @@ extends Node2D
 
 signal reorder_complete # to avoid race conditions...
 signal movement_complete # to avoid race conditions...
-signal deal_damage_to_army(damage_to_attacker: int, damage_to_defender: int) # to avoid race conditions...
+signal deal_damage_to_army(attacker_tile: MapTile, damage_to_attacker: int, defender_tile: MapTile, damage_to_defender: int) # to avoid race conditions...
 
 const DIE = preload("res://scenes/die.tscn")
 
@@ -13,11 +13,16 @@ const DIE = preload("res://scenes/die.tscn")
 
 
 @export var attacker_player_id: int
+@export var attacker_army: Army
 @export var attacker_player_rolls_array: Array = []
 @export var attacker_army_size: int
 @export var defender_player_id: int
+@export var defender_army: Army
 @export var defender_player_rolls_array: Array = []
 @export var defender_army_size: int
+
+var attacker_tile: MapTile
+var defender_tile: MapTile
 
 
 func _ready() -> void:
@@ -38,8 +43,9 @@ func _compare_dice():
 			damage_to_defender += 1
 			defender_player_rolls_array[array_position][1].queue_free()
 	prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
-	deal_damage_to_army.emit(damage_to_attacker, damage_to_defender)
-	await get_tree().create_timer(3).timeout # DEBUG
+	await get_tree().create_timer(1).timeout # DEBUG
+	print(attacker_army, defender_army)
+	deal_damage_to_army.emit(attacker_tile, damage_to_attacker, defender_tile, damage_to_defender)
 	self.queue_free()
 
 
@@ -99,6 +105,8 @@ func read_and_sort_dice() -> void:
 
 
 func _throw_dice() -> void:
+#	 Define the tiles to avoid the race condition that crashes game
+	attacker_tile = attacker_army.currently_occupied_tile
 	for value in range(attacker_army_size):
 		var die: RigidBody3D = DIE.instantiate()
 		die.is_attacking = true
@@ -108,6 +116,7 @@ func _throw_dice() -> void:
 		die.global_position = get_node(str("3DView/SubViewport/SpawnPositions/AttackerDie", value)).global_position
 		await get_tree().create_timer(0.1).timeout
 
+	defender_tile = defender_army.currently_occupied_tile
 	for value in range(defender_army_size):
 		var die: RigidBody3D = DIE.instantiate()
 		die.is_attacking = false

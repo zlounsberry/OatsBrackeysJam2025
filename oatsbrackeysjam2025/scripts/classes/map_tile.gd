@@ -45,14 +45,20 @@ func _input(event: InputEvent) -> void:
 				clicked_this_tile.emit(self, null, false)
 
 
-func remove_army_units_from_tile(army_scene: Army, unit_count: int):
-	army_scene.army_size -= unit_count
-	var player_id_for_army = army_scene.controlling_player_id
-	if army_scene.army_size <= 0:
+func remove_army_units_from_tile(unit_count: int):
+	# Kicked off by _damage_armies in main.gd using the deal_damage_to_army signal from dice_tray.gd
+	print("removing army from ", self, occupying_army)
+	if occupying_army == null:
+		print("occupying army is null oop", self, occupying_army)
+		return
+	occupying_army.army_size -= unit_count
+	occupying_army.update_army_size_visuals()
+	var player_id_for_army = occupying_army.controlling_player_id
+	if occupying_army.army_size <= 0:
 		print("removing army, size <= 0")
 		update_ownership(false, null)
 		var remaining_player_array = []
-		army_scene.queue_free()
+		#occupying_army.queue_free()
 		for army_child in get_tree().get_nodes_in_group("army"):
 			remaining_player_array.append(army_child.controlling_player_id)
 		if not remaining_player_array.has(player_id_for_army):
