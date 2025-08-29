@@ -42,25 +42,25 @@ func update_army_size_visuals() -> void:
 	get_node(str("ArmyVisuals/", army_size)).show()
 
 
-func _evaluate_if_army_needs_removing_from_current_tile() -> bool:
-	print("Army size _evaluate_if_army_needs_removing_from_current_tile:", army_size)
-	if army_size <= 0: 
-		print("remove army _evaluate_if_army_needs_removing_from_current_tile()")
-		return true
-	return false
+#func _evaluate_if_army_needs_removing_from_current_tile() -> bool:
+	##print("Army size _evaluate_if_army_needs_removing_from_current_tile:", army_size)
+	#if army_size <= 0: 
+		##print("remove army _evaluate_if_army_needs_removing_from_current_tile()")
+		#return true
+	#return false
 
 
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
 	_move_models(current_tile, new_tile, unit_count)
 	await movement_complete
-	print("got here")
-	var remove_from_tile: bool = _evaluate_if_army_needs_removing_from_current_tile()
-	if remove_from_tile:
-		print("Update ownership from move_to_new_space() in army.gd because army size is <= 0")
-		current_tile.update_ownership(false, null)
-		self.queue_free()
+	currently_occupied_tile.remove_army_units_from_tile(unit_count)
 	update_army_size_visuals()
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
+
+
+func remove_self() -> void:
+	print("removing army from army script")
+	self.queue_free()
 
 
 func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void: 
@@ -81,12 +81,15 @@ func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> 
 			GameState.FACTIONS.SANDWICH_COOKIE:
 				model_scene = SANDWICH_COOKIE_MODEL.instantiate()
 				add_child(model_scene)
+				model_scene.add_to_group("delete_me")
 			GameState.FACTIONS.CHOCCY_CHIP:
 				model_scene = CHOCCY_MODEL.instantiate() 
 				add_child(model_scene)
+				model_scene.add_to_group("delete_me")
 			GameState.FACTIONS.STRAWBRY_JAMMER:
 				model_scene = JAMMER_MODEL.instantiate()
 				add_child(model_scene)
+				model_scene.add_to_group("delete_me")
 		var htween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel(true)
 		htween.tween_property(model_scene, "global_position:z", new_position.z, 0.25)
 		htween.tween_property(model_scene, "global_position:x", new_position.x, 0.25)
@@ -94,10 +97,7 @@ func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> 
 		vtween.tween_property(model_scene, "global_position:y", 3, 0.125)
 		vtween.tween_property(model_scene, "global_position:y", new_position.y, 0.125)
 		await htween.finished
-		prints(self, "currently occupied 1:", currently_occupied_tile)
-		if not first_model_down:
-			first_model_down = true
-			#currently_occupied_tile = new_tile
-	army_size -= unit_count
-	print("Army size: ",army_size)
+	for model in get_tree().get_nodes_in_group("delete_me"):
+		model.queue_free()
+	#currently_occupied_tile.remove_army_units_from_tile(unit_count)
 	movement_complete.emit()

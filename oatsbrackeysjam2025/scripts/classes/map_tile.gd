@@ -47,19 +47,16 @@ func _input(event: InputEvent) -> void:
 
 func remove_army_units_from_tile(unit_count: int):
 	# Kicked off by _damage_armies in main.gd using the deal_damage_to_army signal from dice_tray.gd
-	print("removing army from ", self, occupying_army)
+	prints("removing", occupying_army.army_size, "army from", self)
 	if occupying_army == null:
-		print("occupying army is null oop", self, occupying_army)
+		print("occupying army is null oop1", self, occupying_army)
 		return
 	var player_id_for_army = occupying_army.controlling_player_id
 	occupying_army.army_size -= unit_count
 	if occupying_army.army_size <= 0:
-		#occupying_army.is_defeated = true
-		occupying_army.update_army_size_visuals()
-		print("removing army, size <= 0")
-		update_ownership(false, null)
 		var remaining_player_array = []
-		#occupying_army.queue_free()
+		occupying_army.remove_self()
+		update_ownership(false, null)
 		for army_child in get_tree().get_nodes_in_group("army"):
 			remaining_player_array.append(army_child.controlling_player_id)
 		if not remaining_player_array.has(player_id_for_army):
@@ -67,7 +64,7 @@ func remove_army_units_from_tile(unit_count: int):
 			prints("player", player_id_for_army, "eliminated!")
 			GameState.current_player_dict[player_id_for_army]["is_eliminated"] = true
 		return
-	print("Army not defeated from map tile script")
+	print("Army not defeated from map tile script", )
 	occupying_army.update_army_size_visuals()
 
 

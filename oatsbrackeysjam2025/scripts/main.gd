@@ -90,8 +90,9 @@ func select_next_army() -> void:
 	for army_child: Army in get_tree().get_nodes_in_group("army"):
 		if army_child.controlling_player_id == GameState.current_player_turn:
 			player_controlled_army_ids.append(army_child.army_id)
-	#if GameState.current_selected_army == null:
-		#return
+	if GameState.current_selected_army == null:
+		prints("no current army rip", GameState.current_selected_army)
+		return
 	if GameState.current_selected_army.army_id == player_controlled_army_ids.max():
 #		 Loop around to lowest value if it's the max value
 		new_army_id = player_controlled_army_ids.min()
@@ -171,6 +172,7 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 
 
 func _initiate_attack(current_army: Army, occupying_army: Army, units_to_attack_with: int) -> void:
+	prints("initiate attack", current_army, occupying_army, units_to_attack_with)
 	GameState.update_state(GameState.STATE_MACHINE.ATTACK_HAPPENING)
 	var dice_tray: = DICE_TRAY.instantiate()
 	dice_tray.attacker_army = current_army

@@ -9,7 +9,7 @@ signal deal_damage_to_army(
 	defender_army: Army, 
 	defender_tile: MapTile, 
 	damage_to_defender: int
-	) # to avoid race conditions...
+) 
 
 const DIE = preload("res://scenes/die.tscn")
 
