@@ -33,7 +33,7 @@ func _toss_self() -> void:
 
 func skin_self() -> void:
 	if is_attacking:
-		print("is attacking")
+		#print("is attacking")
 		match faction_id:
 			GameState.FACTIONS.SANDWICH_COOKIE:
 				$Cube.set_surface_override_material(0, SCC)

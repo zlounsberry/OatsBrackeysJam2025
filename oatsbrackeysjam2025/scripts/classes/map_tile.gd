@@ -19,7 +19,7 @@ func _ready() -> void:
 	$StaticBody3D.mouse_entered.connect(_show_outline)
 	$StaticBody3D.mouse_exited.connect(_hide_outline)
 	adjacent_tiles = GameState.TILE_ADJACENT_MAP_DICT[tile_id]
-	prints(tile_id, "adjacent: ", adjacent_tiles)
+	#prints(tile_id, "adjacent: ", adjacent_tiles)
 
 
 func _process(_delta: float) -> void:
@@ -35,21 +35,21 @@ func _input(event: InputEvent) -> void:
 		if is_hovered:
 			if is_occupied:
 				if occupying_army == null:
-					print("edge case!")
+					#print("edge case!")
 					clicked_this_tile.emit(self, null, false) # Edge case where tile isn't occupied TODO: Consider removing if it fucks up!
 					return
-				print("tile is occupied from tile map class script", self, is_occupied, occupying_army)
+				#print("tile is occupied from tile map class script", self, is_occupied, occupying_army)
 				clicked_this_tile.emit(self, occupying_army, true)
 			else:
-				print("tile is not occupied from tile map class script", self, is_occupied, occupying_army)
+				#print("tile is not occupied from tile map class script", self, is_occupied, occupying_army)
 				clicked_this_tile.emit(self, null, false)
 
 
 func remove_army_units_from_tile(unit_count: int):
 	# Kicked off by _damage_armies in main.gd using the deal_damage_to_army signal from dice_tray.gd
-	prints("removing", occupying_army.army_size, "army from", self)
+	#prints("removing", occupying_army.army_size, "army from", self)
 	if occupying_army == null:
-		print("occupying army is null oop1", self, occupying_army)
+		#print("occupying army is null oop1", self, occupying_army)
 		return
 	var player_id_for_army = occupying_army.controlling_player_id
 	occupying_army.army_size -= unit_count
@@ -61,10 +61,10 @@ func remove_army_units_from_tile(unit_count: int):
 			remaining_player_array.append(army_child.controlling_player_id)
 		if not remaining_player_array.has(player_id_for_army):
 #			 Win condition! Game over!
-			prints("player", player_id_for_army, "eliminated!")
+			#prints("player", player_id_for_army, "eliminated!")
 			GameState.current_player_dict[player_id_for_army]["is_eliminated"] = true
 		return
-	print("Army not defeated from map tile script", )
+	#print("Army not defeated from map tile script", )
 	occupying_army.update_army_size_visuals()
 
 
@@ -72,11 +72,11 @@ func update_ownership(tile_is_occupied: bool, army_scene: Army) -> void:
 ##	 If the tile is now occupied, tile_is_occupied = true and army_scene is the scene of the occupying army
 ##	 If the tile was occupied and now is not, tile_is_occupied = false and army_scene is null
 	if tile_is_occupied:
-		prints("tile now occupied", army_scene, army_scene.controlling_player_id, army_scene.army_id, self)
+		#prints("tile now occupied", army_scene, army_scene.controlling_player_id, army_scene.army_id, self)
 		occupying_army = army_scene
 		is_occupied = true
 	else:
-		prints("tile not occupied anymore", self)
+		#prints("tile not occupied anymore", self)
 		occupying_army = null
 		is_occupied = false
 

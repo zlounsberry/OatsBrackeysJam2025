@@ -91,7 +91,7 @@ func select_next_army() -> void:
 		if army_child.controlling_player_id == GameState.current_player_turn:
 			player_controlled_army_ids.append(army_child.army_id)
 	if GameState.current_selected_army == null:
-		prints("no current army rip", GameState.current_selected_army)
+		#prints("no current army rip", GameState.current_selected_army)
 		return
 	if GameState.current_selected_army.army_id == player_controlled_army_ids.max():
 #		 Loop around to lowest value if it's the max value
@@ -104,9 +104,9 @@ func select_next_army() -> void:
 		if army_child.army_id == new_army_id:
 			army_child.select_this_army()
 			set_adjacent_tiles_selectable(army_child.currently_occupied_tile.tile_id)
-			prints("army_child.currently_occupied_tile.tile_id", army_child.currently_occupied_tile.tile_id)
+			#prints("army_child.currently_occupied_tile.tile_id", army_child.currently_occupied_tile.tile_id)
 			return
-	print("you borked it lol")
+	#print("you borked it lol")
 
 
 func _add_new_army_to_map_tile(map_tile: MapTile, player_value: int, new_army_size: int) -> void:
@@ -129,7 +129,7 @@ func _add_new_army_to_map_tile(map_tile: MapTile, player_value: int, new_army_si
 	map_tile.update_ownership(true, new_army)
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
 	new_army.update_army_size_visuals()
-	prints("new army", new_army, "on tile", map_tile, new_army.currently_occupied_tile)
+	#prints("new army", new_army, "on tile", map_tile, new_army.currently_occupied_tile)
 
 
 func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army, tile_is_occupied: bool) -> void:
@@ -137,10 +137,10 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 ## If tile_is_occupied is true, that means the clicked tile is currently occupied by occupying_army
 ## Otherwise, occupying_army is null and tile_is_occupied comes in false
 	if not GameState.current_state == GameState.STATE_MACHINE.SELECTING_IN_GAME:
-		print('wrong state')
+		#print('wrong state')
 		return
 	if GameState.current_selected_army == null:
-		print("no army selected!")
+		#print("no army selected!")
 		return
 	var current_army: Army = GameState.current_selected_army
 	if tile_is_occupied:
@@ -161,7 +161,7 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 		var confirmed: Array = await player_confirmed # Note the function that emits this signal also defines the units_to_move variable!
 		_hide_confirm_menu()
 		if confirmed[0]:
-			prints("army moving from", current_army.currently_occupied_tile, "to", clicked_tile_scene)
+			#prints("army moving from", current_army.currently_occupied_tile, "to", clicked_tile_scene)
 			current_army.move_to_new_space(current_army.currently_occupied_tile, clicked_tile_scene, confirmed[1])
 			GameState.update_state(GameState.STATE_MACHINE.TRANSITIONING)
 			await current_army.movement_complete
@@ -172,7 +172,7 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 
 
 func _initiate_attack(current_army: Army, occupying_army: Army, units_to_attack_with: int) -> void:
-	prints("initiate attack", current_army, occupying_army, units_to_attack_with)
+	#prints("initiate attack", current_army, occupying_army, units_to_attack_with)
 	GameState.update_state(GameState.STATE_MACHINE.ATTACK_HAPPENING)
 	var dice_tray: = DICE_TRAY.instantiate()
 	dice_tray.attacker_army = current_army
@@ -194,34 +194,14 @@ func _damage_armies(
 	defender_damage_taken: int
 ) -> void:
 #	Reminder update_ownership() occurs in remove_army_units_from_tile()
-	print("evaluating attack")
+	#print("evaluating attack")
 	if attacker_damage_taken > 0:
-		print("evaluating attack greater than 0")
+		#print("evaluating attack greater than 0")
 		attacker_tile_id.remove_army_units_from_tile(attacker_damage_taken) # sets occupying_army.is_defeated = true if size <= 0. Otherwise just deals w/ updating visuals and stuff
-		#var army_defeated: bool = await army_defeated # if is_defeated = true, this returns true, else returns false
-		#prints(attacker_army, "defeated in attacker eval:", army_defeated)
-		#if army_defeated:
-			#attacker_tile_id.update_ownership(false, null)
-	print("evaluating defense")
+	#print("evaluating defense")
 	if defender_damage_taken > 0:
-		print("evaluating defense greater than 0")
+		#print("evaluating defense greater than 0")
 		defender_tile_id.remove_army_units_from_tile(defender_damage_taken)
-		#var army_defeated: bool = await army_defeated
-		#prints(attacker_army, "defeated in defense eval:", army_defeated)
-		#if army_defeated:
-			#defender_tile_id.update_ownership(true, attacker_army)
-##			 Defender damage taken should represent the number of army members that successfully attacked, which needs to move into the new tile
-			#_add_new_army(defender_tile_id, attacker_army.controlling_player_id, defender_damage_taken)
-
-
-#func _on_army_army_defeated(is_defeated: bool) -> void:
-	#if is_defeated:
-		#army_defeated.emit(true)
-	#army_defeated.emit(false)
-
-
-#func _manage_tile_army_relationship(new_tile: MapTile, old_tile: MapTile, new_army: Army, old_army: Army) -> void:
-	
 
 
 func _on_hud_player_confirmed(is_yes: bool, unit_count: int, is_attack: bool) -> void:

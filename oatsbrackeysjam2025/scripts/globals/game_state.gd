@@ -90,5 +90,5 @@ var current_selected_army: Army
 
 
 func update_state(new_state: int) -> void:
-	prints("updating to state", new_state)
+	#prints("updating to state", new_state)
 	current_state = new_state

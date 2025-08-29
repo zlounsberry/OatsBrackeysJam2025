@@ -43,9 +43,9 @@ func update_army_size_visuals() -> void:
 
 
 #func _evaluate_if_army_needs_removing_from_current_tile() -> bool:
-	##print("Army size _evaluate_if_army_needs_removing_from_current_tile:", army_size)
+	###print("Army size _evaluate_if_army_needs_removing_from_current_tile:", army_size)
 	#if army_size <= 0: 
-		##print("remove army _evaluate_if_army_needs_removing_from_current_tile()")
+		###print("remove army _evaluate_if_army_needs_removing_from_current_tile()")
 		#return true
 	#return false
 
@@ -59,7 +59,7 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 
 
 func remove_self() -> void:
-	print("removing army from army script")
+	#print("removing army from army script")
 	self.queue_free()
 
 
@@ -67,10 +67,10 @@ func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> 
 	if not currently_taking_turn:
 		return
 	if current_tile == null:
-		prints("no current tile!", currently_occupied_tile)
+		#prints("no current tile!", currently_occupied_tile)
 		return
 	if new_tile == null:
-		print("no new tile!")
+		#print("no new tile!")
 		return
 	GameState.update_state(GameState.STATE_MACHINE.TRANSITIONING)
 	var model_scene: Node3D
@@ -99,5 +99,4 @@ func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> 
 		await htween.finished
 	for model in get_tree().get_nodes_in_group("delete_me"):
 		model.queue_free()
-	#currently_occupied_tile.remove_army_units_from_tile(unit_count)
 	movement_complete.emit()

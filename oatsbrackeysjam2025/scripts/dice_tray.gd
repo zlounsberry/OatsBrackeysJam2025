@@ -49,9 +49,9 @@ func _compare_dice():
 		if attacker_player_rolls_array[array_position][0] > defender_player_rolls_array[array_position][0]:
 			damage_to_defender += 1
 			defender_player_rolls_array[array_position][1].queue_free()
-	prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
+	#prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
 	await get_tree().create_timer(1).timeout # DEBUG
-	print(attacker_army, defender_army)
+	#print(attacker_army, defender_army)
 	deal_damage_to_army.emit(
 		attacker_army,
 		attacker_tile, 
@@ -70,12 +70,12 @@ func _move_dice(is_attacker: bool):
 			var die = attacker_roll[1]
 			await get_tree().process_frame
 			if die == null:
-				print("continuing!")
+				#print("continuing!")
 				continue
 			die.get_node("CollisionShape3D").disabled = true
 			die.freeze = true
 			var tween: Tween = create_tween()
-			prints(len(attacker_player_rolls_array), element_counter, get_node(str("3DView/SubViewport/FinalPositions/AttackerDie", element_counter)))
+			#prints(len(attacker_player_rolls_array), element_counter, get_node(str("3DView/SubViewport/FinalPositions/AttackerDie", element_counter)))
 			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/FinalPositions/AttackerDie", element_counter)).global_position, 0.1)
 			element_counter += 1
 			await tween.finished
@@ -88,7 +88,7 @@ func _move_dice(is_attacker: bool):
 			die.get_node("CollisionShape3D").disabled = true
 			die.freeze = true
 			var tween: Tween = create_tween()
-			prints(len(defender_player_rolls_array), element_counter, get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)))
+			#prints(len(defender_player_rolls_array), element_counter, get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)))
 			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)).global_position, 0.1)
 			element_counter += 1
 			await tween.finished

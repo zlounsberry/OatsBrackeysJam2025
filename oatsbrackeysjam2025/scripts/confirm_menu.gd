@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func tween_menu_in() -> void:
 	GameState.menu_open = true
-	print("opening menu with attack: ", is_attack)
+	#print("opening menu with attack: ", is_attack)
 	if is_attack:
 		$Attack.show()
 	else:
@@ -44,7 +44,7 @@ func tween_menu_out() -> void:
 func _on_confirm_pressed() -> void:
 	if not can_interact:
 		return
-	print('confirmed')
+	#print('confirmed')
 	player_selected_yes.emit(true, unit_count, is_attack)
 	tween_menu_out()
 
@@ -52,7 +52,7 @@ func _on_confirm_pressed() -> void:
 func _on_deny_pressed() -> void:
 	if not can_interact:
 		return
-	print('denied')
+	#print('denied')
 	player_selected_yes.emit(false, unit_count, is_attack)
 	tween_menu_out()
 
