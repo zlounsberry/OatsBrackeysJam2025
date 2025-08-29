@@ -2,7 +2,7 @@ extends Node2D
 
 signal reorder_complete # to avoid race conditions...
 signal movement_complete # to avoid race conditions...
-signal deal_damage_to_army(is_defender: bool, damage_value: int) # to avoid race conditions...
+signal deal_damage_to_army(damage_to_attacker: int, damage_to_defender: int) # to avoid race conditions...
 
 const DIE = preload("res://scenes/die.tscn")
 
@@ -21,14 +21,11 @@ const DIE = preload("res://scenes/die.tscn")
 
 
 func _ready() -> void:
+	$"3DView/SubViewport/Camera3D".make_current()
 	self.reorder_complete.connect(_on_reorder_complete)
 	self.movement_complete.connect(_on_movement_complete)
 	_throw_dice()
 
-#
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("ui_accept"):
-		#movement_complete.emit()
 
 func _compare_dice():
 	var number_of_dice_rolled: int = min(len(attacker_player_rolls_array), len(defender_player_rolls_array))
@@ -40,8 +37,9 @@ func _compare_dice():
 		if attacker_player_rolls_array[array_position][0] > defender_player_rolls_array[array_position][0]:
 			damage_to_defender += 1
 			defender_player_rolls_array[array_position][1].queue_free()
-	deal_damage_to_army.emit(damage_to_attacker, damage_to_defender)
 	prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
+	deal_damage_to_army.emit(damage_to_attacker, damage_to_defender)
+	self.queue_free()
 
 
 func _move_dice(is_attacker: bool):
@@ -134,5 +132,5 @@ func _on_reorder_complete() -> void:
 func _on_movement_complete() -> void:
 	if movement_completed:
 		return
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	_compare_dice()

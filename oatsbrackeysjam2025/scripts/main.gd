@@ -3,12 +3,14 @@ extends Node3D
 const CHOCCY = preload("res://scenes/armies/choccy.tscn")
 const JAMMER = preload("res://scenes/armies/jammer.tscn")
 const SANDWICH_COOKIE = preload("res://scenes/armies/sandwich_cookie.tscn")
+const DICE_TRAY = preload("res://scenes/dice_tray.tscn")
 
 signal player_confirmed(is_yes: bool)
 
 @onready var moving_camera: bool = false
 @onready var units_to_move: int = 0
 @onready var total_army_count: int = 0
+
 
 
 func _input(event: InputEvent) -> void:
@@ -122,16 +124,25 @@ func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_i
 			return
 		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
 		_show_confirm_menu(current_army.army_size, true)
-		var confirmed: bool = await player_confirmed 
-		if confirmed:
+		var confirmed: Array = await player_confirmed 
+		print("confirmed variable = ", confirmed)
+		if confirmed[0]:
 			GameState.update_state(GameState.STATE_MACHINE.ATTACK_HAPPENING)
-			prints("menu closed, fight time!")
+			var dice_tray: = DICE_TRAY.instantiate()
+			dice_tray.attacker_player_id = current_army.controlling_player_id
+			dice_tray.attacker_army_size = confirmed[1] # The 2nd variable in the player_confirmed array is the unit count
+			dice_tray.defender_player_id = occupying_army.controlling_player_id
+			dice_tray.defender_army_size = occupying_army.army_size
+			$HUD.add_child(dice_tray)
+			dice_tray.deal_damage_to_army.connect(_damage_armies)
+			get_viewport().get_camera_3d()
 	else:
 		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
 		_show_confirm_menu(current_army.army_size, false)
-		var confirmed: bool = await player_confirmed # Note the function that emits this signal also defines the units_to_move variable!
+		var confirmed: Array = await player_confirmed # Note the function that emits this signal also defines the units_to_move variable!
+		print("confirmed variable = ", confirmed)
 		_hide_confirm_menu()
-		if confirmed:
+		if confirmed[0]:
 			current_army.move_to_new_space(current_army.currently_occupied_tile, tile_scene, units_to_move)
 			GameState.update_state(GameState.STATE_MACHINE.TRANSITIONING)
 			await current_army.movement_complete
@@ -141,9 +152,14 @@ func _on_map_clicked_this_tile(tile_scene: MapTile, occupying_army: Army, tile_i
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 
 
+func _damage_armies(attacker_damage_taken: int, defender_damage_taken: int) -> void:
+	print("attacker takes ", attacker_damage_taken)
+	print("defender takes ", defender_damage_taken)
+
+
 func _on_hud_player_confirmed(is_yes: bool, unit_count: int, is_attack: bool) -> void:
 	units_to_move = unit_count
-	player_confirmed.emit(is_yes)
+	player_confirmed.emit(is_yes, unit_count, is_attack)
 
 
 func _on_hud_start_game() -> void:

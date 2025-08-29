@@ -22,7 +22,7 @@ func _ready() -> void:
 	prints(tile_id, "adjacent: ", adjacent_tiles)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$DEBUG.text = str(is_occupied)
 
 
@@ -45,12 +45,19 @@ func _input(event: InputEvent) -> void:
 				clicked_this_tile.emit(self, null, false)
 
 
-#func remove_army_units_from_tile(army_scene: Army, unit_count: int):
-	#army_scene.army_size -= unit_count
-	#if army_scene.army_size <= 0:
-		#print("removing army, size <= 0")
-		#update_ownership(false, null)
-		#army_scene.queue_free()
+func remove_army_units_from_tile(army_scene: Army, unit_count: int):
+	army_scene.army_size -= unit_count
+	var player_id_for_army = army_scene.controlling_player_id
+	if army_scene.army_size <= 0:
+		print("removing army, size <= 0")
+		update_ownership(false, null)
+		var remaining_player_array = []
+		army_scene.queue_free()
+		for army_child in get_tree().get_nodes_in_group("army"):
+			remaining_player_array.append(army_child.controlling_player_id)
+		if not remaining_player_array.has(player_id_for_army):
+			prints("player", player_id_for_army, "eliminated!")
+			GameState.current_player_dict[player_id_for_army]["is_eliminated"] = true
 
 
 func update_ownership(tile_is_occupied: bool, army_scene: Army) -> void:

@@ -16,6 +16,7 @@ func _ready() -> void:
 	rotation_degrees.x = randf_range(0, 360)
 	rotation_degrees.y = randf_range(0, 360)
 	rotation_degrees.z = randf_range(0, 360)
+	skin_self()
 	_toss_self()
 
 
@@ -32,14 +33,14 @@ func _toss_self() -> void:
 
 func skin_self() -> void:
 	if is_attacking:
-		print("attacker! need new skin!")
-	match faction_id:
-		GameState.FACTIONS.SANDWICH_COOKIE:
-			$RigidBody3D/Cube.set_surface_override_material(0, SCC)
-			$RigidBody3D/Cube.set_surface_override_material(0, OUTLINE_MATERIAL)
-		GameState.FACTIONS.CHOCCY_CHIP:
-			$RigidBody3D/Cube.set_surface_override_material(0, CC)
-			$RigidBody3D/Cube.set_surface_override_material(0, OUTLINE_MATERIAL)
-		GameState.FACTIONS.STRAWBRY_JAMMER:
-			$RigidBody3D/Cube.set_surface_override_material(0, SJ)
-			$RigidBody3D/Cube.set_surface_override_material(0, OUTLINE_MATERIAL)
+		print("is attacking")
+		match faction_id:
+			GameState.FACTIONS.SANDWICH_COOKIE:
+				$Cube.set_surface_override_material(0, SCC)
+				$Cube.set_surface_override_material(1, OUTLINE_MATERIAL)
+			GameState.FACTIONS.CHOCCY_CHIP:
+				$Cube.set_surface_override_material(0, CC)
+				$Cube.set_surface_override_material(1, OUTLINE_MATERIAL)
+			GameState.FACTIONS.STRAWBRY_JAMMER:
+				$Cube.set_surface_override_material(0, SJ)
+				$Cube.set_surface_override_material(1, OUTLINE_MATERIAL)
