@@ -6,7 +6,7 @@ const CHOCCY_MODEL = preload("res://scenes/armies/choccy_model.tscn")
 const JAMMER_MODEL = preload("res://scenes/armies/jammer_model.tscn")
 
 signal movement_complete
-signal selected_next_ai_army
+signal selected_next_army
 signal ai_player_confirmed(unit_count: int, is_attack: bool, self_id: Army, new_tile: MapTile)
 
 @export var is_ai: bool = false
@@ -77,6 +77,7 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 
 func remove_self() -> void:
 	#print("removing army from army script")
+	selected_next_army.emit()
 	self.queue_free()
 
 
@@ -131,7 +132,7 @@ func _move_ai() -> void:
 	current_tile_array.shuffle()
 	#for current_tile_element in current_tile_array:
 		#if current_tile_element == current_tile_array[-1]:
-			#selected_next_ai_army.emit()
+			#selected_next_army.emit()
 			#return
 	for current_tile_element in current_tile_array:
 		if current_tile_element == current_tile_array[-1]:
@@ -160,4 +161,4 @@ func _move_ai() -> void:
 					ai_player_confirmed.emit(army_size, true, self, potential_tile)
 		if select_next_army:
 			print("select next army")
-			selected_next_ai_army.emit()
+			selected_next_army.emit()

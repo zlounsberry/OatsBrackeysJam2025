@@ -94,7 +94,7 @@ func select_next_army() -> void:
 		if army_child.controlling_player_id == GameState.current_player_turn:
 			player_controlled_army_ids.append(army_child.army_id)
 	if GameState.current_selected_army == null:
-		#prints("no current army rip", GameState.current_selected_army)
+		prints("no current army rip", GameState.current_selected_army)
 		return
 	if GameState.current_selected_army.army_id == player_controlled_army_ids.max():
 #		 Loop around to lowest value if it's the max value
@@ -130,7 +130,7 @@ func _add_new_army_to_map_tile(map_tile: MapTile, player_value: int, new_army_si
 	new_army.army_id = total_army_count
 	new_army.is_ai = GameState.current_player_dict[player_value]["is_ai"]
 	add_child(new_army)
-	new_army.selected_next_ai_army.connect(select_next_army)
+	new_army.selected_next_army.connect(select_next_army)
 	new_army.ai_player_confirmed.connect(_on_ai_player_confirmed)
 	map_tile.update_ownership(true, new_army)
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
