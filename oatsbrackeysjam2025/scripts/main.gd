@@ -6,7 +6,6 @@ const SANDWICH_COOKIE = preload("res://scenes/armies/sandwich_cookie.tscn")
 const DICE_TRAY = preload("res://scenes/dice_tray.tscn")
 
 signal player_confirmed(is_yes: bool)
-#signal army_defeated(is_defeated: bool)
 
 @onready var moving_camera: bool = false
 @onready var total_army_count: int = 0
@@ -20,6 +19,9 @@ func _input(event: InputEvent) -> void:
 	if moving_camera:
 		return
 
+	if GameState.current_player_dict[GameState.current_player_turn]["is_ai"]:
+		return
+	
 	if event.is_action_pressed("switch_army"):
 		select_next_army()
 
@@ -62,7 +64,7 @@ func _update_current_player(initialize: bool) -> void:
 	else:
 		GameState.current_player_turn += 1
 	if initialize:
-		GameState.current_player_turn = randi_range(0, (GameState.number_of_players - 1)) # If this is the first selection, pick a random army
+		GameState.current_player_turn = randi_range(0, GameState.PLAYER_IDS.PLAYER_1) # If this is the first selection, pick a random army
 	$HUD.update_player_turn_label()
 	for tile in get_tree().get_nodes_in_group("map_tile"):
 		tile._hide_outline()
@@ -107,7 +109,7 @@ func select_next_army() -> void:
 			set_adjacent_tiles_selectable(army_child.currently_occupied_tile.tile_id)
 			#prints("army_child.currently_occupied_tile.tile_id", army_child.currently_occupied_tile.tile_id)
 			return
-	#print("you borked it lol")
+	
 
 
 func _add_new_army_to_map_tile(map_tile: MapTile, player_value: int, new_army_size: int) -> void:
@@ -126,11 +128,13 @@ func _add_new_army_to_map_tile(map_tile: MapTile, player_value: int, new_army_si
 	new_army.currently_occupied_tile = map_tile
 	new_army.army_size = new_army_size
 	new_army.army_id = total_army_count
+	new_army.is_ai = GameState.current_player_dict[player_value]["is_ai"]
 	add_child(new_army)
+	new_army.selected_next_ai_army.connect(select_next_army)
+	new_army.ai_player_confirmed.connect(_on_ai_player_confirmed)
 	map_tile.update_ownership(true, new_army)
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
 	new_army.update_army_size_visuals()
-	#prints("new army", new_army, "on tile", map_tile, new_army.currently_occupied_tile)
 
 
 func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army, tile_is_occupied: bool) -> void:
@@ -138,10 +142,10 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 ## If tile_is_occupied is true, that means the clicked tile is currently occupied by occupying_army
 ## Otherwise, occupying_army is null and tile_is_occupied comes in false
 	if not GameState.current_state == GameState.STATE_MACHINE.SELECTING_IN_GAME:
-		#print('wrong state')
+		print('wrong state')
 		return
 	if GameState.current_selected_army == null:
-		#print("no army selected!")
+		print("no army selected!")
 		return
 	var current_army: Army = GameState.current_selected_army
 	if tile_is_occupied:
@@ -224,6 +228,20 @@ func _damage_armies(
 	if defender_damage_taken > 0:
 		#print("evaluating defense greater than 0")
 		defender_tile_id.remove_army_units_from_tile(defender_damage_taken)
+
+
+func _on_ai_player_confirmed(unit_count: int, is_attack: bool, current_army: Army, new_tile: MapTile):
+	print("is ai tho")
+	if is_attack:
+		_initiate_attack(current_army, new_tile.occupying_army, unit_count)
+	else:
+		current_army.move_to_new_space(current_army.currently_occupied_tile, new_tile, unit_count)
+		GameState.update_state(GameState.STATE_MACHINE.TRANSITIONING)
+		await current_army.movement_complete
+		_add_new_army_to_map_tile(new_tile, -99, unit_count)
+		#_add_new_army_to_map_tile(current_army.currently_occupied_tile, -99, confirmed[1]) # -99 means "use global variable for current player turn (not used in _on_hud_start_game())
+		_update_current_player(false)
+		GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 
 
 func _on_hud_player_confirmed(is_yes: bool, unit_count: int, is_attack: bool) -> void:

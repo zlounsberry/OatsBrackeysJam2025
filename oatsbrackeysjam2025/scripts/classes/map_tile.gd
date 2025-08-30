@@ -1,7 +1,7 @@
 extends MeshInstance3D
 class_name MapTile
 
-signal clicked_this_tile(self_id: MapTile, occupying_army: Army, tile_is_occupied: bool)
+signal clicked_this_tile(self_id: MapTile, occupying_army: Army, tile_is_occupied: bool, is_ai: bool)
 
 
 @onready var can_select: bool = false
@@ -32,6 +32,8 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if GameState.STATE_MACHINE.DISABLED:
 		return
+	if GameState.current_player_dict[GameState.current_player_turn]["is_ai"]:
+		return
 	if event.is_action_pressed("left_click"):
 		if GameState.menu_open:
 			return
@@ -39,7 +41,7 @@ func _input(event: InputEvent) -> void:
 			if is_occupied:
 				if occupying_army == null:
 					#print("edge case!")
-					clicked_this_tile.emit(self, null, false) # Edge case where tile isn't occupied TODO: Consider removing if it fucks up!
+					clicked_this_tile.emit(self, null, false, false) # Edge case where tile isn't occupied TODO: Consider removing if it fucks up!
 					return
 				#print("tile is occupied from tile map class script", self, is_occupied, occupying_army)
 				clicked_this_tile.emit(self, occupying_army, true)

@@ -23,10 +23,6 @@ const ALREADY_PICKED_TEXT = "ALREADY PICKED"
 @onready var can_select: bool = false
 
 
-func _ready() -> void:
-	print("current game dict: ", GameState.current_player_dict)
-	
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_left"):
 		_on_next_team_pressed()
@@ -74,6 +70,7 @@ func _on_confirm_pressed() -> void:
 	can_select = false
 	confirm_button.text = ALREADY_PICKED_TEXT
 	GameState.current_player_dict[current_player_choosing]["faction_id"] = current_selection
+	prints("GameState.current_player_dict[current_player_choosing]['is_ai'] =", is_ai)
 	GameState.current_player_dict[current_player_choosing]["is_ai"] = is_ai
 	match current_selection:
 		GameState.FACTIONS.SANDWICH_COOKIE:
@@ -97,8 +94,11 @@ func _on_confirm_pressed() -> void:
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		is_ai = true
+		prints('is ai', is_ai)
 	else:
 		is_ai = false
+		prints('is ai', is_ai)
+		
 
 
 func _on_next_team_pressed() -> void:

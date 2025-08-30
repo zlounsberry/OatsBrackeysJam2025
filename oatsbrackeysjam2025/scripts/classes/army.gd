@@ -6,7 +6,8 @@ const CHOCCY_MODEL = preload("res://scenes/armies/choccy_model.tscn")
 const JAMMER_MODEL = preload("res://scenes/armies/jammer_model.tscn")
 
 signal movement_complete
-#signal army_defeated(is_defeated: bool)
+signal selected_next_ai_army
+signal ai_player_confirmed(unit_count: int, is_attack: bool, self_id: Army, new_tile: MapTile)
 
 @export var is_ai: bool = false
 @export var currently_taking_turn: bool = false
@@ -22,6 +23,7 @@ var max_army_size: int
 func _ready() -> void:
 	add_to_group("army")
 	max_army_size = GameState.MAX_ARMY_SIZE
+	print("is_ai ", is_ai)
 
 
 func _process(_delta: float) -> void:
@@ -35,6 +37,8 @@ func select_this_army() -> void:
 	currently_taking_turn = true
 	GameState.current_selected_army = self
 	$TurnIndicator.show()
+	if is_ai:
+		_move_ai()
 
 
 func update_army_size_visuals() -> void:
@@ -57,7 +61,7 @@ func add_units_to_army() -> void:
 				army_size = max_army_size
 			prints("player", controlling_player_id, "gets an extra for controlling continent", continent)
 		else:
-			prints("\n\n\nno player owns: ", continent, "see?")
+			#prints("\n\n\nno player owns: ", continent, "see?")
 			prints(GameState.current_continent_control_dict)
 	update_army_size_visuals()
 
@@ -65,8 +69,9 @@ func add_units_to_army() -> void:
 func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void:
 	_move_models(current_tile, new_tile, unit_count)
 	await movement_complete
+	prints("got here move complete", current_tile, new_tile, unit_count)
 	currently_occupied_tile.remove_army_units_from_tile(unit_count)
-	update_army_size_visuals()
+	#update_army_size_visuals()
 	GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 
 
@@ -112,3 +117,47 @@ func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> 
 	for model in get_tree().get_nodes_in_group("delete_me"):
 		model.queue_free()
 	movement_complete.emit()
+
+
+func _move_ai() -> void:
+	print("moving ai")
+	var current_tile_array: Array = []
+	var select_next_army: bool = false
+	for map_id in GameState.TILE_ADJACENT_MAP_DICT[currently_occupied_tile.tile_id]:
+		for map_tile: MapTile in get_tree().get_nodes_in_group("map_tile"):
+			if map_id == map_tile.tile_id:
+				current_tile_array.append(map_tile)
+	print(current_tile_array)
+	current_tile_array.shuffle()
+	#for current_tile_element in current_tile_array:
+		#if current_tile_element == current_tile_array[-1]:
+			#selected_next_ai_army.emit()
+			#return
+	for current_tile_element in current_tile_array:
+		if current_tile_element == current_tile_array[-1]:
+			select_next_army = true
+			prints("Breaking loop", current_tile_element, current_tile_array)
+		var potential_tile: MapTile = current_tile_array.pop_front()
+		prints("potential_tile", potential_tile, typeof(potential_tile))
+		if not potential_tile.is_occupied:
+			if army_size <= 1:
+				print("emit signal 1")
+				ai_player_confirmed.emit(army_size, false, self, potential_tile)
+			else:
+				print("emit signal 2")
+				ai_player_confirmed.emit(army_size - 1, false, self, potential_tile)
+			return
+		else:
+			if potential_tile.occupying_army.controlling_player_id == GameState.current_player_turn:
+				print("tile is occupied by self")
+				continue
+			else:
+				if army_size <= 1:
+					print("emit signal 3")
+					ai_player_confirmed.emit(army_size, true, self, potential_tile)
+				else:
+					print("emit signal 4")
+					ai_player_confirmed.emit(army_size, true, self, potential_tile)
+		if select_next_army:
+			print("select next army")
+			selected_next_ai_army.emit()
