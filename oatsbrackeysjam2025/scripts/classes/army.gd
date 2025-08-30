@@ -8,6 +8,7 @@ const JAMMER_MODEL = preload("res://scenes/armies/jammer_model.tscn")
 signal movement_complete
 signal selected_next_army
 signal ai_player_confirmed(unit_count: int, is_attack: bool, self_id: Army, new_tile: MapTile)
+signal remove_army(self_id: Army)
 
 @export var is_ai: bool = false
 @export var currently_taking_turn: bool = false
@@ -76,9 +77,9 @@ func move_to_new_space(current_tile: MapTile, new_tile: MapTile, unit_count: int
 
 
 func remove_self() -> void:
-	#print("removing army from army script")
+	print("removing army from army script")
 	selected_next_army.emit()
-	self.queue_free()
+	remove_army.emit(self)
 
 
 func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> void: 

@@ -60,25 +60,25 @@ const TILE_ADJACENT_MAP_DICT: Dictionary = {
 		{
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
-			"is_eliminated": false,
+			"is_eliminated": true,
 		},
 	PLAYER_IDS.PLAYER_2: 
 		{
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
-			"is_eliminated": false,
+			"is_eliminated": true,
 		},
 	PLAYER_IDS.PLAYER_3: 
 		{
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
-			"is_eliminated": false,
+			"is_eliminated": true,
 		},
 	PLAYER_IDS.PLAYER_4: 
 		{
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,
-			"is_eliminated": false,
+			"is_eliminated": true,
 		},
 }
 

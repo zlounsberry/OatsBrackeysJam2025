@@ -132,6 +132,7 @@ func _add_new_army_to_map_tile(map_tile: MapTile, player_value: int, new_army_si
 	add_child(new_army)
 	new_army.selected_next_army.connect(select_next_army)
 	new_army.ai_player_confirmed.connect(_on_ai_player_confirmed)
+	new_army.remove_army.connect(_on_remove_army)
 	map_tile.update_ownership(true, new_army)
 	new_army.global_position = map_tile.get_node("Marker3D").global_position
 	new_army.update_army_size_visuals()
@@ -177,22 +178,22 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 
 
 func _evaluate_continent_control_and_update_armies() -> void:
-	print(GameState.current_continent_control_dict)
+	#print(GameState.current_continent_control_dict)
 	for continent in GameState.current_continent_control_dict.keys():
-		print('eval for ', continent)
+		#print('eval for ', continent)
 		var evaluation_array: Array = []
 		GameState.current_continent_control_dict[continent]["controlling_player"] = -99
 		for map_tile:MapTile in get_tree().get_nodes_in_group("map_tile"):
 			if map_tile.is_occupied:
 				if map_tile.continent_id == continent:
 					evaluation_array.append(map_tile.occupying_army.controlling_player_id)
-					print(evaluation_array)
+					#print(evaluation_array)
 #		 if the array is the size of the number of tiles in the continent, see if there are any non-unique values.
-		prints("ok:", len(evaluation_array), GameState.current_continent_control_dict[continent]["continent_size"])
+		#prints("ok:", len(evaluation_array), GameState.current_continent_control_dict[continent]["continent_size"])
 		if not evaluation_array.is_empty():
 			if evaluation_array.count(evaluation_array[0]) == GameState.current_continent_control_dict[continent]["continent_size"]:
 				GameState.current_continent_control_dict[continent]["controlling_player"] = evaluation_array[0]
-				prints("GameState.current_continent_control_dict[continent][controlling_player]:", GameState.current_continent_control_dict)
+				#prints("GameState.current_continent_control_dict[continent][controlling_player]:", GameState.current_continent_control_dict)
 	for army: Army in get_tree().get_nodes_in_group("army"):
 		army.add_units_to_army()
 
@@ -273,6 +274,33 @@ func _on_hud_start_game() -> void:
 			GameState.FACTIONS.CHOCCY_CHIP:
 				tiles_by_continent_3.shuffle()
 				final_map_tile = tiles_by_continent_3.pop_front()
+		GameState.current_player_dict[player_value]["is_eliminated"] = false
 		_add_new_army_to_map_tile(final_map_tile, player_value, 4) # Hardcoded to start game w/ 4 units per army
 	#GameState.current_state = GameState.STATE_MACHINE.SELECTING_START
+	print("init dict: ", GameState.current_player_dict)
 	_update_current_player(true)
+
+
+func _on_remove_army(army_id: Army):
+	print("removing self")
+	var player_controlling_army: int = army_id.controlling_player_id
+	var army_self_id = army_id.army_id
+	army_id.queue_free()
+	await get_tree().process_frame # make sure army is removed
+	var found_army: bool = false
+	for army_child: Army in get_tree().get_nodes_in_group("army"):
+		if army_child.controlling_player_id == player_controlling_army:
+			prints('found a remaining army for player', player_controlling_army, army_self_id, army_child.army_id)
+			found_army = true
+	if not found_army:
+		print("player ", player_controlling_army, " eliminated")
+		GameState.current_player_dict[player_controlling_army]["is_eliminated"] = true
+		print("current dict state:", GameState.current_player_dict)
+		var survivors: int
+		var survivor_id: int
+		for player_id in GameState.current_player_dict.keys():
+			if not GameState.current_player_dict[player_id]["is_eliminated"]:
+				survivors += 1
+				survivor_id = player_id
+		if survivors == 1:
+			print("winner is ", survivor_id)
