@@ -102,7 +102,7 @@ const TILE_ADJACENT_MAP_DICT: Dictionary = {
 		},
 }
 
-@onready var number_of_players: int = 2 # This will get updated to an export var controlling the main scene
+@onready var number_of_players: int = 3 # This will get updated to an export var controlling the main scene
 @onready var menu_open: bool = true # This will get updated to an export var controlling the main scene
 
 var current_selected_army: Army

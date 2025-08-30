@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpp2fn03yb5mc"]
+
+[ext_resource type="AudioStream" uid="uid://dwdfn3k5s26cv" path="res://assets/sounds/OrchRockVictoryCut30.ogg" id="1_ejqpe"]
+[ext_resource type="Script" uid="uid://1tnc4vkhqh5f" path="res://scripts/globals/music.gd" id="2_732ty"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_ejqpe")
+volume_db = -20.0
+autoplay = true
+script = ExtResource("2_732ty")

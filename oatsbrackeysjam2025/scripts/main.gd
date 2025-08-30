@@ -311,5 +311,6 @@ func _on_remove_army(army_id: Army):
 			win_screen.faction_id = GameState.current_player_dict[survivor_id]["faction_id"]
 			$HUD.add_child(win_screen)
 			GameState.update_state(GameState.STATE_MACHINE.DISABLED)
+			$Winner.play()
 			return
 		_update_current_player(false) # If still players, update player id

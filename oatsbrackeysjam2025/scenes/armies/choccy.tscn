@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqivh5dmuk0q6"]
+[gd_scene load_steps=6 format=3 uid="uid://bqivh5dmuk0q6"]
 
 [ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/armies/choccy_model.tscn" id="1_gjy2c"]
 [ext_resource type="Script" uid="uid://dvfe75of0np0y" path="res://scripts/armies/choccy.gd" id="1_rcjnm"]
 [ext_resource type="PackedScene" uid="uid://dwgx5jvy7ocjs" path="res://scenes/turn_indicator.tscn" id="3_ka8dc"]
+[ext_resource type="AudioStream" uid="uid://ddm8kgcw1t513" path="res://assets/sounds/boing4.ogg" id="4_dbm0u"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_406th"]
+random_pitch = 1.1
+random_volume_offset_db = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_dbm0u")
 
 [node name="CCArmy" type="Node3D"]
 script = ExtResource("1_rcjnm")
+is_ai = null
+currently_taking_turn = null
+controlling_player_id = null
 faction_id = 1
+army_size = null
+army_id = null
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
 
 [node name="TurnIndicator" parent="." instance=ExtResource("3_ka8dc")]
@@ -217,3 +229,8 @@ visible = false
 billboard = 1
 no_depth_test = true
 font_size = 128
+
+[node name="Boing" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_406th")
+volume_db = 8.0
+pitch_scale = 0.98

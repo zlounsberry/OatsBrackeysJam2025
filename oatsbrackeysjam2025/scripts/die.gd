@@ -18,6 +18,8 @@ func _ready() -> void:
 	rotation_degrees.z = randf_range(0, 360)
 	skin_self()
 	_toss_self()
+	await get_tree().create_timer(0.25).timeout
+	$Dice.play()
 
 
 func _toss_self() -> void:
@@ -49,6 +51,7 @@ func skin_self() -> void:
 func destroy_self() -> void:
 	print("destroying ", self)
 	freeze = false
+	$Dice.play()
 	if is_attacking:
 		apply_central_impulse((Vector3.UP / 2 + Vector3.LEFT) * IMPULSE_STRENGTH * 3)
 	else:
@@ -57,6 +60,7 @@ func destroy_self() -> void:
 	var random_float_y: float = randf_range(1, 3)
 	var random_float_z: float = randf_range(1, 3)
 	angular_velocity = Vector3(random_float_x, random_float_y, random_float_z)
+	$Pew.play()
 	$Destroy.start()
 
 
