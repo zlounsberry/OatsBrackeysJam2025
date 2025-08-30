@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://57epoytwmhh7"]
+[gd_scene load_steps=9 format=3 uid="uid://57epoytwmhh7"]
 
 [ext_resource type="Script" uid="uid://y6adcvth0dmn" path="res://scripts/faction_selection.gd" id="1_00o52"]
+[ext_resource type="Theme" uid="uid://fyuqosnd1wg8" path="res://assets/resources/main.tres" id="1_gvdtk"]
 [ext_resource type="Texture2D" uid="uid://bauxj0x2byc8" path="res://assets/nine-patch.png" id="1_xgy2r"]
 [ext_resource type="PackedScene" uid="uid://dm3pca7e8aygp" path="res://scenes/avatar.tscn" id="3_xgy2r"]
 
@@ -251,6 +252,7 @@ offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme = ExtResource("1_gvdtk")
 texture = ExtResource("1_xgy2r")
 patch_margin_left = 68
 patch_margin_top = 68
@@ -263,13 +265,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -196.0
-offset_top = 15.0
-offset_right = 196.0
-offset_bottom = 82.0
+offset_left = -207.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 73.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 54
 text = "Faction Selection"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -323,7 +325,7 @@ offset_right = -121.0
 offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Click Here To Choose Next"
+text = "Click here"
 
 [node name="Confirm" type="Button" parent="."]
 layout_mode = 1
@@ -342,11 +344,13 @@ text = "Team Name"
 
 [node name="AI" type="CheckBox" parent="."]
 layout_mode = 0
-offset_left = 421.0
-offset_top = 803.0
-offset_right = 539.0
-offset_bottom = 835.0
+offset_left = 405.0
+offset_top = 791.0
+offset_right = 552.0
+offset_bottom = 846.0
+theme_override_font_sizes/font_size = 24
 text = "Set as AI "
+icon_alignment = 1
 
 [connection signal="pressed" from="NextTeam" to="." method="_on_next_team_pressed"]
 [connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]

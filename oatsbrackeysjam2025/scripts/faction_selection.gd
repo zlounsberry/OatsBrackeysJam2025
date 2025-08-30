@@ -8,7 +8,7 @@ const SCC_UNPICKED_TEXT = "Sandwich Cookie Chan"
 const ALREADY_PICKED_TEXT = "ALREADY PICKED"
 
 
-@onready var current_selection: int = GameState.FACTIONS.SANDWICH_COOKIE
+@onready var current_selection: int = GameState.FACTIONS.STRAWBRY_JAMMER
 @onready var left_position: Vector2 = $SCC.position
 @onready var right_position: Vector2 = $CC.position
 @onready var center_position: Vector2 = $SJ.position
@@ -71,7 +71,8 @@ func _update_current_selection(faction_id: int) -> void:
 func _on_confirm_pressed() -> void:
 	if not can_select:
 		return
-	can_select = true
+	can_select = false
+	confirm_button.text = ALREADY_PICKED_TEXT
 	GameState.current_player_dict[current_player_choosing]["faction_id"] = current_selection
 	GameState.current_player_dict[current_player_choosing]["is_ai"] = is_ai
 	match current_selection:
