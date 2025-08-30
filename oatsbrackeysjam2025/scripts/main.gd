@@ -4,6 +4,7 @@ const CHOCCY = preload("res://scenes/armies/choccy.tscn")
 const JAMMER = preload("res://scenes/armies/jammer.tscn")
 const SANDWICH_COOKIE = preload("res://scenes/armies/sandwich_cookie.tscn")
 const DICE_TRAY = preload("res://scenes/dice_tray.tscn")
+const WINNER_SCREEN = preload("res://scenes/winner_screen.tscn")
 
 signal player_confirmed(is_yes: bool)
 
@@ -306,4 +307,7 @@ func _on_remove_army(army_id: Army):
 				survivors += 1
 				survivor_id = player_id
 		if survivors == 1:
-			print("winner is ", survivor_id)
+			var win_screen = WINNER_SCREEN.instantiate()
+			win_screen.faction_id = GameState.current_player_dict[survivor_id]["faction_id"]
+			$HUD.add_child(win_screen)
+			GameState.update_state(GameState.STATE_MACHINE.DISABLED)

@@ -10,7 +10,6 @@ func _ready() -> void:
 
 
 func update_faction_id(faction_id: int, is_attacker: bool) -> void:
-	print("faction = ", faction_id, " from avi script")
 	var move_position_to_avoid_overlap: float
 	match faction_id:
 		GameState.FACTIONS.SANDWICH_COOKIE:
