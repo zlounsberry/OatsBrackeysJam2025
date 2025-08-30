@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm3pca7e8aygp"]
+[gd_scene load_steps=8 format=3 uid="uid://dm3pca7e8aygp"]
 
 [ext_resource type="Script" uid="uid://cv0f8v7w77chl" path="res://scripts/classes/avatar.gd" id="1_l64a6"]
 [ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/armies/choccy_model.tscn" id="2_d0d8i"]
@@ -10,6 +10,9 @@ viewport_path = NodePath("3DView/SubViewport")
 
 [sub_resource type="QuadMesh" id="QuadMesh_p046f"]
 size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0d8i"]
+albedo_color = Color(0.707967, 0.707967, 0.707967, 1)
 
 [node name="Avatar" type="Node2D"]
 script = ExtResource("1_l64a6")
@@ -29,7 +32,7 @@ texture = SubResource("ViewportTexture_d0d8i")
 [node name="SubViewport" type="SubViewport" parent="3DView"]
 
 [node name="Camera3D" type="Camera3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1327, 3.02223, 630.816)
+transform = Transform3D(1, 0, 0, 0, -0.35985, 0.93301, 0, -0.93301, -0.35985, 1327, 3.02223, 629.787)
 current = true
 fov = 52.3641
 size = 3.85487
@@ -37,6 +40,7 @@ size = 3.85487
 [node name="MeshInstance3D" type="MeshInstance3D" parent="3DView/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1327, 0, 630.886)
 mesh = SubResource("QuadMesh_p046f")
+surface_material_override/0 = SubResource("StandardMaterial3D_d0d8i")
 
 [node name="choccy" parent="3DView/SubViewport" instance=ExtResource("2_d0d8i")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1327, 0.480809, 631.837)
@@ -54,11 +58,11 @@ visible = false
 is_avatar = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1325.29, 1.70979, 632.135)
-visible = false
-omni_range = 12.9918
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1325.35, 2.79211, 631.795)
+light_energy = 0.2
+omni_range = 9.27912
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="3DView/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1328.93, 1.70979, 632.135)
-visible = false
-omni_range = 12.9918
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1328.67, 2.79211, 631.795)
+light_energy = 0.2
+omni_range = 9.27912
