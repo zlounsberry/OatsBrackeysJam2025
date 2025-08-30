@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1nar2we066qx"
-path.s3tc="res://.godot/imported/choccy_emission.png-d195df475e6242406a269ddebe6fef12.s3tc.ctex"
+uid="uid://c5ie48uaaeu06"
+path.s3tc="res://.godot/imported/cookie_normal.png-7b1bc0b6c1bf57fc2873d201dd263544.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/resources/choccy_emission.png"
-dest_files=["res://.godot/imported/choccy_emission.png-d195df475e6242406a269ddebe6fef12.s3tc.ctex"]
+source_file="res://assets/resources/textures/cookie_normal.png"
+dest_files=["res://.godot/imported/cookie_normal.png-7b1bc0b6c1bf57fc2873d201dd263544.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/resources/cookie_normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

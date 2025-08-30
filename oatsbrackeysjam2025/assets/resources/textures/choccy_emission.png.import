@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4e5jin0ge0ir"
-path.s3tc="res://.godot/imported/arizona_sandstone_heightmap.png-4efb689cf44cb51dbd5f4c67f1d19c7e.s3tc.ctex"
+uid="uid://c1nar2we066qx"
+path.s3tc="res://.godot/imported/choccy_emission.png-677b075c034ca32d79e62bd9dd8dd746.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/resources/arizona_sandstone_heightmap.png"
-dest_files=["res://.godot/imported/arizona_sandstone_heightmap.png-4efb689cf44cb51dbd5f4c67f1d19c7e.s3tc.ctex"]
+source_file="res://assets/resources/textures/choccy_emission.png"
+dest_files=["res://.godot/imported/choccy_emission.png-677b075c034ca32d79e62bd9dd8dd746.s3tc.ctex"]
 
 [params]
 
@@ -24,8 +24,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=7
-roughness/src_normal="res://assets/resources/arizona_sandstone_normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

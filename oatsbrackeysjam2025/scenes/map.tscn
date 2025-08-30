@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmp1xr260pmvb" path="res://scripts/map.gd" id="1_4xfga"]
 [ext_resource type="Script" uid="uid://cqxugqu324pb4" path="res://scripts/classes/map_tile.gd" id="2_gldc4"]
-[ext_resource type="Material" uid="uid://ib1alt0y444v" path="res://assets/resources/outline_material.tres" id="2_paxxb"]
+[ext_resource type="Material" uid="uid://ib1alt0y444v" path="res://assets/resources/textures/outline_material.tres" id="2_paxxb"]
 [ext_resource type="Shader" uid="uid://dlm7157ldg35h" path="res://assets/map.gdshader" id="8_jh32y"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jh32y"]

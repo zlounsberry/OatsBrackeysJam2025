@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvtxdi3v083pi"
-path.s3tc="res://.godot/imported/arizona_sandstone_orm.png-da29e3803941cbb0e574d29b2e980825.s3tc.ctex"
+uid="uid://cnigdytp2cyvs"
+path.s3tc="res://.godot/imported/cookie_orm.png-bf0c6046b4f64273556c854c6333b17b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/resources/arizona_sandstone_orm.png"
-dest_files=["res://.godot/imported/arizona_sandstone_orm.png-da29e3803941cbb0e574d29b2e980825.s3tc.ctex"]
+source_file="res://assets/resources/textures/cookie_orm.png"
+dest_files=["res://.godot/imported/cookie_orm.png-bf0c6046b4f64273556c854c6333b17b.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=8
-roughness/src_normal="res://assets/resources/arizona_sandstone_normal.png"
+roughness/src_normal="res://assets/resources/cookie_normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

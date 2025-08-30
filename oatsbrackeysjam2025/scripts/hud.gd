@@ -35,11 +35,3 @@ func _on_confirm_menu_player_selected_yes(is_yes: bool, unit_count: int, is_atta
 
 func _on_faction_selection_start_game() -> void:
 	start_game.emit()
-
-
-#func _on_confirm_menu_menu_opened() -> void:
-	#menu_opened.emit()
-
-
-#func _on_confirm_menu_menu_closed() -> void:
-	#menu_closed.emit()

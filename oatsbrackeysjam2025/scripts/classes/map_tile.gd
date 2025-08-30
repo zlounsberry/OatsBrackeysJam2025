@@ -18,7 +18,7 @@ var adjacent_tiles: Array = []
 func _ready() -> void:
 	$DEBUG.hide()
 	add_to_group("map_tile")
-	set_surface_override_material(0, load(str("res://assets/resources/continent",continent_id,".tres")))
+	set_surface_override_material(0, load(str("res://assets/resources/textures/continent",continent_id,".tres")))
 	$StaticBody3D.mouse_entered.connect(_show_outline)
 	$StaticBody3D.mouse_exited.connect(_hide_outline)
 	adjacent_tiles = GameState.TILE_ADJACENT_MAP_DICT[tile_id]

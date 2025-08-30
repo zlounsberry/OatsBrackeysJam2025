@@ -1,9 +1,9 @@
 [gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://6a23r7bdmf0y"]
 
-[ext_resource type="Texture2D" uid="uid://yctgraigy0nk" path="res://assets/resources/cookie_albedo.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://cnigdytp2cyvs" path="res://assets/resources/cookie_orm.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://c5ie48uaaeu06" path="res://assets/resources/cookie_normal.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://bbtmgwh3f2mc5" path="res://assets/resources/cookie_heightmap.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://yctgraigy0nk" path="res://assets/resources/textures/cookie_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cnigdytp2cyvs" path="res://assets/resources/textures/cookie_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c5ie48uaaeu06" path="res://assets/resources/textures/cookie_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bbtmgwh3f2mc5" path="res://assets/resources/textures/cookie_heightmap.png" id="4"]
 
 [resource]
 albedo_texture = ExtResource("1")

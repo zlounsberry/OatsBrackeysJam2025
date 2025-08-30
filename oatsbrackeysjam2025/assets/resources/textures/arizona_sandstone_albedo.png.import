@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfx22gw8f1keg"
-path.s3tc="res://.godot/imported/arizona_sandstone_albedo.png-000222733a8d047de35f0e8ed7d07acb.s3tc.ctex"
+path.s3tc="res://.godot/imported/arizona_sandstone_albedo.png-223688831cf785e859016c74b93b7920.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/resources/arizona_sandstone_albedo.png"
-dest_files=["res://.godot/imported/arizona_sandstone_albedo.png-000222733a8d047de35f0e8ed7d07acb.s3tc.ctex"]
+source_file="res://assets/resources/textures/arizona_sandstone_albedo.png"
+dest_files=["res://.godot/imported/arizona_sandstone_albedo.png-223688831cf785e859016c74b93b7920.s3tc.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
 extends RigidBody3D
 
-const CC = preload("res://assets/resources/CC.tres")
-const SCC = preload("res://assets/resources/SCC.tres")
-const SJ = preload("res://assets/resources/SJ.tres")
-const OUTLINE_MATERIAL = preload("res://assets/resources/outline_material.tres")
+const CC = preload("res://assets/resources/textures/CC.tres")
+const SCC = preload("res://assets/resources/textures/SCC.tres")
+const SJ = preload("res://assets/resources/textures/SJ.tres")
+const OUTLINE_MATERIAL = preload("res://assets/resources/textures/outline_material.tres")
 const IMPULSE_STRENGTH = 3
 
 @export var faction_id: int

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dm3pca7e8aygp"]
 
-[ext_resource type="Script" uid="uid://cv0f8v7w77chl" path="res://scripts/avatar.gd" id="1_l64a6"]
+[ext_resource type="Script" uid="uid://cv0f8v7w77chl" path="res://scripts/classes/avatar.gd" id="1_l64a6"]
 [ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/armies/choccy_model.tscn" id="2_d0d8i"]
 [ext_resource type="PackedScene" uid="uid://c1cjxjwhtkspy" path="res://scenes/armies/jammer_model.tscn" id="3_v4bhi"]
 [ext_resource type="PackedScene" uid="uid://bnir5pksbjrs7" path="res://scenes/armies/sandwich_cookie_model.tscn" id="4_sngax"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://dsnpqjfw7a0mu"]
 
-[ext_resource type="Material" uid="uid://c614m4qn2cjda" path="res://assets/resources/choccy.tres" id="1_jhdat"]
+[ext_resource type="Material" uid="uid://c614m4qn2cjda" path="res://assets/resources/textures/choccy.tres" id="1_jhdat"]
 [ext_resource type="Script" uid="uid://bcdc4hjfr8831" path="res://scripts/classes/army_model.gd" id="1_ojk37"]
 [ext_resource type="Texture2D" uid="uid://k1lt0i5u5hyq" path="res://assets/face_3_sprites.png" id="2_hb1q2"]
 

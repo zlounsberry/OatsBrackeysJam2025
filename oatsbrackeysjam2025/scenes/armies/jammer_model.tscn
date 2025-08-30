@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=4 uid="uid://c1cjxjwhtkspy"]
 
 [ext_resource type="Script" uid="uid://bcdc4hjfr8831" path="res://scripts/classes/army_model.gd" id="1_1dd57"]
-[ext_resource type="Material" uid="uid://c6ixedlkk7lr" path="res://assets/resources/arizona_sandstone.tres" id="2_1dd57"]
+[ext_resource type="Material" uid="uid://c6ixedlkk7lr" path="res://assets/resources/textures/arizona_sandstone.tres" id="2_1dd57"]
 [ext_resource type="Texture2D" uid="uid://dv8be6oc3l3mr" path="res://assets/face_1_sprites.png" id="2_g3btn"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jjfvs"]

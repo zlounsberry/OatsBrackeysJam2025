@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yctgraigy0nk"
-path.s3tc="res://.godot/imported/cookie_albedo.png-2fdd66a174312f749c5b64ccbfdfe02e.s3tc.ctex"
+uid="uid://c1jg6h6hy6cne"
+path.s3tc="res://.godot/imported/choccy_orm.png-d777544fb288a693c4cea026a7d0e9d4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/resources/cookie_albedo.png"
-dest_files=["res://.godot/imported/cookie_albedo.png-2fdd66a174312f749c5b64ccbfdfe02e.s3tc.ctex"]
+source_file="res://assets/resources/textures/choccy_orm.png"
+dest_files=["res://.godot/imported/choccy_orm.png-d777544fb288a693c4cea026a7d0e9d4.s3tc.ctex"]
 
 [params]
 
@@ -24,8 +24,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=8
+roughness/src_normal="res://assets/resources/choccy_normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

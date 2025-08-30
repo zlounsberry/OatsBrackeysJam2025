@@ -1,11 +1,11 @@
 [gd_scene load_steps=24 format=4 uid="uid://bnir5pksbjrs7"]
 
-[ext_resource type="Material" uid="uid://6a23r7bdmf0y" path="res://assets/resources/cookie.tres" id="1_241ww"]
+[ext_resource type="Material" uid="uid://6a23r7bdmf0y" path="res://assets/resources/textures/cookie.tres" id="1_241ww"]
 [ext_resource type="Script" uid="uid://bcdc4hjfr8831" path="res://scripts/classes/army_model.gd" id="1_l7q7u"]
-[ext_resource type="Texture2D" uid="uid://yctgraigy0nk" path="res://assets/resources/cookie_albedo.png" id="2_rjo87"]
-[ext_resource type="Texture2D" uid="uid://cnigdytp2cyvs" path="res://assets/resources/cookie_orm.png" id="3_dek4b"]
-[ext_resource type="Texture2D" uid="uid://bbtmgwh3f2mc5" path="res://assets/resources/cookie_heightmap.png" id="4_vgpnx"]
-[ext_resource type="Texture2D" uid="uid://c5ie48uaaeu06" path="res://assets/resources/cookie_normal.png" id="5_ljm88"]
+[ext_resource type="Texture2D" uid="uid://yctgraigy0nk" path="res://assets/resources/textures/cookie_albedo.png" id="2_rjo87"]
+[ext_resource type="Texture2D" uid="uid://cnigdytp2cyvs" path="res://assets/resources/textures/cookie_orm.png" id="3_dek4b"]
+[ext_resource type="Texture2D" uid="uid://bbtmgwh3f2mc5" path="res://assets/resources/textures/cookie_heightmap.png" id="4_vgpnx"]
+[ext_resource type="Texture2D" uid="uid://c5ie48uaaeu06" path="res://assets/resources/textures/cookie_normal.png" id="5_ljm88"]
 [ext_resource type="Texture2D" uid="uid://b15h46v1sclpr" path="res://assets/face_2_sprites.png" id="6_wosb5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8vif"]

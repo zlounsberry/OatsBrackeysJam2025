@@ -20,11 +20,16 @@ const ALREADY_PICKED_TEXT = "ALREADY PICKED"
 @onready var scc_has_been_picked: bool = false
 @onready var cc_has_been_picked: bool = false
 @onready var sj_has_been_picked: bool = false
-@onready var can_select: bool = true
+@onready var can_select: bool = false
 
 
 func _ready() -> void:
 	print("current game dict: ", GameState.current_player_dict)
+	
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_left"):
+		_on_next_team_pressed()
 
 
 func _scroll_left():
@@ -66,6 +71,7 @@ func _update_current_selection(faction_id: int) -> void:
 func _on_confirm_pressed() -> void:
 	if not can_select:
 		return
+	can_select = true
 	GameState.current_player_dict[current_player_choosing]["faction_id"] = current_selection
 	GameState.current_player_dict[current_player_choosing]["is_ai"] = is_ai
 	match current_selection:
@@ -80,6 +86,7 @@ func _on_confirm_pressed() -> void:
 			$SJ.modulate = Color(200, 200, 200)
 	current_player_choosing += 1
 	if current_player_choosing >= GameState.number_of_players:
+		print("game start!")
 		start_game.emit()
 		GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME)
 		GameState.menu_open = false

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cso0x0vxt0ifb"
-path.s3tc="res://.godot/imported/choccy_heightmap.png-af572e855ff1a1b2ec60aca48cd99498.s3tc.ctex"
+path.s3tc="res://.godot/imported/choccy_heightmap.png-99299e715fb64dd63ca0590806435121.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/resources/choccy_heightmap.png"
-dest_files=["res://.godot/imported/choccy_heightmap.png-af572e855ff1a1b2ec60aca48cd99498.s3tc.ctex"]
+source_file="res://assets/resources/textures/choccy_heightmap.png"
+dest_files=["res://.godot/imported/choccy_heightmap.png-99299e715fb64dd63ca0590806435121.s3tc.ctex"]
 
 [params]
 

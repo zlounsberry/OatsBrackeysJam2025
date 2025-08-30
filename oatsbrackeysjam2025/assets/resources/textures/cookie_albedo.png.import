@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5ie48uaaeu06"
-path.s3tc="res://.godot/imported/cookie_normal.png-920452a795f4a55b75d956f46b5ee515.s3tc.ctex"
+uid="uid://yctgraigy0nk"
+path.s3tc="res://.godot/imported/cookie_albedo.png-1072d81eb6a26a88d324a6b27e2ebe49.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/resources/cookie_normal.png"
-dest_files=["res://.godot/imported/cookie_normal.png-920452a795f4a55b75d956f46b5ee515.s3tc.ctex"]
+source_file="res://assets/resources/textures/cookie_albedo.png"
+dest_files=["res://.godot/imported/cookie_albedo.png-1072d81eb6a26a88d324a6b27e2ebe49.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/resources/cookie_normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
