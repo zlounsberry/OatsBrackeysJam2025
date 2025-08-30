@@ -3,6 +3,7 @@ class_name MapTile
 
 signal clicked_this_tile(self_id: MapTile, occupying_army: Army, tile_is_occupied: bool)
 
+
 @onready var can_select: bool = false
 @onready var is_hovered: bool = false
 
@@ -16,6 +17,7 @@ var adjacent_tiles: Array = []
 
 func _ready() -> void:
 	add_to_group("map_tile")
+	set_surface_override_material(0, load(str("res://assets/resources/continent",continent_id,".tres")))
 	$StaticBody3D.mouse_entered.connect(_show_outline)
 	$StaticBody3D.mouse_exited.connect(_hide_outline)
 	adjacent_tiles = GameState.TILE_ADJACENT_MAP_DICT[tile_id]

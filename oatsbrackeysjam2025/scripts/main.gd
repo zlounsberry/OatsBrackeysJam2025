@@ -23,9 +23,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("switch_army"):
 		select_next_army()
 
-	if event.is_action_pressed("ui_end"):
-		#DEBUG CAMERA TOP VIEW
-		$Marker3D.rotation_degrees.x = -32
+	#if event.is_action_pressed("ui_end"):
+		##DEBUG CAMERA TOP VIEW
+		#$Marker3D.rotation_degrees.x = -32
 
 	if event.is_action_pressed("ui_left"):
 		moving_camera = true
