@@ -16,6 +16,7 @@ var adjacent_tiles: Array = []
 
 
 func _ready() -> void:
+	$DEBUG.hide()
 	add_to_group("map_tile")
 	set_surface_override_material(0, load(str("res://assets/resources/continent",continent_id,".tres")))
 	$StaticBody3D.mouse_entered.connect(_show_outline)

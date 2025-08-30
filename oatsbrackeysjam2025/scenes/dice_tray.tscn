@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://do4kpmrits8m7"]
+[gd_scene load_steps=17 format=4 uid="uid://do4kpmrits8m7"]
 
 [ext_resource type="Script" uid="uid://bhffq6hiip8gv" path="res://scripts/dice_tray.gd" id="1_xrqg8"]
+[ext_resource type="PackedScene" uid="uid://dm3pca7e8aygp" path="res://scenes/avatar.tscn" id="2_ukwv1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_h6acc"]
 viewport_path = NodePath("3DView/SubViewport")
@@ -147,14 +148,20 @@ attacker_army_size = 10
 defender_player_id = 1
 defender_army_size = 8
 
+[node name="Viewer" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = SubResource("ViewportTexture_h6acc")
+
+[node name="AttackerAvatar" parent="." instance=ExtResource("2_ukwv1")]
+position = Vector2(272, 540)
+
+[node name="DefenderAvatar" parent="." instance=ExtResource("2_ukwv1")]
+position = Vector2(1648, 540)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 visible = false
 shadow_enabled = true
-
-[node name="Viewer" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-texture = SubResource("ViewportTexture_h6acc")
 
 [node name="3DView" type="Node3D" parent="."]
 

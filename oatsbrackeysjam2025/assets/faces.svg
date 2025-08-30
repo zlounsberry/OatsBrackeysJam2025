@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="4.3994182"
-     inkscape:cx="13.06991"
-     inkscape:cy="434.03466"
+     inkscape:zoom="8.7988364"
+     inkscape:cx="52.109163"
+     inkscape:cy="568.31378"
      inkscape:window-width="2560"
      inkscape:window-height="1369"
      inkscape:window-x="3832"
@@ -36,6 +36,21 @@
      inkscape:snap-nodes="false" />
   <defs
      id="defs2">
+    <inkscape:path-effect
+       effect="powerstroke"
+       id="path-effect6804"
+       is_visible="true"
+       lpeversion="1"
+       offset_points="1,5.45905"
+       not_jump="false"
+       sort_points="true"
+       interpolator_type="CubicBezierJohan"
+       interpolator_beta="0.2"
+       start_linecap_type="zerowidth"
+       linejoin_type="extrp_arc"
+       miter_limit="4"
+       scale_width="1"
+       end_linecap_type="zerowidth" />
     <inkscape:path-effect
        effect="powerstroke"
        id="path-effect41625"
@@ -323,6 +338,11 @@
            id="path41070-6-6" />
       </g>
     </clipPath>
+    <inkscape:path-effect
+       effect="fill_between_many"
+       method="bsplinespiro"
+       linkedpaths="#path6802,0,1"
+       id="path-effect6806" />
   </defs>
   <g
      inkscape:label="Reference"
@@ -2012,13 +2032,22 @@
        width="33.866665"
        height="2.1166666"
        preserveAspectRatio="none"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAICAYAAAAx3fd+AAAAfklEQVR4Ae3BoQ3CUBSG0e/dBNek
-uqICRRoSNmCAaoKpA1LXARCo7oFCItslXpiDHUgFsMG/wL3nJOCHUG8PKKcFaTx/UZ6vN8q8qlAu
-wxVlv1sjlT3SY0JqNyjpU6I0OaN0+Y5ySwXS0VCM4JoRXDOCa0ZwzQiuGcE1I7j2BxZeEYT8Sdib
-AAAAAElFTkSuQmCC
-"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAICAYAAAAx3fd+AAAAfklEQVR4Ae3BoQ3CUBSG0e/dBNek uqICRRoSNmCAaoKpA1LXARCo7oFCItslXpiDHUgFsMG/wL3nJOCHUG8PKKcFaTx/UZ6vN8q8qlAu wxVlv1sjlT3SY0JqNyjpU6I0OaN0+Y5ySwXS0VCM4JoRXDOCa0ZwzQiuGcE1I7j2BxZeEYT8Sdib AAAAAElFTkSuQmCC "
        id="image1300"
        x="6.1606302"
        y="150.13496" />
+    <path
+       inkscape:original-d="M 0,0"
+       inkscape:path-effect="#path-effect6806"
+       d="m -17.07991,142.83375 c 4.361005,1.59792 8.7531138,3.125 13.2910569,4.1497 z"
+       id="path6808"
+       style="fill:#00e436;fill-opacity:1" />
+    <path
+       style="opacity:0.75;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="m -17.07991,142.83375 c 1.316243,0.48229 3.438494,2.7125 5.744862,4.8887 2.3395873,2.20754 4.7807999,4.23305 6.3437762,4.58598 0,0 1.2024187,-5.32498 1.2024187,-5.32498 0,0 1.2024187,-5.32498 1.2024187,-5.32498 -1.1500489,-0.25969 -4.1377119,0.40613 -7.0799839,0.8662 -3.0024777,0.46948 -6.1051907,0.78846 -7.4134917,0.30908 z"
+       id="path6802"
+       inkscape:path-effect="#path-effect6804"
+       inkscape:original-d="m -17.07991,142.83375 c 4.361005,1.59792 8.7531138,3.125 13.2910569,4.1497"
+       inkscape:linked-fill="path6808" />
   </g>
 </svg>

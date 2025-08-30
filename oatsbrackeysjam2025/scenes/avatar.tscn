@@ -40,6 +40,7 @@ mesh = SubResource("QuadMesh_p046f")
 
 [node name="choccy" parent="3DView/SubViewport" instance=ExtResource("2_d0d8i")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1327, 0.480809, 631.837)
+visible = false
 is_avatar = true
 
 [node name="jammer" parent="3DView/SubViewport" instance=ExtResource("3_v4bhi")]

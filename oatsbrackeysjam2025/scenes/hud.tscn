@@ -15,5 +15,11 @@ theme_override_font_sizes/font_size = 64
 text = "Player turn: "
 
 [node name="FactionSelection" parent="." instance=ExtResource("3_5ysmq")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 720.0
+offset_top = 301.0
+offset_right = 1200.0
+offset_bottom = 779.0
 
 [connection signal="start_game" from="FactionSelection" to="." method="_on_faction_selection_start_game"]

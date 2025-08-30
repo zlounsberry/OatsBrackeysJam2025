@@ -33,6 +33,11 @@ var defender_tile: MapTile
 
 
 func _ready() -> void:
+	#await get_tree().process_frame
+	print("IDs in dice tray: ", GameState.current_player_dict[attacker_player_id]["faction_id"], GameState.current_player_dict[defender_player_id]["faction_id"])
+	$AttackerAvatar.update_faction_id(GameState.current_player_dict[attacker_player_id]["faction_id"], true)
+	$DefenderAvatar.update_faction_id(GameState.current_player_dict[defender_player_id]["faction_id"], false)
+	print("IDs in dice tray: ", GameState.current_player_dict[attacker_player_id]["faction_id"], GameState.current_player_dict[defender_player_id]["faction_id"])
 	$"3DView/SubViewport/Camera3D".make_current()
 	self.reorder_complete.connect(_on_reorder_complete)
 	self.movement_complete.connect(_on_movement_complete)
