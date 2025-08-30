@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bnir5pksbjrs7"]
+[gd_scene load_steps=29 format=4 uid="uid://bnir5pksbjrs7"]
 
 [ext_resource type="Material" uid="uid://6a23r7bdmf0y" path="res://assets/resources/textures/cookie.tres" id="1_241ww"]
 [ext_resource type="Script" uid="uid://bcdc4hjfr8831" path="res://scripts/classes/army_model.gd" id="1_l7q7u"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbtmgwh3f2mc5" path="res://assets/resources/textures/cookie_heightmap.png" id="4_vgpnx"]
 [ext_resource type="Texture2D" uid="uid://c5ie48uaaeu06" path="res://assets/resources/textures/cookie_normal.png" id="5_ljm88"]
 [ext_resource type="Texture2D" uid="uid://b15h46v1sclpr" path="res://assets/face_2_sprites.png" id="6_wosb5"]
+[ext_resource type="Texture2D" uid="uid://dgvhxr2t40tu4" path="res://assets/face_hurt_sprites.png" id="8_wbqv1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8vif"]
 
@@ -196,6 +197,35 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqsox"]
+atlas = ExtResource("8_wbqv1")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruv3s"]
+atlas = ExtResource("8_wbqv1")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfiuv"]
+atlas = ExtResource("8_wbqv1")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1kmfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqsox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruv3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfiuv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="sandwich_cookie" type="Node3D"]
 script = ExtResource("1_l7q7u")
 
@@ -224,3 +254,10 @@ double_sided = false
 sprite_frames = SubResource("SpriteFrames_nd2vt")
 autoplay = "default"
 frame_progress = 0.842426
+
+[node name="HurtSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.07261, 0.273213)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_1kmfd")
+autoplay = "default"

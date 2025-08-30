@@ -62,12 +62,12 @@ func remove_army_units_from_tile(unit_count: int):
 		var remaining_player_array = []
 		occupying_army.remove_self()
 		update_ownership(false, null)
-		for army_child in get_tree().get_nodes_in_group("army"):
-			remaining_player_array.append(army_child.controlling_player_id)
-		if not remaining_player_array.has(player_id_for_army):
-#			 Win condition! Game over!
-			#prints("player", player_id_for_army, "eliminated!")
-			GameState.current_player_dict[player_id_for_army]["is_eliminated"] = true
+		#for army_child in get_tree().get_nodes_in_group("army"):
+			#remaining_player_array.append(army_child.controlling_player_id)
+		#if not remaining_player_array.has(player_id_for_army):
+##			 Win condition! Game over!
+			##prints("player", player_id_for_army, "eliminated!")
+			#GameState.current_player_dict[player_id_for_army]["is_eliminated"] = true
 		return
 	#print("Army not defeated from map tile script", )
 	occupying_army.update_army_size_visuals()

@@ -4,7 +4,6 @@ enum PLAYER_IDS {
 	PLAYER_1,
 	PLAYER_2,
 	PLAYER_3,
-	PLAYER_4,
 }
 
 enum CONTINENT_IDS {
@@ -69,12 +68,6 @@ const TILE_ADJACENT_MAP_DICT: Dictionary = {
 			"is_eliminated": true,
 		},
 	PLAYER_IDS.PLAYER_3: 
-		{
-			"is_ai": true,
-			"faction_id": FACTIONS.SANDWICH_COOKIE,
-			"is_eliminated": true,
-		},
-	PLAYER_IDS.PLAYER_4: 
 		{
 			"is_ai": true,
 			"faction_id": FACTIONS.SANDWICH_COOKIE,

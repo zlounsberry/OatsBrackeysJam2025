@@ -44,3 +44,22 @@ func skin_self() -> void:
 			GameState.FACTIONS.STRAWBRY_JAMMER:
 				$Cube.set_surface_override_material(0, SJ)
 				$Cube.set_surface_override_material(1, OUTLINE_MATERIAL)
+
+
+func destroy_self() -> void:
+	print("destroying ", self)
+	freeze = false
+	if is_attacking:
+		apply_central_impulse((Vector3.UP / 2 + Vector3.LEFT) * IMPULSE_STRENGTH * 3)
+	else:
+		apply_central_impulse((Vector3.UP / 2 + Vector3.RIGHT) * IMPULSE_STRENGTH * 3)
+	var random_float_x: float = randf_range(1, 3)
+	var random_float_y: float = randf_range(1, 3)
+	var random_float_z: float = randf_range(1, 3)
+	angular_velocity = Vector3(random_float_x, random_float_y, random_float_z)
+	$Destroy.start()
+
+
+func _on_destroy_timeout() -> void:
+	print("queue free", self)
+	queue_free()

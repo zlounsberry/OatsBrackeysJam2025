@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://c1cjxjwhtkspy"]
+[gd_scene load_steps=23 format=4 uid="uid://c1cjxjwhtkspy"]
 
 [ext_resource type="Script" uid="uid://bcdc4hjfr8831" path="res://scripts/classes/army_model.gd" id="1_1dd57"]
 [ext_resource type="Material" uid="uid://c6ixedlkk7lr" path="res://assets/resources/textures/arizona_sandstone.tres" id="2_1dd57"]
 [ext_resource type="Texture2D" uid="uid://dv8be6oc3l3mr" path="res://assets/face_1_sprites.png" id="2_g3btn"]
+[ext_resource type="Texture2D" uid="uid://dgvhxr2t40tu4" path="res://assets/face_hurt_sprites.png" id="4_0jsm8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jjfvs"]
 _surfaces = [{
@@ -87,7 +88,7 @@ color_ramp = SubResource("Gradient_bl13t")
 noise = SubResource("FastNoiseLite_iyx0m")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpvoh"]
-albedo_color = Color(1, 0.517874, 0.262825, 1)
+albedo_color = Color(0.97, 0.40352, 0.2619, 1)
 metallic = 1.0
 roughness_texture = SubResource("NoiseTexture2D_j5jx5")
 normal_enabled = true
@@ -124,6 +125,35 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqsox"]
+atlas = ExtResource("4_0jsm8")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruv3s"]
+atlas = ExtResource("4_0jsm8")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfiuv"]
+atlas = ExtResource("4_0jsm8")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hknb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqsox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruv3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfiuv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="jammer" type="Node3D"]
 script = ExtResource("1_1dd57")
 
@@ -145,3 +175,10 @@ double_sided = false
 sprite_frames = SubResource("SpriteFrames_3u665")
 autoplay = "default"
 frame_progress = 0.00591899
+
+[node name="HurtSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.07261, 0.273213)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_5hknb")
+autoplay = "default"

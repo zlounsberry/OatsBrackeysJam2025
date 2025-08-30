@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://du2ck3uswc5v7"]
+
+[ext_resource type="Script" uid="uid://nej8wscb645g" path="res://scripts/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="PackedScene" uid="uid://bdg1r1l2nq1n3" path="res://scenes/map.tscn" id="2_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://dpp2qi8okc3vg" path="res://assets/logo_in_game.png" id="3_s4lrb"]
+[ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/armies/choccy_model.tscn" id="4_e54dn"]
+[ext_resource type="PackedScene" uid="uid://c1cjxjwhtkspy" path="res://scenes/armies/jammer_model.tscn" id="5_3yumr"]
+[ext_resource type="PackedScene" uid="uid://bnir5pksbjrs7" path="res://scenes/armies/sandwich_cookie_model.tscn" id="6_cs5ya"]
+[ext_resource type="Texture2D" uid="uid://bw5p65ykgixj3" path="res://assets/resources/pico-8-8x.png" id="7_3yumr"]
+
+[node name="TitleScreen" type="Node3D"]
+script = ExtResource("1_sa3yf")
+
+[node name="Map" parent="." instance=ExtResource("2_s4lrb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.20081)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(0.96208, 0, 0.272767, 0, 1, 0, -0.272767, 0, 0.96208, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 15.7555, 21.6644)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(960, 848)
+texture = ExtResource("3_s4lrb")
+
+[node name="choccy" parent="." instance=ExtResource("4_e54dn")]
+transform = Transform3D(0.836028, 0, 0.548687, 0, 1, 0, -0.548687, 0, 0.836028, -6.05859, -0.585083, -9.06366)
+is_avatar = true
+
+[node name="choccy2" parent="." instance=ExtResource("4_e54dn")]
+transform = Transform3D(0.3659, 0, 0.930654, 0, 1, 0, -0.930654, 0, 0.3659, -7.78076, -0.585083, -7.43671)
+is_avatar = true
+
+[node name="jammer" parent="." instance=ExtResource("5_3yumr")]
+transform = Transform3D(-0.936959, 0, 0.349439, 0, 1, 0, -0.349439, 0, -0.936959, -5.42847, 0.282417, 12.7997)
+is_avatar = true
+
+[node name="sandwich_cookie" parent="." instance=ExtResource("6_cs5ya")]
+transform = Transform3D(-0.715083, 0, 0.69904, 0, 1, 0, -0.69904, 0, -0.715083, 2.10134, 2.13873, -3.64715)
+is_avatar = true
+
+[node name="sandwich_cookie3" parent="." instance=ExtResource("6_cs5ya")]
+transform = Transform3D(0.970122, 0, -0.242616, 0, 1, 0, 0.242616, 0, 0.970122, 0.308611, 2.13873, -2.04815)
+is_avatar = true
+
+[node name="sandwich_cookie2" parent="." instance=ExtResource("6_cs5ya")]
+transform = Transform3D(-0.82088, 0, -0.5711, 0, 1, 0, 0.5711, 0, -0.82088, -0.423018, 2.13861, -4.28655)
+is_avatar = true
+
+[node name="Pico-8-8x" type="Sprite2D" parent="."]
+position = Vector2(-197, 564)
+scale = Vector2(2.95313, 27.125)
+texture = ExtResource("7_3yumr")

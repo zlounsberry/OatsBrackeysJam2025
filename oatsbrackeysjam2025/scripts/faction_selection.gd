@@ -67,6 +67,7 @@ func _update_current_selection(faction_id: int) -> void:
 func _on_confirm_pressed() -> void:
 	if not can_select:
 		return
+	$AI.disabled = false
 	can_select = false
 	confirm_button.text = ALREADY_PICKED_TEXT
 	GameState.current_player_dict[current_player_choosing]["faction_id"] = current_selection
@@ -104,4 +105,5 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 func _on_next_team_pressed() -> void:
 	if is_animating:
 		return
+	$NextTeam.text = "Next Faction"
 	_scroll_left()

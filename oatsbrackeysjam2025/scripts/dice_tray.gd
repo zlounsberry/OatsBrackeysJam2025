@@ -50,12 +50,19 @@ func _compare_dice():
 	for array_position in range(number_of_dice_rolled):
 		if attacker_player_rolls_array[array_position][0] < defender_player_rolls_array[array_position][0]:
 			damage_to_attacker += 1
-			attacker_player_rolls_array[array_position][1].queue_free()
+			print(attacker_player_rolls_array[array_position])
+			attacker_player_rolls_array[array_position][1].destroy_self()
+			$AttackerAvatar._take_damage()
 		if attacker_player_rolls_array[array_position][0] > defender_player_rolls_array[array_position][0]:
 			damage_to_defender += 1
-			defender_player_rolls_array[array_position][1].queue_free()
+			print(attacker_player_rolls_array[array_position])
+			defender_player_rolls_array[array_position][1].destroy_self()
+			$DefenderAvatar._take_damage()
+		await get_tree().create_timer(0.25).timeout # DEBUG
 	#prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
-	await get_tree().create_timer(1).timeout # DEBUG
+	print("done comparing")
+	await get_tree().create_timer(3.0).timeout # DEBUG
+	print("getting rid of dice tray")
 	#print(attacker_army, defender_army)
 	deal_damage_to_army.emit(
 		attacker_army,
@@ -133,7 +140,7 @@ func _throw_dice() -> void:
 		die.faction_id = GameState.current_player_dict[attacker_player_id]["faction_id"]
 		add_child(die)
 		die.global_position = get_node(str("3DView/SubViewport/SpawnPositions/AttackerDie", value)).global_position
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.08).timeout
 
 	defender_tile = defender_army.currently_occupied_tile
 	for value in range(defender_army_size):
@@ -161,5 +168,5 @@ func _on_reorder_complete() -> void:
 func _on_movement_complete() -> void:
 	if movement_completed:
 		return
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1.0).timeout
 	_compare_dice()
