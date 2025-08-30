@@ -19,12 +19,11 @@ script = ExtResource("1_uqm3v")
 
 [node name="Move" type="Node2D" parent="."]
 position = Vector2(448, 1256)
-scale = Vector2(2, 2)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Move"]
 offset_left = 56.0
-offset_right = 452.0
-offset_bottom = 192.0
+offset_right = 848.0
+offset_bottom = 384.0
 theme = ExtResource("1_e2uvb")
 texture = ExtResource("2_5mcpd")
 patch_margin_left = 68
@@ -33,46 +32,47 @@ patch_margin_right = 68
 patch_margin_bottom = 68
 
 [node name="Confirm" type="Button" parent="Move"]
-offset_left = 341.5
-offset_top = 138.0
-offset_right = 440.5
-offset_bottom = 172.0
+offset_left = 536.0
+offset_top = 223.0
+offset_right = 677.0
+offset_bottom = 276.0
 theme = ExtResource("1_e2uvb")
 theme_override_font_sizes/font_size = 18
 text = "Send Units"
 
 [node name="Deny" type="Button" parent="Move"]
-offset_left = 224.5
-offset_top = 138.0
-offset_right = 320.5
-offset_bottom = 172.0
+offset_left = 536.0
+offset_top = 290.0
+offset_right = 673.0
+offset_bottom = 345.0
 theme = ExtResource("1_e2uvb")
 theme_override_font_sizes/font_size = 18
 text = "Cancel"
 
 [node name="Label" type="Label" parent="Move"]
-offset_top = -3.0
-offset_right = 512.0
-offset_bottom = 42.0
+offset_left = 59.0
+offset_top = -9.0
+offset_right = 845.0
+offset_bottom = 83.0
 theme = ExtResource("1_e2uvb")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "Move how many units?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Subtract" type="Button" parent="Move"]
-offset_left = 258.0
-offset_top = 59.0
-offset_right = 290.0
-offset_bottom = 114.0
+offset_left = 520.0
+offset_top = 115.0
+offset_right = 552.0
+offset_bottom = 170.0
 theme = ExtResource("1_e2uvb")
 text = "-"
 
 [node name="Add" type="Button" parent="Move"]
-offset_left = 375.0
-offset_top = 59.5
-offset_right = 407.0
-offset_bottom = 114.5
+offset_left = 661.0
+offset_top = 115.0
+offset_right = 693.0
+offset_bottom = 170.0
 theme = ExtResource("1_e2uvb")
 text = "+"
 
@@ -82,29 +82,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 294.0
-offset_top = 42.5
-offset_right = 372.0
-offset_bottom = 130.5
+offset_left = 571.0
+offset_top = 52.0
+offset_right = 649.0
+offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_e2uvb")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Avatar" parent="Move" instance=ExtResource("3_ulekl")]
-position = Vector2(147, 107.5)
-scale = Vector2(0.25, 0.25)
+position = Vector2(231, 215)
+scale = Vector2(0.5, 0.5)
 
 [node name="Attack" type="Node2D" parent="."]
 position = Vector2(448, 1256)
-scale = Vector2(2, 2)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Attack"]
-offset_right = 512.0
-offset_bottom = 192.0
+offset_left = 56.0
+offset_right = 848.0
+offset_bottom = 384.0
 theme = ExtResource("1_e2uvb")
 texture = ExtResource("2_5mcpd")
 patch_margin_left = 68
@@ -113,46 +113,47 @@ patch_margin_right = 68
 patch_margin_bottom = 68
 
 [node name="Confirm" type="Button" parent="Attack"]
-offset_left = 261.0
-offset_top = 140.5
-offset_right = 360.0
-offset_bottom = 174.5
+offset_left = 382.0
+offset_top = 238.0
+offset_right = 523.0
+offset_bottom = 291.0
 theme = ExtResource("1_e2uvb")
 theme_override_font_sizes/font_size = 18
 text = "Send Units"
 
 [node name="Deny" type="Button" parent="Attack"]
-offset_left = 154.0
-offset_top = 140.5
-offset_right = 250.0
-offset_bottom = 174.5
+offset_left = 382.0
+offset_top = 305.0
+offset_right = 519.0
+offset_bottom = 360.0
 theme = ExtResource("1_e2uvb")
 theme_override_font_sizes/font_size = 18
 text = "Cancel"
 
 [node name="Label" type="Label" parent="Attack"]
-offset_top = -3.0
-offset_right = 512.0
-offset_bottom = 42.0
+offset_left = 59.0
+offset_top = -9.0
+offset_right = 845.0
+offset_bottom = 83.0
 theme = ExtResource("1_e2uvb")
-theme_override_font_sizes/font_size = 32
-text = "Attack with how many units?"
+theme_override_font_sizes/font_size = 52
+text = "Attack with How many units?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Subtract" type="Button" parent="Attack"]
-offset_left = 181.0
-offset_top = 62.5
-offset_right = 213.0
-offset_bottom = 117.5
+offset_left = 366.0
+offset_top = 130.0
+offset_right = 398.0
+offset_bottom = 185.0
 theme = ExtResource("1_e2uvb")
 text = "-"
 
 [node name="Add" type="Button" parent="Attack"]
-offset_left = 298.0
-offset_top = 62.5
-offset_right = 330.0
-offset_bottom = 117.5
+offset_left = 507.0
+offset_top = 130.0
+offset_right = 539.0
+offset_bottom = 185.0
 theme = ExtResource("1_e2uvb")
 text = "+"
 
@@ -162,25 +163,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 217.0
-offset_top = 45.0
-offset_right = 295.0
-offset_bottom = 137.0
+offset_left = 417.0
+offset_top = 67.0
+offset_right = 495.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_e2uvb")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AttackerAvatar" parent="Attack" instance=ExtResource("3_ulekl")]
-position = Vector2(80, 110)
-scale = Vector2(0.25, 0.25)
+position = Vector2(198, 214)
+scale = Vector2(0.5, 0.5)
 
 [node name="DefenderAvatar" parent="Attack" instance=ExtResource("3_ulekl")]
-position = Vector2(432, 110)
-scale = Vector2(0.25, 0.25)
+position = Vector2(706, 214)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Move/Confirm" to="." method="_on_confirm_pressed"]
 [connection signal="pressed" from="Move/Deny" to="." method="_on_deny_pressed"]

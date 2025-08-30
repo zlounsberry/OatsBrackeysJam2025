@@ -75,13 +75,13 @@ func _on_confirm_pressed() -> void:
 	match current_selection:
 		GameState.FACTIONS.SANDWICH_COOKIE:
 			scc_has_been_picked = true
-			$SCC.modulate = Color(200, 200, 200)
+			$SCC.get_node("Sprite").modulate.a = 0.4
 		GameState.FACTIONS.CHOCCY_CHIP:
 			cc_has_been_picked = true
-			$CC.modulate = Color(200, 200, 200)
+			$CC.get_node("Sprite").modulate.a = 0.4
 		GameState.FACTIONS.STRAWBRY_JAMMER:
 			sj_has_been_picked = true
-			$SJ.modulate = Color(200, 200, 200)
+			$SJ.get_node("Sprite").modulate.a = 0.4
 	current_player_choosing += 1
 	if current_player_choosing >= GameState.number_of_players:
 		print("game start!")
