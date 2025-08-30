@@ -1,40 +1,192 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxrq0y8oacs2e"]
+[gd_scene load_steps=5 format=3 uid="uid://cxrq0y8oacs2e"]
 
+[ext_resource type="Theme" uid="uid://fyuqosnd1wg8" path="res://assets/resources/main.tres" id="1_e2uvb"]
 [ext_resource type="Script" uid="uid://dwweykrl11x7x" path="res://scripts/confirm_menu.gd" id="1_uqm3v"]
+[ext_resource type="Texture2D" uid="uid://bauxj0x2byc8" path="res://assets/nine-patch.png" id="2_5mcpd"]
+[ext_resource type="PackedScene" uid="uid://dm3pca7e8aygp" path="res://scenes/avatar.tscn" id="3_ulekl"]
 
-[node name="ConfirmMenu" type="Node2D"]
+[node name="ConfirmMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e2uvb")
 script = ExtResource("1_uqm3v")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = -1
-anchor_right = 0.267
-anchor_bottom = 0.233
-offset_right = 244.0
-offset_bottom = 138.0
-color = Color(0.641934, 0.641934, 0.641934, 1)
+[node name="Move" type="Node2D" parent="."]
+position = Vector2(448, 1256)
+scale = Vector2(2, 2)
 
-[node name="Confirm" type="Button" parent="."]
-offset_left = 73.0
-offset_top = 49.0
-offset_right = 172.0
-offset_bottom = 80.0
-text = "Yes"
+[node name="NinePatchRect" type="NinePatchRect" parent="Move"]
+offset_left = 56.0
+offset_right = 452.0
+offset_bottom = 192.0
+theme = ExtResource("1_e2uvb")
+texture = ExtResource("2_5mcpd")
+patch_margin_left = 68
+patch_margin_top = 68
+patch_margin_right = 68
+patch_margin_bottom = 68
 
-[node name="Deny" type="Button" parent="."]
-offset_left = 73.0
-offset_top = 88.0
-offset_right = 172.0
-offset_bottom = 119.0
-text = "No"
+[node name="Confirm" type="Button" parent="Move"]
+offset_left = 341.5
+offset_top = 138.0
+offset_right = 440.5
+offset_bottom = 172.0
+theme = ExtResource("1_e2uvb")
+theme_override_font_sizes/font_size = 18
+text = "Send Units"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 28.0
-offset_top = 8.0
-offset_right = 220.0
-offset_bottom = 31.0
-text = "Are you sure?"
+[node name="Deny" type="Button" parent="Move"]
+offset_left = 224.5
+offset_top = 138.0
+offset_right = 320.5
+offset_bottom = 172.0
+theme = ExtResource("1_e2uvb")
+theme_override_font_sizes/font_size = 18
+text = "Cancel"
+
+[node name="Label" type="Label" parent="Move"]
+offset_top = -3.0
+offset_right = 512.0
+offset_bottom = 42.0
+theme = ExtResource("1_e2uvb")
+theme_override_font_sizes/font_size = 32
+text = "Move how many units?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]
-[connection signal="pressed" from="Deny" to="." method="_on_deny_pressed"]
+[node name="Subtract" type="Button" parent="Move"]
+offset_left = 258.0
+offset_top = 59.0
+offset_right = 290.0
+offset_bottom = 114.0
+theme = ExtResource("1_e2uvb")
+text = "-"
+
+[node name="Add" type="Button" parent="Move"]
+offset_left = 375.0
+offset_top = 59.5
+offset_right = 407.0
+offset_bottom = 114.5
+theme = ExtResource("1_e2uvb")
+text = "+"
+
+[node name="UnitCount" type="Label" parent="Move"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 294.0
+offset_top = 42.5
+offset_right = 372.0
+offset_bottom = 130.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e2uvb")
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Avatar" parent="Move" instance=ExtResource("3_ulekl")]
+position = Vector2(147, 107.5)
+scale = Vector2(0.25, 0.25)
+
+[node name="Attack" type="Node2D" parent="."]
+position = Vector2(448, 1256)
+scale = Vector2(2, 2)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Attack"]
+offset_right = 512.0
+offset_bottom = 192.0
+theme = ExtResource("1_e2uvb")
+texture = ExtResource("2_5mcpd")
+patch_margin_left = 68
+patch_margin_top = 68
+patch_margin_right = 68
+patch_margin_bottom = 68
+
+[node name="Confirm" type="Button" parent="Attack"]
+offset_left = 261.0
+offset_top = 140.5
+offset_right = 360.0
+offset_bottom = 174.5
+theme = ExtResource("1_e2uvb")
+theme_override_font_sizes/font_size = 18
+text = "Send Units"
+
+[node name="Deny" type="Button" parent="Attack"]
+offset_left = 154.0
+offset_top = 140.5
+offset_right = 250.0
+offset_bottom = 174.5
+theme = ExtResource("1_e2uvb")
+theme_override_font_sizes/font_size = 18
+text = "Cancel"
+
+[node name="Label" type="Label" parent="Attack"]
+offset_top = -3.0
+offset_right = 512.0
+offset_bottom = 42.0
+theme = ExtResource("1_e2uvb")
+theme_override_font_sizes/font_size = 32
+text = "Attack with how many units?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtract" type="Button" parent="Attack"]
+offset_left = 181.0
+offset_top = 62.5
+offset_right = 213.0
+offset_bottom = 117.5
+theme = ExtResource("1_e2uvb")
+text = "-"
+
+[node name="Add" type="Button" parent="Attack"]
+offset_left = 298.0
+offset_top = 62.5
+offset_right = 330.0
+offset_bottom = 117.5
+theme = ExtResource("1_e2uvb")
+text = "+"
+
+[node name="UnitCount" type="Label" parent="Attack"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 217.0
+offset_top = 45.0
+offset_right = 295.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e2uvb")
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackerAvatar" parent="Attack" instance=ExtResource("3_ulekl")]
+position = Vector2(80, 110)
+scale = Vector2(0.25, 0.25)
+
+[node name="DefenderAvatar" parent="Attack" instance=ExtResource("3_ulekl")]
+position = Vector2(432, 110)
+scale = Vector2(0.25, 0.25)
+
+[connection signal="pressed" from="Move/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Move/Deny" to="." method="_on_deny_pressed"]
+[connection signal="pressed" from="Move/Subtract" to="." method="_on_subtract_pressed"]
+[connection signal="pressed" from="Move/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="Attack/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Attack/Deny" to="." method="_on_deny_pressed"]
+[connection signal="pressed" from="Attack/Subtract" to="." method="_on_subtract_pressed"]
+[connection signal="pressed" from="Attack/Add" to="." method="_on_add_pressed"]

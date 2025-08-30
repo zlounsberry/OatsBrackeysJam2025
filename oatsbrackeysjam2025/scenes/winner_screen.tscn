@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxdyqsop5xy5g"]
+
+[ext_resource type="Script" uid="uid://sialknvc6egc" path="res://scripts/winner_screen.gd" id="1_2uytq"]
+[ext_resource type="PackedScene" uid="uid://dm3pca7e8aygp" path="res://scenes/avatar.tscn" id="2_vft0f"]
+[ext_resource type="Theme" uid="uid://fyuqosnd1wg8" path="res://assets/resources/main.tres" id="3_cuvn6"]
+[ext_resource type="FontFile" uid="uid://cyqkiy2afxxcp" path="res://assets/resources/fonts/Permanent_Marker/PermanentMarker-Regular.ttf" id="4_vft0f"]
+
+[sub_resource type="Animation" id="Animation_2uytq"]
+resource_name = "enter"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.23333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.5664]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vft0f"]
+_data = {
+&"enter": SubResource("Animation_2uytq")
+}
+
+[node name="WinnerScreen" type="Node2D"]
+script = ExtResource("1_2uytq")
+
+[node name="Avatar" parent="." instance=ExtResource("2_vft0f")]
+position = Vector2(742, 1471)
+rotation = 12.5664
+
+[node name="Label" type="RichTextLabel" parent="Avatar"]
+offset_left = -256.0
+offset_top = -242.0
+offset_right = 255.0
+offset_bottom = -107.0
+theme = ExtResource("3_cuvn6")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("4_vft0f")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center][shake]WINNER!!!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vft0f")
+}
