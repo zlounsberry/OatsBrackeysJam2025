@@ -49,8 +49,11 @@ func _input(event: InputEvent) -> void:
 			return
 
 
-func _show_confirm_menu(available_units: int, is_attack_action: bool):
-	$HUD.open_confirm_menu(available_units, is_attack_action)
+func _show_confirm_menu(available_units: int, is_attack_action: bool, attacker_id: int, defender_id: int):
+	if is_attack_action:
+		$HUD.open_confirm_menu(available_units, true, attacker_id, defender_id)
+	else:
+		$HUD.open_confirm_menu(available_units, false, attacker_id, defender_id)
 
 
 func _hide_confirm_menu():
@@ -155,7 +158,7 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 			GameState.update_state(GameState.STATE_MACHINE.SELECTING_IN_GAME) # Not sure this is needed
 			return
 		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
-		_show_confirm_menu(current_army.army_size, true)
+		_show_confirm_menu(current_army.army_size, true, current_army.controlling_player_id, occupying_army.controlling_player_id)
 		var confirmed: Array = await player_confirmed 
 #		 If the tile contains an army that is not controlled by the player, begin the attack phase by opening menu
 		if confirmed[0]:
@@ -163,7 +166,7 @@ func _on_map_clicked_this_tile(clicked_tile_scene: MapTile, occupying_army: Army
 	else:
 #		 If the tile is not currently occupied, allow the player to move onto it
 		GameState.update_state(GameState.STATE_MACHINE.CONFIRMING_IN_GAME)
-		_show_confirm_menu(current_army.army_size, false)
+		_show_confirm_menu(current_army.army_size, false, 0, 0)
 		var confirmed: Array = await player_confirmed # Note the function that emits this signal also defines the units_to_move variable!
 		_hide_confirm_menu()
 		if confirmed[0]:

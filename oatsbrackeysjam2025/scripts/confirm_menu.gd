@@ -5,39 +5,48 @@ signal player_selected_yes(is_yes: bool, final_unit_count: int, is_attack_action
 
 @export var available_units: int # Note only attackers can specify attack numbers
 @export var is_attack: bool = false
+@export var attacker_player_id: int
+@export var defender_player_id: int
 
 @onready var can_interact: bool = false
 @onready var unit_count: int = 1
 @onready var move_unit_count_label: Label = $Move/UnitCount
 @onready var attack_unit_count_label: Label = $Attack/UnitCount
+@onready var final_position: Vector2 = Vector2(448.0, 256.0)
 
 
 func _ready() -> void:
-##	 Don't forget to start at scale = 0, below are some debug functions
+#	 Don't forget to start at scale = 0, below are some debug functions
 	#is_attack = true
 	tween_menu_in()
 
 
 func tween_menu_in() -> void:
 	GameState.menu_open = true
+	#$Move/Avatar.faction_id_manual = GameState.current_player_dict[GameState.current_player_turn]["faction_id"]
+	$Move/Avatar.update_faction_id(GameState.current_player_dict[GameState.current_player_turn]["faction_id"], false)
 	#print("opening menu with attack: ", is_attack)
-	if is_attack:
-		$Attack.show()
-	else:
-		$Move.show()
 	var tween: Tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(self, "scale", Vector2.ONE, 0.5)
+	if is_attack:
+		tween.tween_property($Attack, "position:", final_position, 0.5)
+		$Attack/AttackerAvatar.update_faction_id(GameState.current_player_dict[attacker_player_id]["faction_id"], true)
+		$Attack/DefenderAvatar.update_faction_id(GameState.current_player_dict[defender_player_id]["faction_id"], true)
+	else:
+		tween.tween_property($Move, "position:", final_position, 0.5)
 	await tween.finished
 	#menu_opened.emit()
+	print("menu in")
 	can_interact = true
 
 
 func tween_menu_out() -> void:
 	can_interact = false
-	var tween: Tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(self, "scale", Vector2.ZERO, 0.25)
+	var tween: Tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK).set_parallel(true)
+	tween.tween_property($Attack, "position:y", final_position.y + 1000, 0.5)
+	tween.tween_property($Move, "position:y", final_position.y + 1000, 0.5)
 	await tween.finished
 	GameState.menu_open = false
+	print("menu out")
 	queue_free()
 
 

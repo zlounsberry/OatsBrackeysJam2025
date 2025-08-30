@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bxdyqsop5xy5g"]
+
+[node name="WinnerScreen" type="Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
