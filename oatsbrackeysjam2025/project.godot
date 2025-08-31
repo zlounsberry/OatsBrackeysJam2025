@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OatsBrackeysJam2025"
-run/main_scene="uid://p6j7jv8tuhyu"
+run/main_scene="uid://du2ck3uswc5v7"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
