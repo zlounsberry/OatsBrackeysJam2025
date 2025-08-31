@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://bdg1r1l2nq1n3"]
+[gd_scene load_steps=95 format=4 uid="uid://bdg1r1l2nq1n3"]
 
 [ext_resource type="Script" uid="uid://dmp1xr260pmvb" path="res://scripts/map.gd" id="1_4xfga"]
 [ext_resource type="Script" uid="uid://cqxugqu324pb4" path="res://scripts/classes/map_tile.gd" id="2_gldc4"]
@@ -870,6 +870,18 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0cso3"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_jyhfs"]
+sky_material = SubResource("ProceduralSkyMaterial_0cso3")
+
+[sub_resource type="Environment" id="Environment_2klcf"]
+background_mode = 2
+sky = SubResource("Sky_jyhfs")
+tonemap_mode = 2
+
 [node name="Map" type="Node3D"]
 script = ExtResource("1_4xfga")
 
@@ -1351,3 +1363,12 @@ billboard = 1
 no_depth_test = true
 text = "ok"
 font_size = 256
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2klcf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.843391, -0.334477, -0.420495, 0, -0.782608, 0.622515, -0.537299, -0.525023, -0.660045, 0, 0, 0)
+light_color = Color(0.896436, 0.95116, 0.751301, 1)
+light_energy = 0.15
+shadow_enabled = true

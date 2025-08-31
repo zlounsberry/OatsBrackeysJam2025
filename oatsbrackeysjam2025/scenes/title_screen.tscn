@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://du2ck3uswc5v7"]
+
+[ext_resource type="Script" uid="uid://nej8wscb645g" path="res://scripts/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="PackedScene" uid="uid://bdg1r1l2nq1n3" path="res://scenes/map.tscn" id="2_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://dpp2qi8okc3vg" path="res://assets/logo_in_game.png" id="3_s4lrb"]
+[ext_resource type="Theme" uid="uid://fyuqosnd1wg8" path="res://assets/resources/main.tres" id="4_cs5ya"]
+[ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/armies/choccy_model.tscn" id="4_e54dn"]
+[ext_resource type="Texture2D" uid="uid://d28y5k73riv3j" path="res://assets/brackeys.png" id="4_mykxm"]
+[ext_resource type="PackedScene" uid="uid://c1cjxjwhtkspy" path="res://scenes/armies/jammer_model.tscn" id="5_3yumr"]
+[ext_resource type="PackedScene" uid="uid://bnir5pksbjrs7" path="res://scenes/armies/sandwich_cookie_model.tscn" id="6_cs5ya"]
+[ext_resource type="Texture2D" uid="uid://bw5p65ykgixj3" path="res://assets/resources/pico-8-8x.png" id="7_3yumr"]
+
+[node name="TitleScreen" type="Node3D"]
+script = ExtResource("1_sa3yf")
+
+[node name="Map" parent="." instance=ExtResource("2_s4lrb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.20081)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(0.96208, 0, 0.272767, 0, 1, 0, -0.272767, 0, 0.96208, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 15.7555, 21.6644)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Sprite2D" parent="HUD"]
+position = Vector2(960, 848)
+texture = ExtResource("3_s4lrb")
+
+[node name="BrackeysLogo" type="Sprite2D" parent="HUD"]
+position = Vector2(1797, 978)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mykxm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+offset_left = 742.0
+offset_top = 240.0
+offset_right = 1172.0
+offset_bottom = 445.0
+theme_override_constants/separation = 32
+
+[node name="TwoPlayer" type="Button" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_cs5ya")
+text = "Start Two Player Game"
+
+[node name="ThreePlayer" type="Button" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_cs5ya")
+text = "Start Three Player Game"
+
+[node name="Rules" type="Button" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_cs5ya")
+text = "Read the rules"
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = -0.01
+offset_left = -19.8
+offset_top = -18.0
+offset_right = 2015.0
+offset_bottom = 1186.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="choccy" parent="." instance=ExtResource("4_e54dn")]
+transform = Transform3D(0.836028, 0, 0.548687, 0, 1, 0, -0.548687, 0, 0.836028, -6.05859, -0.585083, -9.06366)
+is_avatar = true
+
+[node name="choccy2" parent="." instance=ExtResource("4_e54dn")]
+transform = Transform3D(0.3659, 0, 0.930654, 0, 1, 0, -0.930654, 0, 0.3659, -7.78076, -0.585083, -7.43671)
+is_avatar = true
+
+[node name="jammer" parent="." instance=ExtResource("5_3yumr")]
+transform = Transform3D(-0.936959, 0, 0.349439, 0, 1, 0, -0.349439, 0, -0.936959, -5.42847, 0.282417, 12.7997)
+is_avatar = true
+
+[node name="sandwich_cookie" parent="." instance=ExtResource("6_cs5ya")]
+transform = Transform3D(-0.715083, 0, 0.69904, 0, 1, 0, -0.69904, 0, -0.715083, 2.10134, 2.13873, -3.64715)
+is_avatar = true
+
+[node name="sandwich_cookie3" parent="." instance=ExtResource("6_cs5ya")]
+transform = Transform3D(0.970122, 0, -0.242616, 0, 1, 0, 0.242616, 0, 0.970122, 0.308611, 2.13873, -2.04815)
+is_avatar = true
+
+[node name="sandwich_cookie2" parent="." instance=ExtResource("6_cs5ya")]
+transform = Transform3D(-0.82088, 0, -0.5711, 0, 1, 0, 0.5711, 0, -0.82088, -0.423018, 2.13861, -4.28655)
+is_avatar = true
+
+[node name="Pico-8-8x" type="Sprite2D" parent="."]
+position = Vector2(-787, 463)
+scale = Vector2(2.95313, 27.125)
+texture = ExtResource("7_3yumr")
+
+[connection signal="pressed" from="HUD/VBoxContainer/TwoPlayer" to="." method="_on_two_player_pressed"]
+[connection signal="pressed" from="HUD/VBoxContainer/ThreePlayer" to="." method="_on_three_player_pressed"]
+[connection signal="pressed" from="HUD/VBoxContainer/Rules" to="." method="_on_rules_pressed"]

@@ -50,12 +50,19 @@ func _compare_dice():
 	for array_position in range(number_of_dice_rolled):
 		if attacker_player_rolls_array[array_position][0] < defender_player_rolls_array[array_position][0]:
 			damage_to_attacker += 1
-			attacker_player_rolls_array[array_position][1].queue_free()
+			print(attacker_player_rolls_array[array_position])
+			attacker_player_rolls_array[array_position][1].destroy_self()
+			$AttackerAvatar._take_damage()
 		if attacker_player_rolls_array[array_position][0] > defender_player_rolls_array[array_position][0]:
 			damage_to_defender += 1
-			defender_player_rolls_array[array_position][1].queue_free()
+			print(attacker_player_rolls_array[array_position])
+			defender_player_rolls_array[array_position][1].destroy_self()
+			$DefenderAvatar._take_damage()
+		await get_tree().create_timer(0.25).timeout # DEBUG
 	#prints("dealing", damage_to_attacker, "to attacker and",damage_to_defender,"to defender")
-	await get_tree().create_timer(1).timeout # DEBUG
+	print("done comparing")
+	await get_tree().create_timer(1.0).timeout # DEBUG
+	print("getting rid of dice tray")
 	#print(attacker_army, defender_army)
 	deal_damage_to_army.emit(
 		attacker_army,
@@ -83,6 +90,7 @@ func _move_dice(is_attacker: bool):
 			#prints(len(attacker_player_rolls_array), element_counter, get_node(str("3DView/SubViewport/FinalPositions/AttackerDie", element_counter)))
 			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/FinalPositions/AttackerDie", element_counter)).global_position, 0.1)
 			element_counter += 1
+			die.get_node("Whoosh").play()
 			await tween.finished
 	else:
 		for defender_roll in defender_player_rolls_array:
@@ -96,6 +104,7 @@ func _move_dice(is_attacker: bool):
 			#prints(len(defender_player_rolls_array), element_counter, get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)))
 			tween.tween_property(die, "global_position", get_node(str("3DView/SubViewport/FinalPositions/DefenderDie", element_counter)).global_position, 0.1)
 			element_counter += 1
+			die.get_node("Whoosh").play()
 			await tween.finished
 	movement_complete.emit()
 	movement_completed = true # Set this to avoid triggering multiple signals
@@ -104,6 +113,7 @@ func _move_dice(is_attacker: bool):
 func read_and_sort_dice() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property($"3DView/SubViewport/Chutes", "global_position:y", -2, 1.5)
+	$Chutes.play()
 	await tween.finished
 	var played_dice: Array = $"3DView/SubViewport/DiceReader".get_overlapping_areas()
 	for die_area in played_dice:
@@ -133,7 +143,7 @@ func _throw_dice() -> void:
 		die.faction_id = GameState.current_player_dict[attacker_player_id]["faction_id"]
 		add_child(die)
 		die.global_position = get_node(str("3DView/SubViewport/SpawnPositions/AttackerDie", value)).global_position
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.08).timeout
 
 	defender_tile = defender_army.currently_occupied_tile
 	for value in range(defender_army_size):
@@ -161,5 +171,5 @@ func _on_reorder_complete() -> void:
 func _on_movement_complete() -> void:
 	if movement_completed:
 		return
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1.0).timeout
 	_compare_dice()

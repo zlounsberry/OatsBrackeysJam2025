@@ -1,11 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8wxsm7vvlm7g"]
+[gd_scene load_steps=6 format=3 uid="uid://b8wxsm7vvlm7g"]
 
 [ext_resource type="PackedScene" uid="uid://bnir5pksbjrs7" path="res://scenes/armies/sandwich_cookie_model.tscn" id="1_6gm4l"]
 [ext_resource type="Script" uid="uid://bapfhsa78c0yb" path="res://scripts/armies/sandwich_cookie.gd" id="1_7dnmr"]
 [ext_resource type="PackedScene" uid="uid://dwgx5jvy7ocjs" path="res://scenes/turn_indicator.tscn" id="3_2mpg4"]
+[ext_resource type="AudioStream" uid="uid://d3ysp2g1ii4pl" path="res://assets/sounds/boing_scc.ogg" id="4_ral2c"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_khdl3"]
+random_pitch = 1.1
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("4_ral2c")
 
 [node name="SCArmy" type="Node3D"]
 script = ExtResource("1_7dnmr")
+is_ai = null
+currently_taking_turn = null
+controlling_player_id = null
+faction_id = null
+army_size = null
+army_id = null
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
 
 [node name="DEBUG" type="Label3D" parent="."]
@@ -214,3 +227,7 @@ transform = Transform3D(0.996851, 0, 0.0792942, 0, 1, 0, -0.0792942, 0, 0.996851
 
 [node name="sandwich_cookie7" parent="ArmyVisuals/10" instance=ExtResource("1_6gm4l")]
 transform = Transform3D(0.0413174, 0, -0.999146, 0, 1, 0, 0.999146, 0, 0.0413174, -2.28859, 0, 0.278107)
+
+[node name="Boing" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_khdl3")
+volume_db = 4.0

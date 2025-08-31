@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxogrg8q3bsc0"]
+[gd_scene load_steps=6 format=3 uid="uid://cxogrg8q3bsc0"]
 
 [ext_resource type="Script" uid="uid://bxr3s631xobdo" path="res://scripts/armies/jammer.gd" id="1_n76qe"]
 [ext_resource type="PackedScene" uid="uid://c1cjxjwhtkspy" path="res://scenes/armies/jammer_model.tscn" id="2_udmue"]
 [ext_resource type="PackedScene" uid="uid://dwgx5jvy7ocjs" path="res://scenes/turn_indicator.tscn" id="3_1bopp"]
+[ext_resource type="AudioStream" uid="uid://cql6kthwouws" path="res://assets/sounds/boing0.ogg" id="4_ktfcb"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dh00k"]
+random_pitch = 1.1
+random_volume_offset_db = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_ktfcb")
 
 [node name="SJArmy" type="Node3D"]
 script = ExtResource("1_n76qe")
+is_ai = null
+currently_taking_turn = null
+controlling_player_id = null
 faction_id = 2
+army_size = null
+army_id = null
 metadata/_custom_type_script = "uid://rdxpnq83wl3o"
 
 [node name="TurnIndicator" parent="." instance=ExtResource("3_1bopp")]
@@ -217,3 +229,8 @@ billboard = 1
 no_depth_test = true
 text = "OK!"
 font_size = 128
+
+[node name="Boing" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_dh00k")
+volume_db = 8.0
+pitch_scale = 0.98

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://dsnpqjfw7a0mu"]
+[gd_scene load_steps=17 format=4 uid="uid://dsnpqjfw7a0mu"]
 
 [ext_resource type="Material" uid="uid://c614m4qn2cjda" path="res://assets/resources/textures/choccy.tres" id="1_jhdat"]
 [ext_resource type="Script" uid="uid://bcdc4hjfr8831" path="res://scripts/classes/army_model.gd" id="1_ojk37"]
 [ext_resource type="Texture2D" uid="uid://k1lt0i5u5hyq" path="res://assets/face_3_sprites.png" id="2_hb1q2"]
+[ext_resource type="Texture2D" uid="uid://dgvhxr2t40tu4" path="res://assets/face_hurt_sprites.png" id="4_flece"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyd3g"]
 
@@ -91,6 +92,35 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqsox"]
+atlas = ExtResource("4_flece")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruv3s"]
+atlas = ExtResource("4_flece")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfiuv"]
+atlas = ExtResource("4_flece")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u1wl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqsox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruv3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfiuv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="choccy" type="Node3D"]
 script = ExtResource("1_ojk37")
 
@@ -107,3 +137,11 @@ double_sided = false
 sprite_frames = SubResource("SpriteFrames_nqsox")
 autoplay = "default"
 frame_progress = 0.57757
+
+[node name="HurtSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.07261, 0.273213)
+visible = false
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_u1wl8")
+autoplay = "default"
+frame_progress = 0.954807

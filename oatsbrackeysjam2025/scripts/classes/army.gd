@@ -38,8 +38,8 @@ func select_this_army() -> void:
 	currently_taking_turn = true
 	GameState.current_selected_army = self
 	$TurnIndicator.show()
-	if is_ai:
-		_move_ai()
+	#if is_ai:
+		#_move_ai()
 
 
 func update_army_size_visuals() -> void:
@@ -109,6 +109,7 @@ func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> 
 				model_scene = JAMMER_MODEL.instantiate()
 				add_child(model_scene)
 				model_scene.add_to_group("delete_me")
+		_play_boing()
 		var htween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel(true)
 		htween.tween_property(model_scene, "global_position:z", new_position.z, 0.25)
 		htween.tween_property(model_scene, "global_position:x", new_position.x, 0.25)
@@ -121,45 +122,49 @@ func _move_models(current_tile: MapTile, new_tile: MapTile, unit_count: int) -> 
 	movement_complete.emit()
 
 
-func _move_ai() -> void:
-	print("moving ai")
-	var current_tile_array: Array = []
-	var select_next_army: bool = false
-	for map_id in GameState.TILE_ADJACENT_MAP_DICT[currently_occupied_tile.tile_id]:
-		for map_tile: MapTile in get_tree().get_nodes_in_group("map_tile"):
-			if map_id == map_tile.tile_id:
-				current_tile_array.append(map_tile)
-	print(current_tile_array)
-	current_tile_array.shuffle()
+func _play_boing() -> void:
+	get_node("Boing").play()
+
+
+#func _move_ai() -> void:
+	#print("moving ai")
+	#var current_tile_array: Array = []
+	#var select_next_army: bool = false
+	#for map_id in GameState.TILE_ADJACENT_MAP_DICT[currently_occupied_tile.tile_id]:
+		#for map_tile: MapTile in get_tree().get_nodes_in_group("map_tile"):
+			#if map_id == map_tile.tile_id:
+				#current_tile_array.append(map_tile)
+	#print(current_tile_array)
+	#current_tile_array.shuffle()
+	##for current_tile_element in current_tile_array:
+		##if current_tile_element == current_tile_array[-1]:
+			##selected_next_army.emit()
+			##return
 	#for current_tile_element in current_tile_array:
 		#if current_tile_element == current_tile_array[-1]:
-			#selected_next_army.emit()
+			#select_next_army = true
+			#prints("Breaking loop", current_tile_element, current_tile_array)
+		#var potential_tile: MapTile = current_tile_array.pop_front()
+		#prints("potential_tile", potential_tile, typeof(potential_tile))
+		#if not potential_tile.is_occupied:
+			#if army_size <= 1:
+				#print("emit signal 1")
+				#ai_player_confirmed.emit(army_size, false, self, potential_tile)
+			#else:
+				#print("emit signal 2")
+				#ai_player_confirmed.emit(army_size - 1, false, self, potential_tile)
 			#return
-	for current_tile_element in current_tile_array:
-		if current_tile_element == current_tile_array[-1]:
-			select_next_army = true
-			prints("Breaking loop", current_tile_element, current_tile_array)
-		var potential_tile: MapTile = current_tile_array.pop_front()
-		prints("potential_tile", potential_tile, typeof(potential_tile))
-		if not potential_tile.is_occupied:
-			if army_size <= 1:
-				print("emit signal 1")
-				ai_player_confirmed.emit(army_size, false, self, potential_tile)
-			else:
-				print("emit signal 2")
-				ai_player_confirmed.emit(army_size - 1, false, self, potential_tile)
-			return
-		else:
-			if potential_tile.occupying_army.controlling_player_id == GameState.current_player_turn:
-				print("tile is occupied by self")
-				continue
-			else:
-				if army_size <= 1:
-					print("emit signal 3")
-					ai_player_confirmed.emit(army_size, true, self, potential_tile)
-				else:
-					print("emit signal 4")
-					ai_player_confirmed.emit(army_size, true, self, potential_tile)
-		if select_next_army:
-			print("select next army")
-			selected_next_army.emit()
+		#else:
+			#if potential_tile.occupying_army.controlling_player_id == GameState.current_player_turn:
+				#print("tile is occupied by self")
+				#continue
+			#else:
+				#if army_size <= 1:
+					#print("emit signal 3")
+					#ai_player_confirmed.emit(army_size, true, self, potential_tile)
+				#else:
+					#print("emit signal 4")
+					#ai_player_confirmed.emit(army_size, true, self, potential_tile)
+		#if select_next_army:
+			#print("select next army")
+			#selected_next_army.emit()

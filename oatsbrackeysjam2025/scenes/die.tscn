@@ -1,7 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://dsoaiurpaaoth"]
+[gd_scene load_steps=20 format=4 uid="uid://dsoaiurpaaoth"]
 
 [ext_resource type="Script" uid="uid://bvxqx4wtepwq0" path="res://scripts/die.gd" id="1_5x8g4"]
 [ext_resource type="Script" uid="uid://cr2ei67dgdn1a" path="res://scripts/classes/dice_face.gd" id="2_hvcds"]
+[ext_resource type="AudioStream" uid="uid://dsglkbqnk3gra" path="res://assets/sounds/die0.ogg" id="3_pg1s8"]
+[ext_resource type="AudioStream" uid="uid://l1y25ees3suq" path="res://assets/sounds/die1.ogg" id="4_lmrdk"]
+[ext_resource type="AudioStream" uid="uid://ffgnkffs5ii5" path="res://assets/sounds/die2.ogg" id="5_yeu2p"]
+[ext_resource type="AudioStream" uid="uid://dtoi8jkohc0w4" path="res://assets/sounds/die3.ogg" id="6_4ryx6"]
+[ext_resource type="AudioStream" uid="uid://bj0h0cc4dunlh" path="res://assets/sounds/die4.ogg" id="7_3q1uh"]
+[ext_resource type="AudioStream" uid="uid://3gb7m84ebx85" path="res://assets/sounds/whoosh.ogg" id="8_lmrdk"]
+[ext_resource type="AudioStream" uid="uid://dwafwfefnj870" path="res://assets/sounds/pew.ogg" id="10_4ryx6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5lts"]
 resource_name = "Base"
@@ -80,6 +87,28 @@ size = Vector3(0.2, 0.2, 0.2)
 height = 0.2
 radius = 0.0209961
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_puq3y"]
+streams_count = 5
+stream_0/stream = ExtResource("3_pg1s8")
+stream_1/stream = ExtResource("4_lmrdk")
+stream_2/stream = ExtResource("5_yeu2p")
+stream_3/stream = ExtResource("6_4ryx6")
+stream_4/stream = ExtResource("7_3q1uh")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3q1uh"]
+random_pitch = 1.1
+random_volume_offset_db = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("10_4ryx6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yeu2p"]
+playback_mode = 1
+random_pitch = 1.1
+random_volume_offset_db = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_lmrdk")
+stream_0/weight = 5.0
+
 [node name="Die" type="RigidBody3D" groups=["dice"]]
 script = ExtResource("1_5x8g4")
 
@@ -157,3 +186,21 @@ face_value = 6
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiceFace6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00735596, 0)
 shape = SubResource("CylinderShape3D_kw4wr")
+
+[node name="Destroy" type="Timer" parent="."]
+wait_time = 1.25
+one_shot = true
+
+[node name="Dice" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_puq3y")
+
+[node name="Pew" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3q1uh")
+pitch_scale = 1.21
+
+[node name="Whoosh" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_yeu2p")
+volume_db = 6.0
+pitch_scale = 0.9
+
+[connection signal="timeout" from="Destroy" to="." method="_on_destroy_timeout"]

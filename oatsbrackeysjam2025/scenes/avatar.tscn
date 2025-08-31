@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm3pca7e8aygp"]
+[gd_scene load_steps=11 format=3 uid="uid://dm3pca7e8aygp"]
 
 [ext_resource type="Script" uid="uid://cv0f8v7w77chl" path="res://scripts/classes/avatar.gd" id="1_l64a6"]
 [ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/armies/choccy_model.tscn" id="2_d0d8i"]
@@ -14,18 +14,122 @@ size = Vector2(10, 10)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0d8i"]
 albedo_color = Color(0.707967, 0.707967, 0.707967, 1)
 
+[sub_resource type="Animation" id="Animation_d0d8i"]
+resource_name = "take_damage"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, -4), Vector2(0, 0), Vector2(8, -8), Vector2(0, 0), Vector2(-4, -4), Vector2(0, 0), Vector2(6, 6), Vector2(0, 0), Vector2(4, -8), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_show_hurt_face"
+}, {
+"args": [],
+"method": &"_show_face"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v4bhi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sngax"]
+_data = {
+&"RESET": SubResource("Animation_v4bhi"),
+&"take_damage": SubResource("Animation_d0d8i")
+}
+
 [node name="Avatar" type="Node2D"]
 script = ExtResource("1_l64a6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_d0d8i")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite"]
+show_behind_parent = true
 offset_left = -248.0
 offset_top = -248.0
 offset_right = 264.0
 offset_bottom = 264.0
 color = Color(0.197937, 0.197937, 0.197937, 1)
-
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = SubResource("ViewportTexture_d0d8i")
 
 [node name="3DView" type="Node3D" parent="."]
 
@@ -59,10 +163,17 @@ is_avatar = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="3DView/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1325.35, 2.79211, 631.795)
+visible = false
 light_energy = 0.2
 omni_range = 9.27912
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="3DView/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1328.67, 2.79211, 631.795)
+visible = false
 light_energy = 0.2
 omni_range = 9.27912
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sngax")
+}

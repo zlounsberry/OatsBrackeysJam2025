@@ -63,7 +63,10 @@ func _hide_confirm_menu():
 
 func _update_current_player(initialize: bool) -> void:
 	if GameState.current_player_turn >= (GameState.number_of_players - 1):
-		GameState.current_player_turn = GameState.PLAYER_IDS.PLAYER_1
+		if GameState.current_player_dict[GameState.PLAYER_IDS.PLAYER_1]["is_eliminated"]:
+			GameState.current_player_turn = GameState.PLAYER_IDS.PLAYER_2 # Just in case player 1 gets knocked out first
+		else:
+			GameState.current_player_turn = GameState.PLAYER_IDS.PLAYER_1
 		_evaluate_continent_control_and_update_armies()
 	else:
 		GameState.current_player_turn += 1
@@ -94,18 +97,24 @@ func select_next_army() -> void:
 	var player_controlled_army_ids: Array = []
 	var army_scene: Army
 	var new_army_id: int
+	var empty_army: bool
+	if GameState.current_selected_army == null:
+		prints("no current army rip", GameState.current_selected_army)
+		empty_army = true
 	for army_child: Army in get_tree().get_nodes_in_group("army"):
 		if army_child.controlling_player_id == GameState.current_player_turn:
 			player_controlled_army_ids.append(army_child.army_id)
-	if GameState.current_selected_army == null:
-		prints("no current army rip", GameState.current_selected_army)
-		return
+	if player_controlled_army_ids.is_empty():
+		print("this team has no armies left")
+		GameState.current_player_dict[GameState.current_player_turn]["eliminated"] = true # This is probs redundant but it doesn't hurt?
+		_update_current_player(false)
 	if GameState.current_selected_army.army_id == player_controlled_army_ids.max():
 #		 Loop around to lowest value if it's the max value
 		new_army_id = player_controlled_army_ids.min()
 	else:
 #		 Otherwise just grab the next value
 		var current_array_position: int = player_controlled_army_ids.find(GameState.current_selected_army.army_id)
+		prints("current_array_position", player_controlled_army_ids)
 		new_army_id = player_controlled_army_ids[current_array_position + 1]
 	for army_child: Army in get_tree().get_nodes_in_group("army"):
 		if army_child.army_id == new_army_id:
@@ -228,10 +237,13 @@ func _damage_armies(
 	#print("evaluating attack")
 	if attacker_damage_taken > 0:
 		#print("evaluating attack greater than 0")
+		$Crunch.play()
 		attacker_tile_id.remove_army_units_from_tile(attacker_damage_taken) # sets occupying_army.is_defeated = true if size <= 0. Otherwise just deals w/ updating visuals and stuff
 	#print("evaluating defense")
 	if defender_damage_taken > 0:
 		#print("evaluating defense greater than 0")
+		if not $Crunch.playing:
+			$Crunch.play()
 		defender_tile_id.remove_army_units_from_tile(defender_damage_taken)
 
 
@@ -286,7 +298,6 @@ func _on_hud_start_game() -> void:
 
 
 func _on_remove_army(army_id: Army):
-	print("removing self")
 	var player_controlling_army: int = army_id.controlling_player_id
 	var army_self_id = army_id.army_id
 	army_id.queue_free()
@@ -311,3 +322,6 @@ func _on_remove_army(army_id: Army):
 			win_screen.faction_id = GameState.current_player_dict[survivor_id]["faction_id"]
 			$HUD.add_child(win_screen)
 			GameState.update_state(GameState.STATE_MACHINE.DISABLED)
+			$Winner.play()
+			return
+		_update_current_player(false) # If still players, update player id

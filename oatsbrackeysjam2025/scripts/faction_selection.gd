@@ -67,6 +67,7 @@ func _update_current_selection(faction_id: int) -> void:
 func _on_confirm_pressed() -> void:
 	if not can_select:
 		return
+	#$AI.disabled = false # uncomment if I can fix
 	can_select = false
 	confirm_button.text = ALREADY_PICKED_TEXT
 	GameState.current_player_dict[current_player_choosing]["faction_id"] = current_selection
@@ -76,12 +77,18 @@ func _on_confirm_pressed() -> void:
 		GameState.FACTIONS.SANDWICH_COOKIE:
 			scc_has_been_picked = true
 			$SCC.get_node("Sprite").modulate.a = 0.4
+			$AcceptSCC.play()
+			await $AcceptSCC.finished
 		GameState.FACTIONS.CHOCCY_CHIP:
 			cc_has_been_picked = true
 			$CC.get_node("Sprite").modulate.a = 0.4
+			$AcceptCC.play()
+			await $AcceptCC.finished
 		GameState.FACTIONS.STRAWBRY_JAMMER:
 			sj_has_been_picked = true
 			$SJ.get_node("Sprite").modulate.a = 0.4
+			$AcceptSJ.play()
+			await $AcceptSJ.finished
 	current_player_choosing += 1
 	if current_player_choosing >= GameState.number_of_players:
 		print("game start!")
@@ -98,10 +105,11 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	else:
 		is_ai = false
 		prints('is ai', is_ai)
-		
 
 
 func _on_next_team_pressed() -> void:
 	if is_animating:
 		return
+	$Whoosh.play()
+	$NextTeam.text = "Next Faction"
 	_scroll_left()
