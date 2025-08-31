@@ -44,4 +44,5 @@ func _on_home_pressed() -> void:
 
 
 func _on_skip_turn_pressed() -> void:
-	get_parent()._update_current_player(false)
+	if GameState.current_state == GameState.STATE_MACHINE.SELECTING_IN_GAME:
+		get_parent()._update_current_player(false)
