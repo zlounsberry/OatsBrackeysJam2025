@@ -24,20 +24,29 @@ offset_bottom = -90.0
 
 [node name="Rules" type="Button" parent="."]
 offset_left = 1788.0
-offset_top = 11.0
+offset_top = 66.0
 offset_right = 1908.0
-offset_bottom = 58.0
+offset_bottom = 113.0
 theme = ExtResource("3_6fi6k")
 text = "Rules"
 
 [node name="Home" type="Button" parent="."]
 offset_left = 1788.0
-offset_top = 66.0
+offset_top = 12.0
 offset_right = 1908.0
-offset_bottom = 113.0
+offset_bottom = 59.0
 theme = ExtResource("3_6fi6k")
 text = "Title"
+
+[node name="SkipTurn" type="Button" parent="."]
+offset_left = 1788.0
+offset_top = 122.0
+offset_right = 1908.0
+offset_bottom = 169.0
+theme = ExtResource("3_6fi6k")
+text = "SKIP"
 
 [connection signal="start_game" from="FactionSelection" to="." method="_on_faction_selection_start_game"]
 [connection signal="pressed" from="Rules" to="." method="_on_rules_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="SkipTurn" to="." method="_on_skip_turn_pressed"]

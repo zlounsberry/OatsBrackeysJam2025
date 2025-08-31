@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://du2ck3uswc5v7"]
+[gd_scene load_steps=10 format=3 uid="uid://du2ck3uswc5v7"]
 
 [ext_resource type="Script" uid="uid://nej8wscb645g" path="res://scripts/title_screen.gd" id="1_sa3yf"]
 [ext_resource type="PackedScene" uid="uid://bdg1r1l2nq1n3" path="res://scenes/map.tscn" id="2_s4lrb"]
 [ext_resource type="Texture2D" uid="uid://dpp2qi8okc3vg" path="res://assets/logo_in_game.png" id="3_s4lrb"]
 [ext_resource type="Theme" uid="uid://fyuqosnd1wg8" path="res://assets/resources/main.tres" id="4_cs5ya"]
 [ext_resource type="PackedScene" uid="uid://dsnpqjfw7a0mu" path="res://scenes/armies/choccy_model.tscn" id="4_e54dn"]
+[ext_resource type="Texture2D" uid="uid://d28y5k73riv3j" path="res://assets/brackeys.png" id="4_mykxm"]
 [ext_resource type="PackedScene" uid="uid://c1cjxjwhtkspy" path="res://scenes/armies/jammer_model.tscn" id="5_3yumr"]
 [ext_resource type="PackedScene" uid="uid://bnir5pksbjrs7" path="res://scenes/armies/sandwich_cookie_model.tscn" id="6_cs5ya"]
 [ext_resource type="Texture2D" uid="uid://bw5p65ykgixj3" path="res://assets/resources/pico-8-8x.png" id="7_3yumr"]
@@ -23,9 +24,14 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 15.7555
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="HUD"]
+[node name="Title" type="Sprite2D" parent="HUD"]
 position = Vector2(960, 848)
 texture = ExtResource("3_s4lrb")
+
+[node name="BrackeysLogo" type="Sprite2D" parent="HUD"]
+position = Vector2(1797, 978)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mykxm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
 offset_left = 742.0

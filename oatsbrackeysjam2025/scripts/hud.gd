@@ -41,3 +41,7 @@ func _on_rules_pressed() -> void:
 func _on_home_pressed() -> void:
 	GameState.reset_to_defaults()
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+
+
+func _on_skip_turn_pressed() -> void:
+	get_parent()._update_current_player(false)
