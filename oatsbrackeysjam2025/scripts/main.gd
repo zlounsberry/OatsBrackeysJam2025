@@ -237,10 +237,13 @@ func _damage_armies(
 	#print("evaluating attack")
 	if attacker_damage_taken > 0:
 		#print("evaluating attack greater than 0")
+		$Crunch.play()
 		attacker_tile_id.remove_army_units_from_tile(attacker_damage_taken) # sets occupying_army.is_defeated = true if size <= 0. Otherwise just deals w/ updating visuals and stuff
 	#print("evaluating defense")
 	if defender_damage_taken > 0:
 		#print("evaluating defense greater than 0")
+		if not $Crunch.playing:
+			$Crunch.play()
 		defender_tile_id.remove_army_units_from_tile(defender_damage_taken)
 
 
@@ -295,7 +298,6 @@ func _on_hud_start_game() -> void:
 
 
 func _on_remove_army(army_id: Army):
-	print("removing self")
 	var player_controlling_army: int = army_id.controlling_player_id
 	var army_self_id = army_id.army_id
 	army_id.queue_free()

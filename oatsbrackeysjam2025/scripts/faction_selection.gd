@@ -67,7 +67,7 @@ func _update_current_selection(faction_id: int) -> void:
 func _on_confirm_pressed() -> void:
 	if not can_select:
 		return
-	$AI.disabled = false
+	#$AI.disabled = false # uncomment if I can fix
 	can_select = false
 	confirm_button.text = ALREADY_PICKED_TEXT
 	GameState.current_player_dict[current_player_choosing]["faction_id"] = current_selection
