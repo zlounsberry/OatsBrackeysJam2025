@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://57epoytwmhh7"]
+[gd_scene load_steps=14 format=3 uid="uid://57epoytwmhh7"]
 
 [ext_resource type="Script" uid="uid://y6adcvth0dmn" path="res://scripts/faction_selection.gd" id="1_00o52"]
 [ext_resource type="Theme" uid="uid://fyuqosnd1wg8" path="res://assets/resources/main.tres" id="1_gvdtk"]
 [ext_resource type="Texture2D" uid="uid://bauxj0x2byc8" path="res://assets/nine-patch.png" id="1_xgy2r"]
 [ext_resource type="PackedScene" uid="uid://dm3pca7e8aygp" path="res://scenes/avatar.tscn" id="3_xgy2r"]
-[ext_resource type="AudioStream" uid="uid://3gb7m84ebx85" path="res://assets/sounds/whoosh.ogg" id="5_nkasc"]
-[ext_resource type="AudioStream" uid="uid://dxy3pff6obp6p" path="res://assets/sounds/whoosh1.ogg" id="6_7cvuc"]
+[ext_resource type="AudioStream" uid="uid://3gb7m84ebx85" path="res://assets/sounds/whoosh.ogg" id="6_7cvuc"]
 [ext_resource type="AudioStream" uid="uid://bc13sdv4l3yg5" path="res://assets/sounds/accept_cc.ogg" id="7_7cvuc"]
 [ext_resource type="AudioStream" uid="uid://bhoff1v1lb5bo" path="res://assets/sounds/accept_sj.ogg" id="8_a0oip"]
 [ext_resource type="AudioStream" uid="uid://b5vcpsdlpxh5d" path="res://assets/sounds/accept_scc.ogg" id="9_rwhny"]
@@ -252,10 +251,8 @@ _data = {
 playback_mode = 1
 random_pitch = 1.1
 random_volume_offset_db = 1.1
-streams_count = 2
-stream_0/stream = ExtResource("5_nkasc")
-stream_0/weight = 5.0
-stream_1/stream = ExtResource("6_7cvuc")
+streams_count = 1
+stream_0/stream = ExtResource("6_7cvuc")
 
 [node name="FactionSelection" type="NinePatchRect"]
 anchors_preset = 15
@@ -352,7 +349,6 @@ icon_alignment = 1
 [node name="Whoosh" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_cfxrl")
 volume_db = 6.0
-pitch_scale = 0.9
 
 [node name="AcceptCC" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_7cvuc")

@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://dha3q0euoc5nu"]
+
+[ext_resource type="Script" uid="uid://be1q586vgp4mn" path="res://scripts/rules_page.gd" id="1_6jt76"]
+[ext_resource type="Theme" uid="uid://fyuqosnd1wg8" path="res://assets/resources/main.tres" id="1_n2emh"]
+[ext_resource type="Texture2D" uid="uid://bauxj0x2byc8" path="res://assets/nine-patch.png" id="2_6jt76"]
+
+[node name="RulesPage" type="Node2D"]
+position = Vector2(0, 2500)
+script = ExtResource("1_6jt76")
+
+[node name="HowToPlay" type="NinePatchRect" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1904.0
+offset_bottom = 1064.0
+theme = ExtResource("1_n2emh")
+texture = ExtResource("2_6jt76")
+patch_margin_left = 68
+patch_margin_top = 68
+patch_margin_right = 68
+patch_margin_bottom = 68
+
+[node name="Title" type="Label" parent="HowToPlay"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1846.0
+offset_bottom = 124.0
+theme = ExtResource("1_n2emh")
+theme_override_font_sizes/font_size = 64
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayInstructions" type="Label" parent="HowToPlay"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 141.0
+offset_right = 1873.0
+offset_bottom = 1014.0
+theme_override_font_sizes/font_size = 48
+text = "0) Select your faction, which at the moment is purely cosmetic
+1) When it is your turn, you will see a yellow indicator over the current army. Press Tab to switch armies and arrow keys to rotate camera as needed
+2a) Selecting an adjacent empty tile will prompt you for how many units you want to move. Once selected, your units will move, ending your turn.
+2b) Selecting an adjacent occupied tile with your army in it will do nothing :(
+2C) Selecting an adjacent occupied tile with an enemy army will prompt you to attack. You will choose the number of units to attack with.
+3) Sit back and watch dice combat ensue
+4) Do this on repeat until one type of biscuit faction remains"
+autowrap_mode = 2
+
+[node name="Rules" type="NinePatchRect" parent="."]
+visible = false
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1904.0
+offset_bottom = 1064.0
+theme = ExtResource("1_n2emh")
+texture = ExtResource("2_6jt76")
+patch_margin_left = 68
+patch_margin_top = 68
+patch_margin_right = 68
+patch_margin_bottom = 68
+
+[node name="Title" type="Label" parent="Rules"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1846.0
+offset_bottom = 124.0
+theme = ExtResource("1_n2emh")
+theme_override_font_sizes/font_size = 64
+text = "RULES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rules" type="Label" parent="Rules"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 141.0
+offset_right = 1873.0
+offset_bottom = 1014.0
+theme_override_font_sizes/font_size = 48
+text = "0) This game was designed to be couch co-op, best played with friends at one computer! Just share the mouse...
+1) Your turn ends when you end it with the \"skip\" button or move ONE time
+2) You can attack as many times as you want, as long as you don't move
+3) During attack phase, players lose 1 army unit for each die that is lower than the opponents' (in sorted order)
+4) On player 1's turn, all players get +1 unit added to each army
+5) For every continent (single color) you entirely control, your armies on the whole map gets bonus units (This can be buggy :| )
+6) The winner is the last biscuit standing"
+autowrap_mode = 2
+
+[node name="Toggle" type="Button" parent="."]
+offset_left = 1667.0
+offset_top = 967.0
+offset_right = 1879.0
+offset_bottom = 1040.0
+theme = ExtResource("1_n2emh")
+text = "RULES"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 1800.0
+offset_top = 31.0
+offset_right = 1880.0
+offset_bottom = 111.0
+theme = ExtResource("1_n2emh")
+theme_override_font_sizes/font_size = 48
+text = "X"
+
+[connection signal="pressed" from="Toggle" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

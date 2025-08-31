@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 const CONFIRM_MENU = preload("res://scenes/confirm_menu.tscn")
+const RULES_PAGE = preload("res://scenes/rules_page.tscn")
 
 @export var attacker_player_id: int
 @export var defender_player_id: int
@@ -30,3 +31,13 @@ func _on_confirm_menu_player_selected_yes(is_yes: bool, unit_count: int, is_atta
 
 func _on_faction_selection_start_game() -> void:
 	start_game.emit()
+
+
+func _on_rules_pressed() -> void:
+	var rules = RULES_PAGE.instantiate()
+	add_child(rules)
+
+
+func _on_home_pressed() -> void:
+	GameState.reset_to_defaults()
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")

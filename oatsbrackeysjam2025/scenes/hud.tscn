@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp3uca8anltpu"]
+[gd_scene load_steps=4 format=3 uid="uid://bp3uca8anltpu"]
 
 [ext_resource type="Script" uid="uid://b8goq67pxid8j" path="res://scripts/hud.gd" id="1_oo0fn"]
 [ext_resource type="PackedScene" uid="uid://57epoytwmhh7" path="res://scenes/faction_selection.tscn" id="3_5ysmq"]
+[ext_resource type="Theme" uid="uid://fyuqosnd1wg8" path="res://assets/resources/main.tres" id="3_6fi6k"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_oo0fn")
@@ -21,4 +22,22 @@ offset_top = 90.0
 offset_right = -480.0
 offset_bottom = -90.0
 
+[node name="Rules" type="Button" parent="."]
+offset_left = 1788.0
+offset_top = 11.0
+offset_right = 1908.0
+offset_bottom = 58.0
+theme = ExtResource("3_6fi6k")
+text = "Rules"
+
+[node name="Home" type="Button" parent="."]
+offset_left = 1788.0
+offset_top = 66.0
+offset_right = 1908.0
+offset_bottom = 113.0
+theme = ExtResource("3_6fi6k")
+text = "Title"
+
 [connection signal="start_game" from="FactionSelection" to="." method="_on_faction_selection_start_game"]
+[connection signal="pressed" from="Rules" to="." method="_on_rules_pressed"]
+[connection signal="pressed" from="Home" to="." method="_on_home_pressed"]

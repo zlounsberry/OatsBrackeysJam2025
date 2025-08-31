@@ -111,3 +111,58 @@ var current_selected_army: Army
 func update_state(new_state: int) -> void:
 	#prints("updating to state", new_state)
 	current_state = new_state
+
+
+func reset_to_defaults() -> void:
+	current_state = STATE_MACHINE.SELECTING_START # For testing confirm button
+	current_player_turn = GameState.PLAYER_IDS.PLAYER_1 # This gets updated with _update_current_player in the main scene ready function
+	current_player_dict = {
+		PLAYER_IDS.PLAYER_1: 
+			{
+				"is_ai": true,
+				"faction_id": FACTIONS.SANDWICH_COOKIE,
+				"is_eliminated": true,
+			},
+		PLAYER_IDS.PLAYER_2: 
+			{
+				"is_ai": true,
+				"faction_id": FACTIONS.SANDWICH_COOKIE,
+				"is_eliminated": true,
+			},
+		PLAYER_IDS.PLAYER_3: 
+			{
+				"is_ai": true,
+				"faction_id": FACTIONS.SANDWICH_COOKIE,
+				"is_eliminated": true,
+			},
+	}
+
+	current_continent_control_dict = {
+		CONTINENT_IDS.COOKIES0:
+			{
+				"controlling_player": -99,
+				"continent_size": 4,
+				"continent_bonus": 1,
+			},
+		CONTINENT_IDS.COOKIES1:
+			{
+				"controlling_player": -99,
+				"continent_size": 4,
+				"continent_bonus": 1,
+			},
+		CONTINENT_IDS.COOKIES2:
+			{
+				"controlling_player": -99,
+				"continent_size": 5,
+				"continent_bonus": 2,
+			},
+		CONTINENT_IDS.COOKIES3:
+			{
+				"controlling_player": -99,
+				"continent_size": 4,
+				"continent_bonus": 1,
+			},
+	}
+
+	number_of_players = 2 # This will get updated to an export var controlling the main scene
+	menu_open = true # This will get updated to an export var controlling the main scene
